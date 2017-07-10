@@ -9,6 +9,7 @@ const mongoose     = require('mongoose');
 const session      = require('express-session');
 const passport     = require('passport');
 const flash        = require('connect-flash');
+const jwt          = require('jsonwebtoken');
 var cors = require('cors');
 require('dotenv').config();
 require('./config/passport-config.js');

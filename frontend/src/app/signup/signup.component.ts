@@ -24,17 +24,17 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
-    const thePromise = this.mySessionService.signup(this.signupInfo);
+   this.mySessionService.signup(this.signupInfo);
 
-    thePromise.then((userInfo) => {
-      this.user = userInfo;
-      this.error = null;
-    });
+    // thePromise.then((userInfo) => {
+    //   this.user = userInfo;
+    //   this.error = null;
+    // });
 
-    thePromise.catch((err) => {
-      this.user = null;
-      this.error = err;
-    });
+    // thePromise.catch((err) => {
+    //   this.user = null;
+    //   this.error = err;
+    // });
   }
 
 }

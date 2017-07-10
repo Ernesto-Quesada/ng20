@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const ensure = require('connect-ensure-login');
+const jwt          =require('jsonwebtoken');
 
 const User = require('../models/userModel.js');
 
@@ -34,6 +35,7 @@ authRoutes.post('/signup',
   ensure.ensureNotLoggedIn('/'),
 
   (req, res, next) => {
+    // const token = jwt.sign(req.body.);
     const emailInput = req.body.emailInput;
     const signupPassword = req.body.signupPassword;
 
@@ -120,8 +122,12 @@ authRoutes.post('/signup',
               res.status(500).json({ message: 'Something went wrong.' });
               return;
             }
-
-            res.status(200).json(req.user);
+            console.log('???????',req.user._id);
+            const usertoken = req.user._id
+            const token = jwt.sign(usertoken, '123');
+            console.log(token);
+            //res.json(token)
+            res.status(200).json([(req.user), (token)]);
           });
         });
       }

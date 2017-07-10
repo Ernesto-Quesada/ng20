@@ -8,16 +8,7 @@ import { SenderService } from '../sender.service';
 })
 export class LoginComponent implements OnInit {
 
-  @Output() logMe = new EventEmitter<object>();
-  //     user: any;
-  // formInfo = {
-  //   username: '',
-  //   password: ''
-  // };
-  // error: string;
-  // privateData: any = '';
-
-
+  @Output() logMe: EventEmitter<any> = new EventEmitter<any>();
   loginInfo = {};
   user: any;
   error: any;
@@ -33,9 +24,8 @@ export class LoginComponent implements OnInit {
       this.error = null;
     console.log('USER INFO', userInfo);
     console.log('USER', this.user);
-    this.logMe.emit(this.user);
-    console.log('this.user form logme', this.user);
-    console.log('this.user -------', this.logMe.emit(this.user))
+    // this.logMe.emit(this.user);
+    // console.log('this.user from logme', this.logMe.emit('hola'));
     });
     console.log('LOGIN INFO FROM THE HTML FORM', this.loginInfo);
     console.log(thePromise);
@@ -45,6 +35,11 @@ export class LoginComponent implements OnInit {
       this.user = null;
       this.error = err;
     });
+  }
+  onClic() {
+    this.logMe.emit('hello');
+    console.log('USER', this.user);
+    console.log('this.user from logme', this.logMe.emit('hello'));
   }
 
 

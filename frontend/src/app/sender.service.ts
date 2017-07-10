@@ -16,14 +16,17 @@ export class SenderService {
     return Observable.throw(e.json().message);
   }
 
+  // signup (user) {
+  //   const theOriginalPromise = this.http.post('http://localhost:3000/signup', user).toPromise();
+
+  //   const theParsedPromise = theOriginalPromise.then((result) => {
+  //     return result.json();
+  //   });
+
+  //   return theParsedPromise;
+  // }
   signup (user) {
-    const theOriginalPromise = this.http.post('http://localhost:3000/signup', user).toPromise();
-
-    const theParsedPromise = theOriginalPromise.then((result) => {
-      return result.json();
-    });
-
-    return theParsedPromise;
+    this.http.post(this.BASE_URL + '/signup' , user).subscribe();
   }
 
 login (credentials) {

@@ -15,7 +15,7 @@ HERE'S THE USER
         </div>
                     
         <div class="panel-body">
-          <form class="login">
+        <form class="login">
           <fieldset>
             <div class="form-group">
               <label for="emailInput"> Account EMAIL </label>
@@ -24,14 +24,15 @@ HERE'S THE USER
              <div class="form-group">
               <label for="password">Password</label>
 
-          <input type='password' name= 'loginPassword' [(ngModel)]= 'loginInfo.loginPassword'  id="password" class="form-control" placeholder="password">
-  </div>
+              <input type='password' name= 'loginPassword' [(ngModel)]= 'loginInfo.loginPassword'  id="password" class="form-control" placeholder="password">
+             </div>
                                 
                <!-- Change this to a button or input when using this as a form -->
-              <button (click)="login(); logMe()" class="btn btn-lg btn-success btn-block">Login</button>
-                            </fieldset>
-          </form>
+             <button (click)="login()" class="btn btn-lg btn-success btn-block">Login</button>
+          </fieldset>
+        </form>
             <h4>  Don't have an account?<a href="/signup" class="btn btn-lg btn-primary btn-block">Sign Up </a></h4>
+
 
         </div>
     </div>
