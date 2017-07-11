@@ -88,6 +88,10 @@ app.use('/', index);
 const myAuthRoutes = require('./routes/authRoutes.js');
 app.use('/', myAuthRoutes);
 
+//--------agency routes
+const myAgencyRoutes = require('./routes/agencyRoutes.js');
+app.use('/', myAgencyRoutes);
+
 //---------user route
 const myUserRoutes = require('./routes/userRoute.js');
 app.use('/', myUserRoutes); 

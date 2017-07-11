@@ -1,0 +1,146 @@
+<!-- Page Content -->
+<h2></h2>
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><%= photo.photoTitle%></h1>
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a>
+                    </li>
+                    <li class="active"><%= photo.photoTitle%></li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Portfolio Item Row -->
+        <div class="row">
+            <div class="col-md-8">
+                <div class="item">
+                    <img class="img-responsive" src="<%= photo.imageUrl %>" alt="">
+                </div>
+             </div>
+            <div class="col-md-4">
+                <p class="p-details">Author</p>
+                <h3 class="h3-details"><%= usuario.name%></h3>
+                
+                
+                <p class="p-details">Year</p>
+                <h3 class="h3-details"><%= photo.yearTaken%></h3>
+
+                <h5 class="h3-details">About this picture </h5>
+                <p class='p-description'><%= photo.description%></p>
+                
+                <!--CHECK THIS why i can not use id below but name is ok-->
+                <% if (typeof user !== 'undefined') { %>
+                  <% if (user._id.equals(usuario._id)) { %>
+                
+                
+                <div class='row'>
+                <div class="col-md-8">
+               <a id="photoedit" href="/photo/<%= photo._id %>/edit">
+                    <button class="btn  btn-warning ">Edit</button>
+                </a>
+                </div>
+                
+                <form method="post" action="/photo/<%= photo._id %>/delete">
+                    <button onclick="myFunction()" class="btn  btn-danger ">Delete</button>
+               </form>
+               
+               <% } %>
+               <% } %>
+               </div>
+      
+        </div>
+
+        <!-- /.row -->
+        <hr>
+        <!-- Related Projects Row -->
+        <div class="row">
+        <div class="col-lg-12">
+        <% if (typeof user !== 'undefined') { %>
+                <a href="/photos/<%= photo._id %>/reviews/new"><h3 class="page-header">Review this Picture</h3></a>
+            <% } else {  %> 
+                <a href="/login"><h3 class="page-header">Please log in to review this picture</h3></a>
+
+           <% } %>
+            </div>
+        </div>
+
+        <!-- Related Projects Row -->
+        <div class="row">
+
+            <div class="col-lg-12">
+        <% if (typeof user === 'undefined') { %>
+                <h3 class="page-header">More from this photographer</h3>
+                <% photoListAll.forEach( (onePhoto) => { %>
+                    <div class="col-sm-3 col-xs-6">
+                        <a href="/photo/<%= onePhoto._id %>">
+                            <img class= "img-responsive img-hover img-related" src='<%=onePhoto.imageUrl%>' alt="">
+                        </a>
+                    </div>
+                <% }) %>
+        <% } if (typeof user !== 'undefined') { %>
+                  <% if (user._id.equals(usuario._id)) { %>
+                            <h3 class="page-header">Your photos</h3>
+                            <% photoListAll.forEach((onePhoto) => { %>
+                                <div class="col-sm-3 col-xs-6">
+                                   <a href="/photo/<%= onePhoto._id %>">
+                            <img class= "img-responsive img-hover img-related" src='<%=onePhoto.imageUrl%>' alt="">
+                        </a>
+                                </div>
+                            <% } ) %>
+                <% } else {  %> 
+                    <h3 class="page-header">More from this photographer</h3>
+                    
+                    <% photoListAll.forEach((onePhoto) => { %>
+                        <div class= "col-sm-3 col-xs-6">
+                        <a href="/photo/<%= onePhoto._id %>">
+                            <img class= "img-responsive img-hover img-related" src='<%=onePhoto.imageUrl%>' alt="">
+                        </a>
+                        </div>
+                    <% } ) %>
+                    <% } %>
+        <% } %>
+            </div>
+
+        </div>
+           
+        <!-- /.row -->
+<!-- Reviews Row -->
+        <div class="row">
+        <div class="col-lg-12">
+        <h3 class="page-header"> User Reviews </h3>
+        </div>
+    </div>
+
+
+  <% photo.reviews.forEach((oneReview) => { %>
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#reviewCollapse-<%=oneReview.author%>"><strong> <%= oneReview.author %> </strong> <span><%= oneReview.stars %> ⭐️       out of 5 </span></a>
+        </h4>
+      </div>
+      <div id="reviewCollapse-<%=oneReview.author%>" class="panel-collapse collapse">
+        <div class="panel-body"><%= oneReview.content %></div>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+
+</div>
+<!-- /.row -->
+
+<script>
+function myFunction() {
+    alert("WARNING!!! You are permanently deleting this picture.Hit back now to avoid this action");
+}
+</script>
+
+
+
+

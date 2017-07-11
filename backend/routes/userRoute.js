@@ -19,12 +19,12 @@ routeforUser.get('/profile',
                 return;
         }
         {
-          res.json({user:req.user,relativeList: theRelativeList});
-          // res.render('user/userProfile.ejs',{
-          //   user:req.user,
-          //   relativeList: theRelativeList
+          //res.json({user:req.user,relativeList: theRelativeList});
+          res.render('user/userProfile.ejs',{
+            user:req.user,
+            relativeList: theRelativeList
 
-          // });
+          });
         }
       })
     }
