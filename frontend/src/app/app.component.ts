@@ -23,24 +23,24 @@ ngOnInit() {
   //  this.mySessionService.isLoggedIn()
   //     .then(userInfo => this.user = userInfo);
   }
-login() {
-    const thePromise = this.mySessionService.login(this.loginInfo);
-    thePromise.then((userInfo) => {
-      this.user = userInfo;
-      this.error = null;
-    console.log('USER INFO', userInfo);
-    console.log('USER', this.user);
-    // this.logMe.emit(this.user);
-    // console.log('this.user from logme', this.logMe.emit('hola'));
-    });
-    console.log('LOGIN INFO FROM THE HTML FORM', this.loginInfo);
-    console.log(thePromise);
+// login() {
+//     const thePromise = this.mySessionService.login(this.loginInfo);
+//     thePromise.then((userInfo) => {
+//       this.user = userInfo;
+//       this.error = null;
+//     console.log('USER INFO', userInfo);
+//     console.log('USER', this.user);
+//     // this.logMe.emit(this.user);
+//     // console.log('this.user from logme', this.logMe.emit('hola'));
+//     });
+//     console.log('LOGIN INFO FROM THE HTML FORM', this.loginInfo);
+//     console.log(thePromise);
 
 
-    thePromise.catch((err) => {
-      this.user = null;
-      this.error = err;
-    });
-  }
+//     thePromise.catch((err) => {
+//       this.user = null;
+//       this.error = err;
+//     });
+//   }
 
 }

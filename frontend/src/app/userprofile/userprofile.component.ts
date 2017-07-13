@@ -8,7 +8,7 @@ import { SenderService } from '../sender.service';
   styleUrls: ['./userprofile.component.css']
 })
 export class UserprofileComponent implements OnInit {
-user: Object= {};
+user: any;
   errorMessage: string = '';
 
   constructor(private myProfileService: SenderService) { }

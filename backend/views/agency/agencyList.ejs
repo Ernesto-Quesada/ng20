@@ -7,11 +7,7 @@
                 <h1 class="page-header">Agencies
                     
                 </h1>
-                <!--<ol class="breadcrumb">
-                    <li><a href="/">Home</a>
-                    </li>
-                    <li class="active">All photos</li>
-                </ol>-->
+                
             </div>
         </div>
         <!-- /.row -->
@@ -24,10 +20,14 @@
                     <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4> <%= oneAgency.nameAgency%></h4>
+                        <div class="checkbox">
+                            <label>
+                <input type="checkbox" name="checkedAgency" ng-model="formData.checked" ng-true-value="yes" ng-false-value="no">use this
+            </label>
+        </div>
                     </div>
                     <div class="col-md-12 col-sm-6">
-                            <a href="/agency/<%= oneAgency._id %>">
-                            </a>
+                    <a href=" agency/<%= oneAgency._id %>">details</a>
                             
                     </div>
                     </div>

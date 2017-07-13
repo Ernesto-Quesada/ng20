@@ -30,8 +30,8 @@ export class SenderService {
   }
 
 login (credentials) {
-    const theOriginalPromise = this.http.post('http://localhost:3000/login', credentials).toPromise();
-    const theParsedPromise = theOriginalPromise.then((result) => {
+    const theOriginalPromise = this.http.post('http://localhost:3000/login', credentials).map((res) => {return res.json(); });
+    const theParsedPromise = theOriginalPromise.catch((result) => {
       return result.json();
     });
     return theParsedPromise;
@@ -52,11 +52,11 @@ login (credentials) {
   // }
 
 
-  getProfile() {
-    return this.http.get('http://localhost:3000/loggedin')
-      .map(res => res.json())
-      .catch(this.handleError);
-  }
+  // getProfile() {
+  //   return this.http.get('http://localhost:3000/loggedin')
+  //     .map(res => res.json())
+  //     .catch(this.handleError);
+  // }
 
 
 }

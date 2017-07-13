@@ -12,19 +12,21 @@ const routeforUser = express.Router();
 // routeforUser.get('/user/:id', (req, res, next) => {
 
 routeforUser.get('/profile',
-    ensure.ensureLoggedIn('/login'),(req, res, next) => {
+    ensure.ensureLoggedIn('/login'),
+    (req, res, next) => {
+      console.log(',.,.,.,',req.user)
       Relative.find({relativeOfUser: req.user._id},(err,theRelativeList) =>{
         if (err) {
                 next(err);
                 return;
         }
         {
-          //res.json({user:req.user,relativeList: theRelativeList});
-          res.render('user/userProfile.ejs',{
-            user:req.user,
-            relativeList: theRelativeList
+          res.json({user:req.user,relativeList: theRelativeList});
+          // res.render('user/userProfile.ejs',{
+          //   user:req.user,
+          //   relativeList: theRelativeList
 
-          });
+          // });
         }
       })
     }

@@ -47,6 +47,7 @@ passport.use( new LocalStrategy(
 
   // 2nd arg -> callback for the logic that validates the login
   (loginEmailInput, passwordField, next) => {
+
     User.findOne(
       { email: loginEmailInput },
 

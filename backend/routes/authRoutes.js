@@ -132,8 +132,7 @@ authRoutes.post('/signup',
         });
       }
     );
-  }
-);
+  });
 
 authRoutes.get('/login',
     //        redirects to '/' (home page) if you ARE logged in
@@ -166,8 +165,36 @@ authRoutes.get('/login',
 // );
 
 //-------LOGIN BY NICK-----
-authRoutes.post('/login', (req, res, next) => {
+function ensureNotLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    res.status(403).json({
+      Emesssage: 'Unauthorized'
+    });
+    return;
+  }
+  next();
+  return;
+}
+/*--------------End|--------------------------*/
+
+
+/*-------------Start |---------------------------*/
+//function to make sure you are logged in
+function ensureLoggedIn(req, res, next) {
+
+  if (!req.isAuthenticated()) {
+    return res.status(403).json({
+      Emessage: 'Unauthorized'
+    });
+  }
+  next();
+
+  return;
+}
+/*--------------End|--------------------------*/
+authRoutes.post('/login',ensureNotLoggedIn, (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
+
     if (err) {
       res.status(500).json({ message: 'Something went wrong.' });
       return;
@@ -183,7 +210,7 @@ authRoutes.post('/login', (req, res, next) => {
         res.status(500).json({ message: 'Something went wrong.' });
         return;
       }
-
+console.log(req.user)
       res.status(200).json(req.user);
     });
   })(req, res, next);
@@ -199,14 +226,8 @@ authRoutes.get('/logout', (req, res, next) => {
 });
 
 
-authRoutes.get('/loggedin', (req, res, next) => {
-  if (req.isAuthenticated()) {
-    console.log('i get in here ---------')
+authRoutes.get('/loggedin',ensureLoggedIn, (req, res, next) => {
     res.status(200).json(req.user);
-    return;
-  }
-
-  res.status(401).json({ message: 'Unauthorized.' });
 });
 
 

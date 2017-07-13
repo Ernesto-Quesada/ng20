@@ -1,0 +1,22 @@
+<h2>list of agencies</h2>
+<div>
+  <label>Agency name:</label> <input #agencyName />
+  <!--<button (click)="add(agencyName.value); agencyName.value=''">
+    Add
+  </button>-->
+</div>
+<ul class="agencies">
+  <li *ngFor="let agency of agencies" (click)="onSelect(agency)"[class.selected]="agency === selectedagency">
+    <span class="badge">{{agency.email}}</span>
+    <span>{{agency.nameAgency}}</span>
+    <button class="delete"
+      (click)="delete(agency); $event.stopPropagation()">x</button>
+  </li>
+</ul>
+<div *ngIf="selectedAgency">
+  <h2>
+    {{selectedAgency.nameAgency | uppercase}} is my agency
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+  <button (click)="agencyIsSelected()">console view</button>
+</div>

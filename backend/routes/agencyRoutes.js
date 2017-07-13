@@ -27,10 +27,13 @@ router.get('/agencies', (req, res, next) => {
     //    AgencyList.forEach((onePicture)=>{
     //      console.log('OOOONEEE',onePicture);
     //      let test= onePicture.owner.push
-        {res.render('agency/agencyList.ejs', 
-          { agencyList: agencyList});
+        // {res.render('agency/agencyList.ejs', 
+
+        
+        //   { agencyList: agencyList});
           console.log('thelist',agencyList);
-        }
+        // }
+        {res.status(200).json(agencyList)}//working ok jul12
        })
     }
  // }
@@ -135,57 +138,21 @@ router.post('/agency',
         }); 
         // .-------Save-----.
      });
-
-
-    // const newAgency = new Agency(newAgencyInfo);
-    // newAgency.save( (err) => {
-    //     if (err) { 
-    //       res.render('agency/newAgency.ejs', {
-    //           errors:newAgency.errors
-    //       });
-    //     return}
-    //     // redirect to the list of Agency if it saves
-    //     return res.redirect('/agencies');
-    //   });
 });
 
 
 
-//========Details =============
-router.get('/Agency/:id',(req,res,next) => { 
-  const AgencyId=req.params.id;
-  Agency.findById(AgencyId,(err,theAgency) => {
+//========Details of agency =============
+router.get('/agency/:id',(req,res,next) => { 
+  const agencyId=req.params.id;
+  Agency.findById(agencyId,(err,theAgency) => {
     if(err){  
       next(err);
        return;
     }
-    if (theAgency){ 
-      User.findById(theAgency.owner, (err,theUser)=>{
-        if (err) {
-           next(err);
-           return;
-        }
-        // if the user is found render the view and pass 
-        //those variables wth the info
-        if (theUser) {
-          Agency.find({owner:theUser._id},(err,userAgencyList)=>{
-             if (err) {
-                next(err);
-                return;
-             }
-             { res.render('Agencys/AgencyDetail.ejs',{ 
-                 Agency:theAgency,
-                 usuario:theUser,
-                 AgencyListAll:userAgencyList
-              });
-              console.log('>>>>>>>>>theUser',theUser);
-              console.log('>>>>>>>>>req',req.user);
-              console.log('>>>>>>>>>userAgencyList',userAgencyList);
-              }
-          })
-        }
-      });
-    }
+    res.render('agency/agencyDetails.ejs', {
+       agency: theAgency 
+    })
   });
 });
 
