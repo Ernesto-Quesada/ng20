@@ -21,24 +21,24 @@ selectedAgency:any
   // add(name: string): void {
   //   name = name.trim();
   //   if (!name) { return; }
-  //   this.heroService.create(name)
-  //     .then(hero => {
-  //       this.heroes.push(hero);
-  //       this.selectedHero = null;
+  //   this.agencyService.create(name)
+  //     .then(agency => {
+  //       this.agencies.push(agency);
+  //       this.selectedagency = null;
   //     });
   // }
 
-  // delete(hero: Hero): void {
-  //   this.heroService
-  //       .delete(hero.id)
-  //       .then(() => {
-  //         this.heroes = this.heroes.filter(h => h !== hero);
-  //         if (this.selectedHero === hero) { this.selectedHero = null; }
-  //       });
-  // }
+  delete(agency): void {
+    this.agencyService
+        .delete(agency._id)
+        .then(() => {
+          this.agencies = this.agencies.filter(h => h !== agency);
+          if (this.selectedAgency === agency) { this.selectedAgency = null; }
+        });
+  }
 
   // ngOnInit(): void {
-  //   this.getHeroes();
+  //   this.getagencies();
   // }
 
   onSelect(agency): void {
@@ -49,7 +49,7 @@ selectedAgency:any
   }
 
   // gotoDetail(): void {
-  //   this.router.navigate(['/detail', this.selectedHero.id]);
+  //   this.router.navigate(['/detail', this.selectedagency.id]);
   // }
 
 }

@@ -1,13 +1,14 @@
 
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response ,Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 
-
 @Injectable()
 export class AgencyService {
+
+  private headers = new Headers({'Content-Type': 'application/json'});
   // tslint:disable-next-line:no-inferrable-types
   BASE_URL: string = 'http://localhost:3000';
 
@@ -35,7 +36,17 @@ export class AgencyService {
       .then(response => response.json())
       .catch(this.handleError);
   }
-
+  delete(id: number): any  {
+    // const url = `${this.BASE_URL}/${id}`;
+    // return this.http.delete(url, {headers: this.headers})
+    //   .toPromise()
+    //   .then(() => null)
+    //   .catch(this.handleError);
+    return this.http.delete(`${this.BASE_URL}/agency/${id}`)
+      .toPromise()
+      .then(response => response.json())
+               .catch(this.handleError);
+  }
 
 }
 

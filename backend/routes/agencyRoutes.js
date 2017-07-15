@@ -191,14 +191,16 @@ router.post('/Agency/:id', (req, res, next) => {    //----------
     });
 });
 
-router.post('/Agency/:id/delete', ensure.ensureLoggedIn('/login'),(req, res, next) => {
-    const AgencyId = req.params.id;
-    Agency.findByIdAndRemove(AgencyId,(err, theAgency) =>{
+router.delete('/agency/:id/', 
+//ensure.ensureLoggedIn('/login'),
+(req, res, next) => {
+    const agencyId = req.params.id;
+    Agency.findByIdAndRemove(agencyId,(err, theAgency) =>{
       if(err){
         next(err);
         return;
       }
-      res.redirect('/Agency');
+      {res.status(200).json(theAgency)}
     });
 });
 

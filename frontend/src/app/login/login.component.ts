@@ -15,12 +15,11 @@ export class LoginComponent implements OnInit {
   constructor(private mySessionService: SenderService) { }
   ngOnInit() {
    this.mySessionService.isLoggedIn()
-      .then((userInfo ) => {console.log(userInfo + 'ivansssssssssssss'); return this.user = userInfo});
+      .then(userInfo => this.user = userInfo);
   }
   login() {
     const thePromise = this.mySessionService.login(this.loginInfo);
-
-    thePromise.subscribe((userInfo) => {
+    thePromise.then((userInfo) => {
       this.user = userInfo;
       this.error = null;
     console.log('USER INFO', userInfo);
@@ -32,10 +31,10 @@ export class LoginComponent implements OnInit {
     console.log(thePromise);
 
 
-    // thePromise.catch((err) => {
-    //   this.user = null;
-    //   this.error = err;
-    // });
+    thePromise.catch((err) => {
+      this.user = null;
+      this.error = err;
+    });
   }
   onClic() {
     this.logMe.emit('hello');
