@@ -86,32 +86,28 @@ routeforUser.post('/relative/new',
                 return;
              }
               if (foundRelative){
-                console.log('the f relative',foundRelative);
-                Relative.findOne({cIdentidad: cIdentidadR},(err, relativeExist) =>{
-                    if (err) {
-                      next(err);
-                      return;
-                    }
-                      console.log('exist',relativeExist.cIdentidad)
-                    if (relativeExist.cIdentidad == cIdentidadR) {
-                        console.log('no puedes guerdar este family');
-                        return
-                    } 
-                // Create the new Relative
+                 console.log('the f relative',foundRelative);
+                 foundRelative.forEach((oneRel)=>{
+                   console.log('the one rel',oneRel);
+                   if(oneRel.cIdentidad == cIdentidadR){
+                     console.log('cannot saveit')
+                     return
+                   } else {
+                    console.log('ok')
+       // Create the new Relative
          const theRelative = new Relative({
-            name:           nameR,
-            firstApell:     firstApellR,
-            secondApell:    secondApellR,
-            relativeOfUser: req.user._id,
-             cIdentidad:     cIdentidadR,
-            // phone:phoneR,
-            address:        addressR,
-            parentesco:     parentescoR,
-            //email: emailR,
-            //country:countryR,
-            }); /////----const theRelative
-
-              // Save the relative
+             name:           nameR,
+             firstApell:     firstApellR,
+             secondApell:    secondApellR,
+             relativeOfUser: req.user._id,
+              cIdentidad:     cIdentidadR,
+        //     // phone:phoneR,
+             address:        addressR,
+             parentesco:     parentescoR,
+        //     //email: emailR,
+             //country:countryR,
+             }); /////----const theRelative
+            // Save the relative
               theRelative.save((err) =>{
                     if (err) {
                     res.status(500).json({ message: 'Find Card went to 💩.' });
@@ -130,10 +126,57 @@ routeforUser.post('/relative/new',
                     }
                   );
                 })
+    console.log('new name',nameR);
+    console.log(' name',nameR)
+                   } //else
+                 })
+        //         Relative.findOne({cIdentidad: cIdentidadR},(err, relativeExist) =>{
+        //             if (err) {
+        //               next(err);
+        //               return;
+        //             }
+        //               console.log('exist',relativeExist.cIdentidad)
+        //             if (relativeExist.cIdentidad == cIdentidadR) {
+        //                 console.log('no puedes guerdar este family');
+        //                 return
+        //             } 
+        //         // Create the new Relative
+        //  const theRelative = new Relative({
+        //     name:           nameR,
+        //     firstApell:     firstApellR,
+        //     secondApell:    secondApellR,
+        //     relativeOfUser: req.user._id,
+        //      cIdentidad:     cIdentidadR,
+        //     // phone:phoneR,
+        //     address:        addressR,
+        //     parentesco:     parentescoR,
+        //     //email: emailR,
+        //     //country:countryR,
+        //     }); /////----const theRelative
+
+        //       // Save the relative
+        //       theRelative.save((err) =>{
+        //             if (err) {
+        //             res.status(500).json({ message: 'Find Card went to 💩.' });
+        //             return;
+        //             }
+        //           User.findByIdAndUpdate(
+        //           req.user._id,
+        //           { $push: { relativeOfUser: theRelative._id } },
+        //           (err, listFromDb) => {
+        //             if (err) {
+        //               res.status(500).json({ message: 'List update went to 💩.' });
+        //               return;
+        //             }
+
+        //             res.status(200).json(theRelative);
+        //             }
+        //           );
+        //         })
               
                     
                         
-                })//----query de encontrar y guardar
+        //         })//----query de encontrar y guardar
               }
             })
           }
