@@ -12,7 +12,7 @@ const routeforUser = express.Router();
 // routeforUser.get('/user/:id', (req, res, next) => {
 
 routeforUser.get('/profile',
-    //ensure.ensureLoggedIn('/login'),
+    ensure.ensureLoggedIn('/login'),
     (req, res, next) => {
       User.findOne({ _id: req.user._id })
       .populate('relatives')

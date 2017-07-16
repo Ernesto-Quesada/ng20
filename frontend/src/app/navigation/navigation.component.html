@@ -19,11 +19,11 @@
                     </li>-->
                 
 
-                    <li >
+                    <li *ngIf='!user'>
                         <a [routerLink]="['/login']">Log In</a>
                     </li>
-                    <li>
-                        <a [routerLink]="['/signup']">Log Out</a>
+                    <li >
+                        <a (click)='logMeOut()'>Log Out</a>
                     </li>
                     <li>
                         <a [routerLink]="['/profile']">profile</a>
