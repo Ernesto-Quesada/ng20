@@ -19,9 +19,11 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
 import { AgencyComponent } from './agency/agency.component';
 import { AgencyDetailsComponent } from './agency-details/agency-details.component';
-import {AgencyService} from './agency.service'
 
+import {AgencyService} from './agency.service';
 
+import { AccountPlaidComponent } from './account-plaid/account-plaid.component';
+import {AccountPlaidService} from './accountPlaid.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -44,6 +46,7 @@ const routes: Routes = [
     HomeComponent,
     AgencyComponent,
     AgencyDetailsComponent,
+    AccountPlaidComponent,
     // MaterialModule,
   ],
   imports: [
@@ -53,7 +56,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
     // AppRoutingModule
   ],
-  providers: [SenderService, AgencyService],
+  providers: [SenderService, AgencyService,AccountPlaidService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

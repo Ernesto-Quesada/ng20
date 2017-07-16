@@ -35,16 +35,22 @@ var client = new plaid.Client(
 //Home controller
 //
 routeforPlaid.get('/accountPlaid', (req, res, next) => {
-  res.render('accountPlaid/home',{
+  // res.render('accountPlaid/home',{
+  //   PLAID_PUBLIC_KEY: PLAID_PUBLIC_KEY,
+  //   PLAID_ENV: PLAID_ENV,
+  // });
+  {res.status(200).json({
     PLAID_PUBLIC_KEY: PLAID_PUBLIC_KEY,
     PLAID_ENV: PLAID_ENV,
-  });
+  })}
+ 
 });
 
 //
 // Get access token
 //
 routeforPlaid.post('/accountPlaid/get_access_token', function(request, response, next) {
+  console.log("Dta request: "+ request);
   PUBLIC_TOKEN = request.body.public_token;
   client.exchangePublicToken(PUBLIC_TOKEN, function(error, tokenResponse) {
     if (error != null) {
