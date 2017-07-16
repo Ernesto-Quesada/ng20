@@ -82,53 +82,58 @@ routeforUser.post('/relative/new',
             if(theUser) {
               Relative.find({relativeOfUser: theUser._id},(err, foundRelative) =>{
                 if (err) {
-                next(err);
-                return;
-             }
-              if (foundRelative){
+                  next(err);
+                  return;
+                }
+
+                if (foundRelative){
                  console.log('the f relative',foundRelative);
                  foundRelative.forEach((oneRel)=>{
                    console.log('the one rel',oneRel);
-                   if(oneRel.cIdentidad == cIdentidadR){
+                   if(oneRel.cIdentidad == cIdentidadR)
+                   {
                      console.log('cannot saveit')
                      return
-                   } else {
+                   } 
+                   else 
+                   {
                     console.log('ok')
-       // Create the new Relative
-         const theRelative = new Relative({
-             name:           nameR,
-             firstApell:     firstApellR,
-             secondApell:    secondApellR,
-             relativeOfUser: req.user._id,
-              cIdentidad:     cIdentidadR,
-        //     // phone:phoneR,
-             address:        addressR,
-             parentesco:     parentescoR,
-        //     //email: emailR,
-             //country:countryR,
-             }); /////----const theRelative
-            // Save the relative
-              theRelative.save((err) =>{
-                    if (err) {
-                    res.status(500).json({ message: 'Find Card went to 💩.' });
-                    return;
-                    }
-                  User.findByIdAndUpdate(
-                  req.user._id,
-                  { $push: { relativeOfUser: theRelative._id } },
-                  (err, listFromDb) => {
-                    if (err) {
-                      res.status(500).json({ message: 'List update went to 💩.' });
-                      return;
-                    }
+                    // Create the new Relative
+                    const theRelative = new Relative({
+                        name:           nameR,
+                        firstApell:     firstApellR,
+                        secondApell:    secondApellR,
+                        relativeOfUser: req.user._id,
+                        cIdentidad:     cIdentidadR,
+                        //     // phone:phoneR,
+                        address:        addressR,
+                        parentesco:     parentescoR,
+                        //     //email: emailR,
+                        //country:countryR,
+                    }); /////----const theRelative
+                      
+                      // Save the relative
+                      theRelative.save((err) =>{
+                            if (err) {
+                            res.status(500).json({ message: 'Find Card went to 💩.' });
+                            return;
+                            }
+                          User.findByIdAndUpdate(
+                          req.user._id,
+                          { $push: { relativeOfUser: theRelative._id } },
+                          (err, listFromDb) => {
+                            if (err) {
+                              res.status(500).json({ message: 'List update went to 💩.' });
+                              return;
+                            }
 
-                    res.status(200).json(theRelative);
-                    }
-                  );
-                })
-    console.log('new name',nameR);
-    console.log(' name',nameR)
-                   } //else
+                            res.status(200).json(theRelative);
+                            }
+                          );
+                        })
+                        console.log('new name',nameR);
+                        console.log(' name',nameR)
+                      } //else
                  })
         //         Relative.findOne({cIdentidad: cIdentidadR},(err, relativeExist) =>{
         //             if (err) {
