@@ -12,25 +12,34 @@ const routeforUser = express.Router();
 // routeforUser.get('/user/:id', (req, res, next) => {
 
 routeforUser.get('/profile',
-    ensure.ensureLoggedIn('/login'),
+    //ensure.ensureLoggedIn('/login'),
     (req, res, next) => {
-      console.log(',.,.,.,',req.user)
-      Relative.find({relativeOfUser: req.user._id},(err,theRelativeList) =>{
-        if (err) {
-                next(err);
-                return;
-        }
-        {
-          res.json({user:req.user,relativeList: theRelativeList});
-          // res.render('user/userProfile.ejs',{
-          //   user:req.user,
-          //   relativeList: theRelativeList
+      User.findOne({ _id: req.user._id })
+      .populate('relatives')
+      .exec((err, profile) => {
+          if (err) {
+            res.status(500).json({ message: 'List find went to 💩.' });
+            return;
+          }
 
-          // });
-        }
-      })
+          res.status(200).json(profile);
+      }); // close "exec()" callback
+      // Relative.find({relativeOfUser: req.user._id},(err,theRelativeList) =>{
+      //   if (err) {
+      //           next(err);
+      //           return;
+      //   }
+      //   {
+      //     res.json({user:req.user,relativeList: theRelativeList});
+      //     // res.render('user/userProfile.ejs',{
+      //     //   user:req.user,
+      //     //   relativeList: theRelativeList
+
+      //     // });
+      //   }
+      // })
     }
-);
+  );
 
 routeforUser.get('/relative/new', (req, res, next) => {
   res.render('user/addFamily.ejs', {

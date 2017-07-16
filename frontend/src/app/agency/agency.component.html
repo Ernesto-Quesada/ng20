@@ -38,7 +38,7 @@
         <!-- /.row -->
 
         <!-- Project One -->
-        <div class="row well well-sm"  *ngFor="let agency of agencies" (click)="onSelect(agency)"[class.selected]="agency === selectedagency">
+        <div class="row well well-sm" data-toggle="collapse" data-target="#demo" *ngFor="let agency of agencies" (click)="onSelect(agency)"[class.selected]="agency === selectedagency">
             <div class="col-md-3">
                 <h3>{{agency.nameAgency}}</h3>
             </div>
@@ -55,17 +55,4 @@
                 <button (click)="agencyIsSelected()">console view</button>
             </div>
         <!-- /.row -->
-<div class="row"  *ngFor="let agency of agencies" (click)="onSelect(agency)"[class.selected]="agency === selectedagency">
-  <div class="panel-group" id="accordion">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#reviewCollapse"><strong>{{agency.agencyName}}  </strong> <span>{{agency.agencyName}}</span></a>
-        </h4>
-      </div>
-      <div id="reviewCollapse" class="panel-collapse collapse">
-        <div class="panel-body">{{agency.agencyName}}</div>
-      </div>
-    </div>
-  </div>
- </div>
+        

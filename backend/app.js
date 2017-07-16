@@ -10,7 +10,7 @@ const session      = require('express-session');
 const passport     = require('passport');
 const flash        = require('connect-flash');
 const jwt          = require('jsonwebtoken');
-var cors = require('cors');
+var cors           = require('cors');
 require('dotenv').config();
 require('./config/passport-config.js');
 
@@ -18,7 +18,10 @@ mongoose.connect('mongodb://localhost/sender-app');
 //mongoose.connect(process.env.MONGODB_URI);
 
 const app = express();
-app.use(cors({origin: "http://localhost:4200"}));
+app.use(cors({
+  credentials: true,
+  origin:['http://localhost:4200']
+}));
 
 
 // view engine setup
@@ -60,21 +63,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-app.all('*', function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
-
-    res.header('Access-Control-Allow-Headers', 'accept, content-type, x-parse-application-id, x-parse-rest-api-key, x-parse-session-token');
-    res.header('Access-Control-Allow-Credentials',true);
-     // intercept OPTIONS method
-    if ('OPTIONS' == req.method) {
-      res.send(200);
-    }
-    else {
-      next();
-    }
-});
 //=======ROUTES===========
 
 const index = require('./routes/index');

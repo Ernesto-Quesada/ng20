@@ -17,23 +17,11 @@ const authRoutes = express.Router();
 //   }
 // );
 
-
-// authRoutes.get('/signup',
-//     //        redirects to '/' (home page) if you ARE logged in
-//   ensure.ensureNotLoggedIn('/'),
-
-//   (req, res, next) => {
-//     res.render('auth/signUp.ejs');
-//   }
-// );
-
-
 // <form method="post" action="/signup">
 authRoutes.post('/signup',
   //        redirects to '/' (home page) if you ARE logged in
   //                      |
   ensure.ensureNotLoggedIn('/'),
-
   (req, res, next) => {
     // const token = jwt.sign(req.body.);
     const emailInput = req.body.emailInput;
@@ -133,7 +121,7 @@ authRoutes.post('/signup',
       }
     );
   });
-
+//++++Loginn from lynda__________
 authRoutes.get('/login',
     //        redirects to '/' (home page) if you ARE logged in
     //                      |
@@ -165,36 +153,8 @@ authRoutes.get('/login',
 // );
 
 //-------LOGIN BY NICK-----
-function ensureNotLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    res.status(403).json({
-      Emesssage: 'Unauthorized'
-    });
-    return;
-  }
-  next();
-  return;
-}
-/*--------------End|--------------------------*/
-
-
-/*-------------Start |---------------------------*/
-//function to make sure you are logged in
-function ensureLoggedIn(req, res, next) {
-
-  if (!req.isAuthenticated()) {
-    return res.status(403).json({
-      Emessage: 'Unauthorized'
-    });
-  }
-  next();
-
-  return;
-}
-/*--------------End|--------------------------*/
-authRoutes.post('/login',ensureNotLoggedIn, (req, res, next) => {
+authRoutes.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
-
     if (err) {
       res.status(500).json({ message: 'Something went wrong.' });
       return;
@@ -210,24 +170,31 @@ authRoutes.post('/login',ensureNotLoggedIn, (req, res, next) => {
         res.status(500).json({ message: 'Something went wrong.' });
         return;
       }
-console.log(req.user)
+
       res.status(200).json(req.user);
     });
   })(req, res, next);
 });
-
+//}}}}}}}}NIzar++++++++++>>>
 authRoutes.get('/logout', (req, res, next) => {
   // req.logout() method provided by Passport
   req.logout();
 
   //req.flash('success', 'You have logged out successfully.');
-
-  res.redirect('/');
+  res.status(200).json({ message: 'Success 🐉' });
 });
+// end logout
 
-
-authRoutes.get('/loggedin',ensureLoggedIn, (req, res, next) => {
+//}}}}}}}}NIzar++++++++++>>>
+authRoutes.get('/loggedin', (req, res, next) => {
+  if (req.isAuthenticated()) {
+    console.log('i get in here ---------')
     res.status(200).json(req.user);
+    return;
+  }
+  // endloggedin
+
+  res.status(401).json({ message: 'Unauthorized.' });
 });
 
 
