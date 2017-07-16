@@ -176,7 +176,7 @@ authRoutes.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 //}}}}}}}}NIzar++++++++++>>>
-authRoutes.get('/logout', (req, res, next) => {
+authRoutes.post('/logout', (req, res, next) => {
   // req.logout() method provided by Passport
   req.logout();
 

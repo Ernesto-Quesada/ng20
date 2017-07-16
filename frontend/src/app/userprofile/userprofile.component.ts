@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SenderService } from '../sender.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-userprofile',
@@ -8,13 +8,17 @@ import { SenderService } from '../sender.service';
   styleUrls: ['./userprofile.component.css']
 })
 export class UserprofileComponent implements OnInit {
-user: any;
-  errorMessage: string = '';
+  user: any;
+  errorMessage: any;
 
-  constructor(private myProfileService: SenderService) { }
+  constructor(private mySessionService: SenderService, private routetheuser: Router) { }
 
-  ngOnInit() {
-   this.myProfileService.isLoggedIn()
-      .then(userInfo => this.user = userInfo);
+ngOnInit() {
+    this.mySessionService.isLoggedIn()
+    .then((userInfo) => {
+      this.user = userInfo;
+      this.routetheuser.navigate(['/profile']);
+  })
+  .catch((err) => { this.routetheuser.navigate(['/'])})
   }
 }

@@ -2,6 +2,8 @@ import { Component , OnInit} from '@angular/core';
 import { SenderService } from './sender.service';
 import { NavigationComponent } from './navigation/navigation.component';
 import { EmiterComponent } from './emiter/emiter.component'
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,35 +14,39 @@ export class AppComponent {
   loginInfo = {};
   user: any; 
   error: any;
-  onNotify(message: string): void {
-     console.log(message);
-    alert(message);
-  }
-    constructor(private mySessionService: SenderService) { }
+  // isLoggedIn: boolean = false;
 
-// tslint:disable-next-line:use-life-cycle-interface
-ngOnInit() {
-  //  this.mySessionService.isLoggedIn()
-  //     .then(userInfo => this.user = userInfo);
-  }
-// login() {
-//     const thePromise = this.mySessionService.login(this.loginInfo);
-//     thePromise.then((userInfo) => {
-//       this.user = userInfo;
-//       this.error = null;
-//     console.log('USER INFO', userInfo);
-//     console.log('USER', this.user);
-//     // this.logMe.emit(this.user);
-//     // console.log('this.user from logme', this.logMe.emit('hola'));
-//     });
-//     console.log('LOGIN INFO FROM THE HTML FORM', this.loginInfo);
-//     console.log(thePromise);
+  // constructor(
+  //   private mySessionService: SenderService,
+  //   private routetheuser: Router
+  // ) { }
+  //     ngOnInit() {
+  //     this.mySessionService.loggedIn$.subscribe((userFromApi) => {
+  //         this.isLoggedIn = true;
+  //     });
 
+  //     this.mySessionService.isLoggedIn()
+  //       // if logged in, redirect to /profile
+  //       .then((userInfo) => {
+  //           this.routetheuser.navigate(['/profile']);
+  //           this.isLoggedIn = true;
+  //       })
+  //       // else redirect to /
+  //       .catch((err) => {
+  //           this.routetheuser.navigate(['/']);
+  //       });
+  // }
+  // logMeOut() {
+  //     this.mySessionService.logout()
+  //       .then(() => {
+  //           this.routetheuser.navigate(['/']);
+  //           this.isLoggedIn = false;
+  //       })
+  //       .catch(() => {});
+  // }
 
-//     thePromise.catch((err) => {
-//       this.user = null;
-//       this.error = err;
-//     });
-//   }
+  // handleLogin(userFromApi) {
+  //     this.isLoggedIn = true;
+  // }
 
 }
