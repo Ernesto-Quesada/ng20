@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // importing the service that will call the Express API
 import { SenderService } from '../sender.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -16,11 +17,13 @@ export class SignupComponent implements OnInit {
   error: string;
 
 
-  constructor(private mySessionService: SenderService) { }
+  constructor(private mySessionService: SenderService, private routetheuser: Router) { }
 
   ngOnInit() {
-    // this.mySessionService.isLoggedIn()
-    //   .then(userInfo => this.user = userInfo);
+    this.mySessionService.isLoggedIn()
+    .then((userInfo) => {this.routetheuser.navigate(['/profile']);
+  })
+  .catch((err) => { this.routetheuser.navigate(['/signup'])})
   }
 
   signup() {

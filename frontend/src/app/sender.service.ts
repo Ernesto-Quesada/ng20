@@ -30,18 +30,19 @@ export class SenderService {
   }
 
 login (credentials) {
-    const theOriginalPromise = this.http.post('http://localhost:3000/login', credentials).toPromise();
-    const theParsedPromise = theOriginalPromise.then((result) => {
-      return result.json();
-    });
-    return theParsedPromise;
+    return this.http.post('http://localhost:3000/login', credentials, {withCredentials: true} )
+    .toPromise()
+    .then((res) => res.json());
   }
 
 
   isLoggedIn () {
-  return this.http.get('http://localhost:3000/loggedin', {withCredentials: true})
+  return this.http
+  .get(this.BASE_URL + '/loggedin',
+   {withCredentials: true}
+   )
       .toPromise()
-      .then(result => result.json());
+      .then(res => res.json());
   }
 
 
@@ -53,7 +54,9 @@ login (credentials) {
 
 
   getProfile() {
-    return this.http.get('http://localhost:3000/loggedin')
+    return this.http.get(this.BASE_URL + '/profile',
+    {withCredentials: true}
+    )
       .map(res => res.json())
       .catch(this.handleError);
   }

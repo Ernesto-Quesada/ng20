@@ -15,7 +15,11 @@ export class LoginComponent implements OnInit {
   constructor(private mySessionService: SenderService) { }
   ngOnInit() {
    this.mySessionService.isLoggedIn()
-      .then(userInfo => this.user = userInfo);
+      .then((userInfo ) => {
+      this.user = userInfo
+    })
+    .catch((err) => {
+        });
   }
   login() {
     const thePromise = this.mySessionService.login(this.loginInfo);
