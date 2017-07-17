@@ -23,17 +23,11 @@ router.get('/agencies', (req, res, next) => {
       next(err); 
       return; 
     }
-    // if(!AgencyList){
-    //    AgencyList.forEach((onePicture)=>{
-    //      console.log('OOOONEEE',onePicture);
-    //      let test= onePicture.owner.push
-        // {res.render('agency/agencyList.ejs', 
-
         
         //   { agencyList: agencyList});
           console.log('thelist',agencyList);
         // }
-        {res.status(200).json(agencyList)}//working ok jul12
+        {res.status(200).json(agencyList)}//working ok jul17
        })
     }
  // }
@@ -156,8 +150,23 @@ router.get('/agency/:id',(req,res,next) => {
   });
 });
 
+//==========setting the agency for the client=====
+router.post('/agency/:id/select',(req,res,next) => { 
+  const agencyId=req.params.id;
+  // const userChanges={
+  //   agencyInUseId: agencyId
+  // };
+  User.findByIdAndUpdate( req.user._id , {agencyInUseId: agencyId }, (err,updatedUser) =>{
+        if(err){
+          next(err);
+          return;
+        }
+        res.status(200).json(updatedUser)
+    });
+});
 
-router.get('/Agency/:id/edit',(req,res,next) => {  //-----------
+
+router.get('/agency/:id/edit',(req,res,next) => {  //-----------
     const AgencyId = req.params.id;                 //           |
     Agency.findById(AgencyId,(err,theAgency) => {     //           |
       if(err){
@@ -172,17 +181,17 @@ router.get('/Agency/:id/edit',(req,res,next) => {  //-----------
     }); 
 });                                                // .        |
                                                     //         |
-router.post('/Agency/:id', (req, res, next) => {    //----------
-    const AgencyId = req.params.id;
+router.post('/agency/:id', (req, res, next) => {    //----------
+    const agencyId = req.params.id;
         
-      const AgencyChanges = {
-        AgencyTitle: req.body.AgencyTitle,
+      const agencyChanges = {
+        agencyTitle: req.body.AgencyTitle,
         yearTaken: req.body.yearTaken,
         // author: req.body.author,
         description: req.body.description,
         // imageUrl: req.body.imageUrl,
       };
-      Agency.findByIdAndUpdate( AgencyId,AgencyChanges, (err,theAgency) =>{
+      Agency.findByIdAndUpdate( agencyId,agencyChanges, (err,theAgency) =>{
         if(err){
           next(err);
           return;

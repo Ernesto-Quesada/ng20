@@ -13,7 +13,7 @@ const relativeSchema = new Schema(
     secondApell: { type: String },
     //***  is better to use email as username 
     //***  than username + name + email , is too confusing  */
-    relativeOfUser: { type: Schema.Types.ObjectId, ref:'User' },
+    relativeOfUser: [{ type: Schema.Types.ObjectId, ref:'User' }],
     email:    {type:String},
     phone:    {type:String},
     cIdentidad: { type:String},

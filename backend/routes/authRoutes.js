@@ -53,6 +53,7 @@ authRoutes.post('/signup',
           res.status(400).json({ message: 'The username already exists.' });
           return;
         }
+        console.log('founduser',foundUser)
         // We are good to go, time to save the user.
 
         // Encrypt the password
@@ -83,17 +84,17 @@ authRoutes.post('/signup',
               res.status(500).json({ message: 'Something went wrong.' });
               return;
             }
-            console.log('???????',req.user._id);
-            const usertoken = req.user._id
-            const token = jwt.sign(usertoken, '123');
-            console.log(token);
-            //res.json(token)
-            res.status(200).json([(req.user), (token)]);
+           
+          
+            res.status(200).json(req.user);
           });
         });
       }
     );
   });
+
+
+
 
 authRoutes.get('/login',
     //        redirects to '/' (home page) if you ARE logged in

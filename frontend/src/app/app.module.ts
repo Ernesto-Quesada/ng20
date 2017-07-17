@@ -19,7 +19,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
 import { AgencyComponent } from './agency/agency.component';
 import { AgencyDetailsComponent } from './agency-details/agency-details.component';
-import {AgencyService} from './agency.service'
+import {AgencyService} from './agency.service';
+import { RelativeComponent } from './relative/relative.component'
 
 
 
@@ -44,6 +45,7 @@ const routes: Routes = [
     HomeComponent,
     AgencyComponent,
     AgencyDetailsComponent,
+    RelativeComponent,
     // MaterialModule,
   ],
   imports: [

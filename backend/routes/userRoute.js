@@ -29,18 +29,39 @@ routeforUser.get('/profile',
       })
     }
 );
+// relatives with user  ok with postman do not touch
+routeforUser.get('/relatives',
+   ensure.ensureLoggedIn('/login'),
+    (req, res, next) => {
+      Relative.find({relativeOfUser: req.user._id } ,(err,theRelativeList) =>{
+        if (err) {
+                next(err);
+                return;
+        }
+        {
+          res.status(200).json(theRelativeList);
+          // res.render('user/userProfile.ejs',{
+          //   user:req.user,
+          //   relativeList: theRelativeList
 
+          // });
+        }
+      })
+    }
+);
+  // view only to develop after is dione deltete
 routeforUser.get('/relative/new', (req, res, next) => {
   res.render('user/addFamily.ejs', {
   });
   console.log('<><><><>',req.user._id)
 });
 
-//-------ADD a RELATIVE-----
+//-------ADD a RELATIVE----- ok +- on sund 17
 // from html <form method="post" action="/relative/new">
 routeforUser.post('/relative/new',
-    ensure.ensureLoggedIn('/login'), 
-    (req, res, next) => {
+    //        redirects to login if you ARE NOT logged in
+    //                      |
+    ensure.ensureLoggedIn('/login'), (req, res, next) => {
 
       //---receive all inputs from the form ----
       const nameR = req.body.relativeName;
@@ -55,29 +76,90 @@ routeforUser.post('/relative/new',
 
     // Don't let users submit blank relatives info-----poner esto abajo|| addressR === '' || parentescoR === ''
       if (nameR === '' || firstApellR === '' || secondApellR === '' ) {
-        res.status(400).json({message: "provide all info"});
+        res.render('user/addFamily.ejs', {
+          errorMessage: 'Please provide all required fields.'
+        });
         return;
       }
+      //----- Find a relative with criteria:cIdentidad anf put the 
+      //-----the info in foundRelative
+      // User.findById(req.user._id, (err,theUser)=>{
+      //       if(err){  
+      //         next(err);
+      //         return;
+      //       }
+      //       console.log('=========theUser');
+      //       console.log(theUser);
 
+            
+      //       // if foundRelative don't let the user register it because is already there
+      //     theUser.relative.forEach((oneRelative)=>{
+      //       console.log('PPPPPPPPPP',oneRelative)
+      //         if(oneRelative.cIdentidad===cIdentidadR){
+      //               res.render('user/addFamily.ejs', {
+      //               errorMessage: 'member already in list',
+                    
+      //               });
+      //             console.log('================');
+      //             console.log(oneRelative);
+      //             return;
+      //         }
+      //       // Create the new Relative
+      //       const theRelative = new Relative({
+      //           name: nameR,
+      //           firstApell:     firstApellR,
+      //           secondApell:    secondApellR,
+      //           relativeOfUser: req.user._id,
+      //           cIdentidad:     cIdentidadR,
+      //         // phone:phoneR,
+      //           address:        addressR,
+      //           parentesco:     parentescoR,
+      //           //email: emailR,
+      //           //country:countryR,
+      //       });
+      //       // Save it
+      //       theRelative.save((err) => {
+      //           if (err) {
+      //             next(err);
+      //             return;
+      //           }
 
-      Relative.find(
+      //           // Store a message in the box to display after the redirect
+      //           req.flash(
+      //             // 1st arg -> key of message
+      //             'success',
+      //             // 2nd arg -> the actual message
+      //             'You have registered your family member successfully!'
+      //           );
+
+      //           // Redirect to profile page if save is successful
+      //           res.redirect('/profile');
+      //       });
+      //     }
+      //   );
+      // });
+ //       }
+//);
+      Relative.findOne(
             // 1st arg -> criteria of the findOne (which documents)
-            { relativeOfUser: req.user._id,
-              cIdentidad: cIdentidadR},
+            { cIdentidad: cIdentidadR , relativeOfUser: req.user._id},
+            // 2nd arg -> projection (which fields)
+            { cIdentidad: 1 },
             // 3rd arg -> callback
             (err, foundRelative) => {
-              console.log('fonded',foundRelative);
               if (err) {
-                res.status(500).json({message:'something went wrong'})
+                next(err);
                 return;
               }
             // if foundRelative don't let the user register it because is already there
-            if (foundRelative || !foundRelative==null) {
-              console.log('if found',foundRelative)
-                res.status(400).json({message: "this relative already exist with you"});
+            if (foundRelative) {
+              res.render('user/addFamily.ejs', {
+                errorMessage: 'member already in list'
+              });
+              return;
             }
 
-            //We are good to go, time to save the f Relative.
+            //We are good to go, time to save the RElative.
 
             //Create the new Relative
             const theRelative = new Relative({
@@ -99,8 +181,17 @@ routeforUser.post('/relative/new',
                 return;
               }
 
+              // Store a message in the box to display after the redirect
+              req.flash(
+                // 1st arg -> key of message
+                'success',
+                // 2nd arg -> the actual message
+                'You have registered your family member successfully!'
+              );
 
-        });// end The save code
+              // Redirect to profile page if save is successful
+              res.redirect('/profile');
+        });
         }
     );
   }
@@ -144,6 +235,7 @@ routeforUser.post('/relative/new',
   //     });
   //   });
 // });
+
 
 
 routeforUser.get('/useramount/:familyid',(req,res,next)=>{

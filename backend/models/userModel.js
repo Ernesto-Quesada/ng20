@@ -17,7 +17,7 @@ const userSchema = new Schema(
     address:  {type:String},
     country:    {type:String},
     agencyInUseId: { type: Schema.Types.ObjectId,ref: 'Agency' },
-    relative:[{ type: Schema.Types.ObjectId, ref: 'Relative' }],
+    //relative:[{ type: Schema.Types.ObjectId, ref: 'Relative' }],
 
     // role: { type: String,
     //         enum: [ 'guest', 'admin' ],

@@ -32,6 +32,15 @@ export class SenderService {
     .toPromise()
     .then(res => res.json());
   }
+  relative() {
+  return this.http
+  .get(
+    this.BASE_URL + '/relatives',
+   {withCredentials: true}
+   )
+    .toPromise()
+    .then(res => res.json());
+  }
 
 login (credentials) {
     return this.http
