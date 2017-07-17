@@ -23,20 +23,13 @@ authRoutes.post('/signup',
   ensure.ensureNotLoggedIn('/'),
 
   (req, res, next) => {
-    // const token = jwt.sign(req.body.);
     const emailInput = req.body.emailInput;
     const signupPassword = req.body.signupPassword;
 
     // Don't let users submit blank emails or passwords
     if (emailInput === '' || signupPassword === '') {
-      // res.render('auth/signUp.ejs', {
-      //   errorMessage: 'Please provide both email and password.'
-      // });
-      // return;
-      {
-    res.status(400).json({ message: 'Provide username and password.' });
+      res.status(400).json({ message: 'Provide username and password.' });
     return;
-  }
     }
     // Check password length, characters
     // if (signupPassword.length<=1 || signupPassword.length >=10) {
@@ -47,28 +40,19 @@ authRoutes.post('/signup',
     // }
 
     User.findOne(
-      // 1st arg -> criteria of the findOne (which documents)
       { email: emailInput },
-      // 2nd arg -> projection (which fields)
       { email: 1 },
-      // 3rd arg -> callback
       (err, foundUser) => {
-        if (err) {
-          // 
+        if (err) { 
           res.status(500).json({ message: 'Something went wrong.' });
           return;
         }
 
         // Don't let the user register if the email is taken
         if (foundUser) {
-          // res.render('auth/signUp.ejs', {
-          //   errorMessage: 'email is already taken. Please use another'
-          // });
-          // return;
           res.status(400).json({ message: 'The username already exists.' });
-      return;
+          return;
         }
-
         // We are good to go, time to save the user.
 
         // Encrypt the password
@@ -94,17 +78,6 @@ authRoutes.post('/signup',
             res.status(500).json({ message: 'Something went wrong.' });
             return;
           }
-
-          // Store a message in the box to display after the redirect
-          // req.flash(
-          //   // 1st arg -> key of message
-          //   'success',
-          //   // 2nd arg -> the actual message
-          //   'You have registered successfully!'
-          // );
-
-          // Redirect to home page if save is successful
-          //res.redirect('/');
           req.login(theUser, (err) => {
             if (err) {
               res.status(500).json({ message: 'Something went wrong.' });
