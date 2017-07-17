@@ -46,11 +46,8 @@ const routes: Routes = [
     HomeComponent,
     AgencyComponent,
     AgencyDetailsComponent,
-<<<<<<< HEAD
     RelativeComponent,
-=======
     AccountPlaidComponent,
->>>>>>> 6f64feee19bef4ca28deca24fabe280d17e260c8
     // MaterialModule,
   ],
   imports: [
