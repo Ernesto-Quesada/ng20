@@ -50,8 +50,7 @@ routeforPlaid.get('/accountPlaid', (req, res, next) => {
 // Get access token
 //
 routeforPlaid.post('/accountPlaid/get_access_token', function(request, response, next) {
-  console.log("Dta request: "+ request);
-  PUBLIC_TOKEN = request.body.public_token;
+  PUBLIC_TOKEN = request.body.publicToken;
   client.exchangePublicToken(PUBLIC_TOKEN, function(error, tokenResponse) {
     if (error != null) {
       var msg = 'Could not exchange public_token!';
@@ -64,8 +63,6 @@ routeforPlaid.post('/accountPlaid/get_access_token', function(request, response,
     ITEM_ID = tokenResponse.item_id;
     console.log('Access Token: ' + ACCESS_TOKEN);
     console.log('Item ID: ' + ITEM_ID);
-
-    
     response.json({
       'error': false
     });
@@ -92,7 +89,7 @@ routeforPlaid.post('/accountPlaid/accounts/get', function(request, response, nex
 
       response.json({
         error: false,
-        resutl: filteredAccounts,
+        results: filteredAccounts,
       });
     });
     return

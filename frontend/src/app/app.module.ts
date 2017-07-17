@@ -14,7 +14,7 @@ import { SenderService } from './sender.service';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { EmiterComponent } from './emiter/emiter.component';
+// import { EmiterComponent } from './emiter/emiter.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
 import { AgencyComponent } from './agency/agency.component';
@@ -41,7 +41,7 @@ const routes: Routes = [
     UserprofileComponent,
     SignupComponent,
     LoginComponent,
-    EmiterComponent,
+    // EmiterComponent,
     NavigationComponent,
     HomeComponent,
     AgencyComponent,

@@ -12,6 +12,7 @@ export class AccountPlaidComponent implements OnInit {
   PLAID_ENV:string;
   PLAID_PUBLIC_KEY:string;
   _accountPlaidService:AccountPlaidService;
+  accountsUser:any;
 
   constructor(private accountPlaidService: AccountPlaidService) 
   {
@@ -43,10 +44,19 @@ export class AccountPlaidComponent implements OnInit {
       key: this.PLAID_PUBLIC_KEY,
       //isWebview:false,
       onSuccess: function(public_token) {
-        console.log(public_token)
         accountPlaidComponent._accountPlaidService.get_access_token(public_token)
-        .then(tokenData=>{
-          console.log(tokenData)
+        .then(()=>{
+          //console.log("llamar_a_los_accounts")
+        accountPlaidComponent._accountPlaidService.get_accounts()
+          .then(accounts=>{
+            accountPlaidComponent.accountsUser= accounts.results
+
+            accounts.results.forEach(element => {
+              console.log(element.name);
+            });  
+
+            
+          })
         })
 
 

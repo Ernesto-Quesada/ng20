@@ -1,7 +1,8 @@
 import { Component , OnInit} from '@angular/core';
 import { SenderService } from './sender.service';
 import { NavigationComponent } from './navigation/navigation.component';
-import { EmiterComponent } from './emiter/emiter.component'
+
+// import { EmiterComponent } from './emiter/emiter.component'
 import { Router } from '@angular/router';
 
 @Component({
