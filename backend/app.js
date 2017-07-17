@@ -84,6 +84,10 @@ app.use('/', myAgencyRoutes);
 const myUserRoutes = require('./routes/userRoute.js');
 app.use('/', myUserRoutes); 
 
+//---------accountPlaid route
+const myAccountPlaidRoutes = require('./routes/accountPlaidRoutes.js');
+app.use('/', myAccountPlaidRoutes); 
+
 
 // const users = require('./routes/users');
 // app.use('/users', users);

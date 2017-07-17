@@ -14,15 +14,16 @@ import { SenderService } from './sender.service';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { EmiterComponent } from './emiter/emiter.component';
+// import { EmiterComponent } from './emiter/emiter.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
 import { AgencyComponent } from './agency/agency.component';
 import { AgencyDetailsComponent } from './agency-details/agency-details.component';
 import {AgencyService} from './agency.service';
-import { RelativeComponent } from './relative/relative.component'
+import { RelativeComponent } from './relative/relative.component';
 
-
+import { AccountPlaidComponent } from './account-plaid/account-plaid.component';
+import {AccountPlaidService} from './accountPlaid.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -40,12 +41,16 @@ const routes: Routes = [
     UserprofileComponent,
     SignupComponent,
     LoginComponent,
-    EmiterComponent,
+    // EmiterComponent,
     NavigationComponent,
     HomeComponent,
     AgencyComponent,
     AgencyDetailsComponent,
+<<<<<<< HEAD
     RelativeComponent,
+=======
+    AccountPlaidComponent,
+>>>>>>> 6f64feee19bef4ca28deca24fabe280d17e260c8
     // MaterialModule,
   ],
   imports: [
@@ -55,7 +60,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
     // AppRoutingModule
   ],
-  providers: [SenderService, AgencyService],
+  providers: [SenderService, AgencyService,AccountPlaidService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
