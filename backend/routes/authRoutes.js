@@ -17,11 +17,11 @@ const authRoutes = express.Router();
 //   }
 // );
 
+
 // <form method="post" action="/signup">
 authRoutes.post('/signup',
-  //        redirects to '/' (home page) if you ARE logged in
-  //                      |
   ensure.ensureNotLoggedIn('/'),
+
   (req, res, next) => {
     // const token = jwt.sign(req.body.);
     const emailInput = req.body.emailInput;
@@ -121,7 +121,7 @@ authRoutes.post('/signup',
       }
     );
   });
-//++++Loginn from lynda__________
+
 authRoutes.get('/login',
     //        redirects to '/' (home page) if you ARE logged in
     //                      |
@@ -175,24 +175,23 @@ authRoutes.post('/login', (req, res, next) => {
     });
   })(req, res, next);
 });
-//}}}}}}}}NIzar++++++++++>>>
-authRoutes.post('/logout', (req, res, next) => {
+
+authRoutes.get('/logout', (req, res, next) => {
   // req.logout() method provided by Passport
   req.logout();
 
   //req.flash('success', 'You have logged out successfully.');
-  res.status(200).json({ message: 'Success 🐉' });
-});
-// end logout
 
-//}}}}}}}}NIzar++++++++++>>>
+  res.redirect('/');
+});
+
+
 authRoutes.get('/loggedin', (req, res, next) => {
   if (req.isAuthenticated()) {
     console.log('i get in here ---------')
     res.status(200).json(req.user);
     return;
   }
-  // endloggedin
 
   res.status(401).json({ message: 'Unauthorized.' });
 });
