@@ -12,16 +12,35 @@ import { AgencyComponent} from '../agency/agency.component';
   styleUrls: ['./agency-details.component.css']
 })
 export class AgencyDetailsComponent implements OnInit {
-agency: any;
+@Input() agencyToDetails: any;
+err;
 
   constructor(private agencyService: AgencyService,
   private route: ActivatedRoute ) { }
 
-    ngOnInit(): void {
-    this.route.paramMap
-      .switchMap((params: ParamMap) => this.agencyService.getAgency(+params.get('id')))
-      .subscribe(agency => this.agency = agency);
+  //   ngOnInit(): void {
+  //   this.route.paramMap
+  //     .switchMap((params: ParamMap) => this.agencyService.getAgencyDetails(+params.get('id')))
+  //     .subscribe(agency => this.agency = agency);
+  // }
+    ngOnInit() {
+    // this.route.params.subscribe(params => {
+    //   this.getAgencyDetails(params['id']);
+    //   console.log('--PAR', params['id'])
+    // });
   }
+
+  // getAgencyDetails(id) {
+  //   this.agencyService.getAgencyDetailsinService(id)
+  //   .then((theAgencyDetails) => {
+  //     this.agency = theAgencyDetails;
+  //     console.log('----', theAgencyDetails)
+  //     console.log('----', this.agency)
+  //   })
+  //     .catch((err) => {
+  //       this.err = 'Could not retreive phone details';
+  //     });
+  // }
 
 
 }

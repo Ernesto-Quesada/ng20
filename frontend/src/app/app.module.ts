@@ -31,7 +31,9 @@ const routes: Routes = [
   { path: 'login',  component: LoginComponent },
   { path: 'signup',  component: SignupComponent },
   { path: 'agency',  component: AgencyComponent },
+  { path: 'agency/:id',  component: AgencyDetailsComponent },
   { path: 'profile',  component: UserprofileComponent },
+  // { path: 'phone/:id', component: PhoneDetailsComponent }
 
   { path: '**', redirectTo: '' }
 ];
