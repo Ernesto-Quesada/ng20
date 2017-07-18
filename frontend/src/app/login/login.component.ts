@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SenderService } from '../sender.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,38 +13,29 @@ export class LoginComponent implements OnInit {
   loginInfo = {};
   user: any;
   error: any;
-  constructor(private mySessionService: SenderService) { }
+  constructor(private mySessionService: SenderService, private routetheuser: Router) { }
   ngOnInit() {
    this.mySessionService.isLoggedIn()
-      .then((userInfo ) => {
-      this.user = userInfo
+      .then((theUsercomingFromApi ) => {
+      this.user = theUsercomingFromApi
     })
     .catch((err) => {
         });
   }
   login() {
-    const thePromise = this.mySessionService.login(this.loginInfo);
-    thePromise.then((userInfo) => {
-      this.user = userInfo;
+     this.mySessionService.login(this.loginInfo)
+      .then((theUsercomingFromApi) => {
+      // this.user = theUsercomingFromApi;
       this.error = null;
-    console.log('USER INFO', userInfo);
+      this.routetheuser.navigate(['/profile']);
+    console.log('USER INFO form api', theUsercomingFromApi);
     console.log('USER', this.user);
-    // this.logMe.emit(this.user);
-    // console.log('this.user from logme', this.logMe.emit('hola'));
+    })
+    // console.log('LOGIN INFO FROM THE HTML FORM', this.loginInfo);
+    .catch((err) => {
+      const apiInfo = err.json();
+            this.error = apiInfo.message;
     });
-    console.log('LOGIN INFO FROM THE HTML FORM', this.loginInfo);
-    console.log(thePromise);
-
-
-    thePromise.catch((err) => {
-      this.user = null;
-      this.error = err;
-    });
-  }
-  onClic() {
-    this.logMe.emit('hello');
-    console.log('USER', this.user);
-    console.log('this.user from logme', this.logMe.emit('hello'));
   }
 
 

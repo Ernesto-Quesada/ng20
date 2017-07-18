@@ -27,7 +27,14 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
-   this.mySessionService.signup(this.signupInfo);
+   this.mySessionService.signup(this.signupInfo)
+   .then((theUsercomingFromApi) => {
+     this.routetheuser.navigate(['/profile']);
+   })
+    .catch((err) => {
+    this.user = null;
+    this.error = err;
+    });
 
     // thePromise.then((userInfo) => {
     //   this.user = userInfo;
