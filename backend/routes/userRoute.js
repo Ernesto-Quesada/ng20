@@ -13,20 +13,24 @@ const routeforUser = express.Router();
 
 routeforUser.get('/profile',
     ensure.ensureLoggedIn('/login'),(req, res, next) => {
-      Relative.find({relativeOfUser: req.user._id},(err,theRelativeList) =>{
+      User.findOne(req.user._id)
+      .populate('agencyInUseId')
+      .exec((err,completeUSerProfile) =>{
         if (err) {
                 next(err);
                 return;
         }
         {
-          //res.json({user:req.user,relativeList: theRelativeList});
-          res.render('user/userProfile.ejs',{
-            user:req.user,
-            relativeList: theRelativeList
+           console.log('/////',completeUSerProfile);
+          res.json({theUserProfile: completeUSerProfile});
+          // res.render('user/userProfile.ejs',{
+          //   user:req.user,
+          //   relativeList: theRelativeList
 
-          });
+          // });
         }
-      })
+      }
+    )///find
     }
 );
 // relatives with user  ok with postman do not touch
