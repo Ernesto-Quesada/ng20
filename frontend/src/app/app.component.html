@@ -1,6 +1,20 @@
- <!-- Navigation -->
-<!--<div>
-       <app-emiter (notify)='onNotify($event)'></app-emiter>
-</div>-->
- <app-navigation></app-navigation>
+	<!-- Loader -->
+	<!--<div class="fh5co-loader"></div>-->
+	
+	
+		<!--Header-->
+        <app-navigation></app-navigation>
+
+            <!--Content-->
+        <div class="content-section">
+            <div class="container">  
+                <router-outlet></router-outlet>
+            </div> <!-- /.container -->
+        </div>    
+
+        <!--Footer-->
+        <app-footer></app-footer>
+
+	
+	<!-- END #fh5co-page -->
     

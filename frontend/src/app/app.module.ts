@@ -24,6 +24,7 @@ import { RelativeComponent } from './relative/relative.component';
 
 import { AccountPlaidComponent } from './account-plaid/account-plaid.component';
 import {AccountPlaidService} from './accountPlaid.service';
+import { FooterComponent } from './footer/footer.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -48,6 +49,7 @@ const routes: Routes = [
     AgencyDetailsComponent,
     RelativeComponent,
     AccountPlaidComponent,
+    FooterComponent,
     // MaterialModule,
   ],
   imports: [
