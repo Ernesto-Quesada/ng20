@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AgencyService} from '../agency.service'
+import { SenderService } from '../sender.service';
 @Component({
   selector: 'app-agency',
   templateUrl: './agency.component.html',
@@ -7,11 +8,21 @@ import {AgencyService} from '../agency.service'
 })
 export class AgencyComponent implements OnInit {
 agencies: any
-selectedAgency:any
-  constructor(private agencyService: AgencyService) { }
+selectedAgency: any;
+user: any;
+  constructor(
+              private agencyService: AgencyService,
+              private mySessionService: SenderService) { }
 
   ngOnInit(): void {
     this.getAgencies();
+    this.mySessionService.isLoggedIn()
+      .then((theUsercomingFromApi ) => {
+      this.user = theUsercomingFromApi;
+      console.log('the user in agencies', this.user)
+    })
+    .catch((err) => {console.log('user not logged')
+        });
   }
   getAgencies(): void {
     this.agencyService

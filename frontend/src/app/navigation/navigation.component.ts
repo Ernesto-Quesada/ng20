@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
 
-    userLogged: boolean =false;
+    userLogged = false;
 
   constructor(
     private mySessionService: SenderService,
@@ -19,8 +19,9 @@ export class NavigationComponent implements OnInit {
       ngOnInit() {
       this.mySessionService.loggedIn$.subscribe((userFromApi) => {
           this.userLogged = true;
-      
-      });
+        console.log('userlogged inside Oninit. should be true', this.userLogged)
+
+        });
 
 
       this.mySessionService.isLoggedIn()
@@ -28,6 +29,8 @@ export class NavigationComponent implements OnInit {
         .then((userInfo) => {
             this.routetheuser.navigate(['/profile']);
             this.userLogged = true;
+    console.log('userlogged inside Oninit after isLogged is called. should be true', this.userLogged)
+
         })
         // else redirect to /
         .catch((err) => {
@@ -40,14 +43,19 @@ export class NavigationComponent implements OnInit {
         .then(() => {
             this.routetheuser.navigate(['/']);
             this.userLogged = false;
-            console.log(this.userLogged)
+    console.log('userlogged inside logMeOut. should be false', this.userLogged)
         })
-        .catch(() => {});
+        .catch((err) => {
+            this.routetheuser.navigate(['/']);
+            this.userLogged = true;
+ console.log('userlogged inside logMeOut and catch', this.userLogged)
+
+        });
   }
  
   handleLogin(userFromApi) {
-    console.log(this.userLogged,'handle')
       this.userLogged = true;
+    console.log(this.userLogged,'handle')
   }
 
 }

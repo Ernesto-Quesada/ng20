@@ -22,7 +22,8 @@ export class SenderService {
   loggedIn(userInfo) {
     this.loggedInSource.next(userInfo);
   }
-  
+
+// ------isLoggedIn  start-----
   isLoggedIn () {
   return this.http
   .get(
@@ -32,7 +33,11 @@ export class SenderService {
     .toPromise()
     .then(res => res.json());
   }
-  relative() {
+// ------isLoggedIn  end-----
+
+// ------Relative start-----
+
+relative() {
   return this.http
   .get(
     this.BASE_URL + '/relatives',
@@ -41,6 +46,7 @@ export class SenderService {
     .toPromise()
     .then(res => res.json());
   }
+  // ------Relative end-----
 
 login (credentials) {
     return this.http

@@ -1,7 +1,7 @@
 <div *ngIf="user" class="container">
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
-      <div class="login-panel panel panel-default">
+      <div class="login-panel panel panel-default well">
         <div class="panel-heading">
           <h3 class="panel-title">You are already Logged In</h3>
         </div>
@@ -10,10 +10,10 @@
           
           <fieldset>
             <div class="panel-heading">
-              <h3 class="panel-title">first name{{user.firstName}}</h3>
-              <h3 class="panel-title">last name{{user.lastName}}</h3>
-              <h3 class="panel-title">agency in use{{user.agencyInUseId}}</h3>
-              <h3 class="panel-title">relative{{user.relative}}</h3>
+              <h3 class="panel-title">first name {{user.firstName}}</h3>
+              <h3 class="panel-title">last name {{user.lastName}}</h3>
+              <h3 class="panel-title">agency in use {{user.agencyInUseId}}</h3>
+              <h3 class="panel-title">relative {{user.relative}}</h3>
         
             </div>
           </fieldset>
@@ -26,7 +26,8 @@
     
     
     </div>
-        <app-relative></app-relative>
+    <app-relative></app-relative>
+
     <app-account-plaid></app-account-plaid>
    </div>
   </div>

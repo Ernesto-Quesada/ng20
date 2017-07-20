@@ -12,9 +12,9 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'Sender';
-  loginInfo = {};
-  user: any; 
-  error: any;
+  // loginInfo = {};
+  // user: any; 
+  // error: any;
   // isLoggedIn: boolean = false;
 
   // constructor(
