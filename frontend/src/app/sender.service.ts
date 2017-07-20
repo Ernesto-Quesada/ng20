@@ -81,7 +81,9 @@ logout() {
           { withCredentials: true }
         )
         .toPromise()
-        .then(res => res.json());
+        .then(res => {
+          res.json()
+        });
   }
   handleError(e) {
     return Observable.throw(e.json().message);
@@ -97,6 +99,16 @@ logout() {
       .toPromise()
         .then(res => res.json());
   }
+      editProfile(editInfo) {
+      return this.http
+      .post(this.BASE_URL + '/profile/edit',
+      editInfo,
+      {withCredentials: true}
+    )
+      .toPromise()
+        .then(res => res.json());
+
+      }
 
 
 }

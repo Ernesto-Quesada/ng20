@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   login() {
      this.mySessionService.login(this.loginInfo)
       .then((theUsercomingFromApi) => {
+        this.mySessionService.loggedIn(theUsercomingFromApi);
       // this.user = theUsercomingFromApi;
       this.error = null;
       this.routetheuser.navigate(['/portal']);

@@ -37,7 +37,7 @@ export class NavigationComponent implements OnInit {
             this.routetheuser.navigate(['/']);
         });
   }
-  
+
   logMeOut() {
       this.mySessionService.logout()
         .then(() => {
@@ -49,6 +49,8 @@ export class NavigationComponent implements OnInit {
             this.routetheuser.navigate(['/']);
             this.userLogged = true;
  console.log('userlogged inside logMeOut and catch', this.userLogged)
+             console.log(err)
+
 
         });
   }

@@ -53,7 +53,7 @@ errorMessage: any;
   ngOnInit(): void {
     this.mySessionService.isLoggedIn()
       .then((theUsercomingFromApi ) => {
-      // this.user = theUsercomingFromApi;
+       this.user = theUsercomingFromApi;
     this.getRelatives();
       console.log('the fam in this.getR', this.relatives)
     })

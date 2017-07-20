@@ -30,6 +30,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PortalComponent } from './portal/portal.component';
 import { MinistartComponent } from './ministart/ministart.component';
 import { MiniplaidComponent } from './miniplaid/miniplaid.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: 'agency/:id',  component: AgencyDetailsComponent },
   { path: 'portal',  component:  PortalComponent },
   { path: 'profile', component: ProfileComponent},
+  { path: 'profile/edit', component: EditprofileComponent},
   { path: 'relativelist', component: RelativeListComponent},
   { path: 'fundingaccount', component: AccountPlaidComponent},
   { path: 'relatives', component:  RelativeListComponent},
@@ -65,7 +67,8 @@ const routes: Routes = [
     ProfileComponent,
     PortalComponent,
     MinistartComponent,
-    MiniplaidComponent
+    MiniplaidComponent,
+    EditprofileComponent
     // MaterialModule,
   ],
   imports: [

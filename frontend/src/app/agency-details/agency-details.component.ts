@@ -12,6 +12,7 @@ import { AgencyComponent} from '../agency/agency.component';
 })
 export class AgencyDetailsComponent implements OnInit {
 @Input() agencyToDetails: any;
+@Input() user: any;
 err: any;
 
   constructor(private agencyService: AgencyService ) { }

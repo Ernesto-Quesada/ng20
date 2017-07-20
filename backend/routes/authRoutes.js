@@ -155,8 +155,7 @@ authRoutes.post('/logout', (req, res, next) => {
   req.logout();
 
   //req.flash('success', 'You have logged out successfully.');
-
-  res.redirect('/');
+  res.status(200).json({ message: 'Logged out' })
 });
 
 

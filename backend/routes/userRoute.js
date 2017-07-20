@@ -278,45 +278,56 @@ res.render('user/amount.ejs',{
 routeforUser.post('/profile/edit',
   ensure.ensureLoggedIn('/login'),
   (req, res, next) => {
-    const profileName = req.body.profileName;
-    const profileUsername = req.body.profileUsername;
-    const currentPassword = req.body.profileCurrentPassword;
-    const newPassword = req.body.profileNewPassword;
+    const editedName = req.body.firstNameInput;
+    const editedLastName = req.body.lastNameInput;
+    //const currentEmail = req.user.email
+    const editedPhone     = req.body.phoneInput;
+    const currentPassword = req.body.currentPassword;
+    const newPassword     = req.body.editedPassword;
+    const editedCountry   = req.body.countryInput;
 
-    if (profileName === '' || profileUsername === '' || currentPassword==='' || newPassword ==='') {
-      res.render('user/editUserProfile.ejs', {
-        errorMessage: 'Please all info is required.'
-      });
-      return;
+        // Don't let users submit blank emails or passwords
+    if (editedName == '' || editedLastName == '') {
+      res.status(400).json({ message: 'Provide username and password.' });
+    return;
     }
-    if (newPassword.length<=6 || newPassword.length >=12) {
-      res.render('user/editUserProfile.ejs', {
-        errorMessage: 'Password need to have between 6 and 12 characters.'
-      });
-      return;
-    }
+
+    // if (profileName === '' || editedName === '' || currentPassword==='' || newPassword ==='') {
+    //   res.render('user/editUserProfile.ejs', {
+    //     errorMessage: 'Please all info is required.'
+    //   });
+    //   return;
+    // }
+    // if (newPassword.length<=6 || newPassword.length >=12) {
+    //   res.render('user/editUserProfile.ejs', {
+    //     errorMessage: 'Password need to have between 6 and 12 characters.'
+    //   });
+    //   return;
+    // }
 
     User.findOne(
-      { username: profileUsername },
-      { username: 1 },
+      { email: req.user.email },
+      { firstName: 1 },
       (err, foundUser) => {
         if (err) {
           next(err);
           return;
         }
 
-        // if there's a user with the username and it's not you
-        if (foundUser && !foundUser._id.equals(req.user._id)) {
-          res.render('user/edit-profile-view.ejs', {
-            errorMessage: 'Username already taken.'
-          });
-          return;
-        }
+        // // if there's a user with the username and it's not you
+        // if (foundUser && !foundUser._id.equals(req.user._id)) {
+        //   res.render('user/edit-profile-view.ejs', {
+        //     errorMessage: 'Username already taken.'
+        //   });
+        //   return;
+        // }
 
 
         // add updates from form
-        req.user.name = req.body.profileName;
-        req.user.username = req.body.profileUsername;
+       req.user.firstName = editedName;
+       req.user.lastName = editedLastName;
+       req.user.phone = editedPhone;
+       req.user.country = editedCountry;
 
         // if both passwords are filled and the current password is correct
         if (currentPassword && newPassword
@@ -330,21 +341,24 @@ routeforUser.post('/profile/edit',
 
         // save updates!
         req.user.save((err) => {
-          if (err) {
-            next(err);
+          if (err) { 
+            res.status(500).json({ message: 'Something went wrong.' });
             return;
           }
-
-          req.flash('success', 'Changes saved.');
-
-          res.redirect('/profile/edit');
+          req.login(foundUser, (err) => {
+            if (err) {
+              res.status(500).json({ message: 'Something went wrong.' });
+              return;
+            }
+            res.status(200).json(req.user);
+          });
         });
-
-
       }
     );
   }
 );
+           
+          
 
 
 // Query to make people admins in MongoDB shell
@@ -352,76 +366,76 @@ routeforUser.post('/profile/edit',
 //   { username: 'nizar' },
 //   { $set: { role: 'admin' } }
 // )
-routeforUser.get('/myaccount',
-  ensure.ensureLoggedIn(),
+// routeforUser.get('/myaccount',
+//   ensure.ensureLoggedIn(),
 
-  (req, res, next) => {
-    Photo.find(
-      { owner: req.user._id },
+//   (req, res, next) => {
+//     Photo.find(
+//       { owner: req.user._id },
 
-      (err, photoList) => {
-        if (err) {
-          next(err);
-          return;
-        }
+//       (err, photoList) => {
+//         if (err) {
+//           next(err);
+//           return;
+//         }
 
-        res.render('user/myaccount.ejs', {
-          myAccountPhotoList: photoList,
-        //   successMessage: req.flash('success')
-        });
-      }
-    );
-  }
-);
+//         res.render('user/myaccount.ejs', {
+//           myAccountPhotoList: photoList,
+//         //   successMessage: req.flash('success')
+//         });
+//       }
+//     );
+//   }
+// );
 
-routeforUser.get('/users', (req, res, next) => {
-  // If you are logged in AND and admin LEZ DO THIS
-  if (req.user && req.user.role === 'admin') {
-    User.find((err, usersList) => {
-      if (err) {
-        next(err);
-        return;
-      }
+// routeforUser.get('/users', (req, res, next) => {
+//   // If you are logged in AND and admin LEZ DO THIS
+//   if (req.user && req.user.role === 'admin') {
+//     User.find((err, usersList) => {
+//       if (err) {
+//         next(err);
+//         return;
+//       }
 
-      res.render('user/users-list-view.ejs', {
-        users: usersList,
-        successMessage: req.flash('success')
-      });
-    });
-  }
+//       res.render('user/users-list-view.ejs', {
+//         users: usersList,
+//         successMessage: req.flash('success')
+//       });
+//     });
+//   }
 
-  // Otherwise show 404 page
-  else {
-    next();
-  }
-});
+//   // Otherwise show 404 page
+//   else {
+//     next();
+//   }
+// });
 
 
-routeforUser.post('/users/:id/admin', (req, res, next) => {
-  // If you are logged in AND and admin LEZ DO THIS
-  if (req.user && req.user.role === 'admin') {
-    User.findByIdAndUpdate(
-      req.params.id,
-      { role: 'admin' },
-      (err, theUser) => {
-        if (err) {
-          next(err);
-          return;
-        }
+// routeforUser.post('/users/:id/admin', (req, res, next) => {
+//   // If you are logged in AND and admin LEZ DO THIS
+//   if (req.user && req.user.role === 'admin') {
+//     User.findByIdAndUpdate(
+//       req.params.id,
+//       { role: 'admin' },
+//       (err, theUser) => {
+//         if (err) {
+//           next(err);
+//           return;
+//         }
 
-        req.flash('success', `User "${theUser.name}" is now an admin. 😎`);
+//         req.flash('success', `User "${theUser.name}" is now an admin. 😎`);
 
-        res.redirect('/users');
-      }
-    );
-    return;
-  }
+//         res.redirect('/users');
+//       }
+//     );
+//     return;
+//   }
 
-  // Otherwise show 404 page
-  else {
-    next();
-  }
-});
+//   // Otherwise show 404 page
+//   else {
+//     next();
+//   }
+// });
 
 
 module.exports = routeforUser;
