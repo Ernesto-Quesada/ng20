@@ -24,6 +24,7 @@ import { RelativeComponent } from './relative/relative.component';
 
 import { AccountPlaidComponent } from './account-plaid/account-plaid.component';
 import {AccountPlaidService} from './accountPlaid.service';
+import { RelativeListComponent } from './relative-list/relative-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'agency',  component: AgencyComponent },
   { path: 'agency/:id',  component: AgencyDetailsComponent },
   { path: 'profile',  component: UserprofileComponent },
+  { path: 'relativelist', component: RelativeListComponent},
   // { path: 'phone/:id', component: PhoneDetailsComponent }
 
   { path: '**', redirectTo: '' }
@@ -50,6 +52,7 @@ const routes: Routes = [
     AgencyDetailsComponent,
     RelativeComponent,
     AccountPlaidComponent,
+    RelativeListComponent,
     // MaterialModule,
   ],
   imports: [
