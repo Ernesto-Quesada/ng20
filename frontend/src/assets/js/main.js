@@ -1,67 +1,55 @@
-(function (window, $) {
-	'use strict';
+jQuery(function($) {
 
-	// Cache document for fast access.
-	var document = window.document;
-
-
-	function mainSlider() {
-		$('.bxslider').bxSlider({
-			pagerCustom: '#bx-pager',
-			mode: 'fade',
-			nextText: '',
-			prevText: ''
+	$(function(){
+		$('#main-slider.carousel').carousel({
+			interval: 10000,
+			pause: false
 		});
-	}
-
-	mainSlider();
-
-
-
-	var $links = $(".bx-wrapper .bx-controls-direction a, #bx-pager a");
-	$links.click(function(){
-	   $(".slider-caption").removeClass('animated fadeInLeft');
-	   $(".slider-caption").addClass('animated fadeInLeft');
 	});
 
-	$(".bx-controls").addClass('container');
-	$(".bx-next").addClass('fa fa-angle-right');
-	$(".bx-prev").addClass('fa fa-angle-left');
+	//Ajax contact
+	var form = $('.contact-form');
+	form.submit(function () {
+		$this = $(this);
+		$.post($(this).attr('action'), function(data) {
+			$this.prev().text(data.message).fadeIn().delay(3000).fadeOut();
+		},'json');
+		return false;
+	});
 
+	//smooth scroll
+	$('.navbar-nav > li').click(function(event) {
+		event.preventDefault();
+		var target = $(this).find('>a').prop('hash');
+		$('html, body').animate({
+			scrollTop: $(target).offset().top
+		}, 500);
+	});
 
-	$('a.toggle-menu').click(function(){
-        $('.responsive .main-menu').toggle();
-        return false;
-    });
+	//scrollspy
+	$('[data-spy="scroll"]').each(function () {
+		var $spy = $(this).scrollspy('refresh')
+	})
 
-    $('.responsive .main-menu a').click(function(){
-        $('.responsive .main-menu').hide();
+	//PrettyPhoto
+	$("a.preview").prettyPhoto({
+		social_tools: false
+	});
 
-    });
-
-    $('.main-menu').singlePageNav();
-	
-//	var dt = window.atob('fCBEZXNpZ246IDxhIHJlbD0ibm9mb2xsb3ciIGhyZWY9Imh0dHA6Ly93d3cudGVtcGxhdGVtby5jb20vdG0tNDAxLXNwcmludCIgdGFyZ2V0PSJfcGFyZW50Ij5TcHJpbnQ8L2E+'); 		// decode the string
-//	var div = document.getElementById('copyright');
-
-//	div.innerHTML += dt;
-
-
-})(window, jQuery);
-
-var map = '';
-
-function initialize() {
-    var mapOptions = {
-      zoom: 14,
-      center: new google.maps.LatLng(37.769725, -122.462154)
-    };
-    map = new google.maps.Map(document.getElementById('map'),  mapOptions);
-}
-
-// load google map
-var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' +
-        'callback=initialize';
-    document.body.appendChild(script);
+	//Isotope
+	$(window).load(function(){
+		$portfolio = $('.portfolio-items');
+		$portfolio.isotope({
+			itemSelector : 'li',
+			layoutMode : 'fitRows'
+		});
+		$portfolio_selectors = $('.portfolio-filter >li>a');
+		$portfolio_selectors.on('click', function(){
+			$portfolio_selectors.removeClass('active');
+			$(this).addClass('active');
+			var selector = $(this).attr('data-filter');
+			$portfolio.isotope({ filter: selector });
+			return false;
+		});
+	});
+});

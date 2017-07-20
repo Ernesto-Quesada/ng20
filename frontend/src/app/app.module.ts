@@ -54,6 +54,7 @@ const routes: Routes = [
     RelativeComponent,
     AccountPlaidComponent,
     RelativeListComponent,
+    FooterComponent
     // MaterialModule,
   ],
   imports: [

@@ -3,18 +3,24 @@
 	
 	
 		<!--Header-->
-        <app-navigation></app-navigation>
+        <header id="header" role="banner">
+            <app-navigation></app-navigation>
+        </header>
 
-            <!--Content-->
-        <div class="content-section">
-            <div class="container">  
-                <router-outlet></router-outlet>
-            </div> <!-- /.container -->
-        </div>    
+        <!--Content-->
+         <section id="services" style="margin-top:7em">
+            <div class="container">
+                <div class="box first">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+         </section>
+          
 
         <!--Footer-->
-        <app-footer></app-footer>
-
+        <footer id="footer">
+            <app-footer></app-footer>
+        </footer><!--/#footer-->
 	
 	<!-- END #fh5co-page -->
     
