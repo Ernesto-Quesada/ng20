@@ -3,11 +3,11 @@ import { SenderService } from '../sender.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-userprofile',
-  templateUrl: './userprofile.component.html',
-  styleUrls: ['./userprofile.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class UserprofileComponent implements OnInit {
+export class ProfileComponent implements OnInit {
   user: any;
   errorMessage: any;
 
@@ -22,13 +22,14 @@ ngOnInit() {
       // this.routetheuser.navigate(['/profile']);
   })
   .catch((err) => { this.routetheuser.navigate(['/'])});
+
   this.mySessionService.getProfile()
       .then((theUsercomingFromApi) => {
       this.user = theUsercomingFromApi;
       console.log('llllll', theUsercomingFromApi);
       console.log('this.user', this.user)
       this.errorMessage = null;
-      this.routetheuser.navigate(['/profile']);
+
     })
     .catch((err) => {
       const apiInfo = err.json();
@@ -38,5 +39,3 @@ ngOnInit() {
   }
 
 }
-
-

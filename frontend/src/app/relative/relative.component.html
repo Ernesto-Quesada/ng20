@@ -1,7 +1,5 @@
-<a [routerLink]="['/relativelist']">
-<div class="row well">
-  <h2>Start Sending</h2>
+<div *ngIf='relativeToDetails' class="row well">
+  <h2>{{relativeToDetails.name}}</h2>
   <h3>choose your relative</h3>
   
 </div>
-</a>

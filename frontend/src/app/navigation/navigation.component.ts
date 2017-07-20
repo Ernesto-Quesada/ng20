@@ -27,7 +27,7 @@ export class NavigationComponent implements OnInit {
       this.mySessionService.isLoggedIn()
         // if logged in, redirect to /profile
         .then((userInfo) => {
-            this.routetheuser.navigate(['/profile']);
+            this.routetheuser.navigate(['/portal']);
             this.userLogged = true;
     console.log('userlogged inside Oninit after isLogged is called. should be true', this.userLogged)
 

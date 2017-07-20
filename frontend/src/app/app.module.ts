@@ -11,7 +11,7 @@ import { SenderService } from './sender.service';
 // import { AppRoutingModule } from './app-routing.module';
 // import { PhoneDetailsComponent } from './phone-details/phone-details.component';
 // import { PhoneListComponent } from './phone-list/phone-list.component';
-import { UserprofileComponent } from './userprofile/userprofile.component';
+import {  MiniprofileComponent } from './miniprofile/miniprofile.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 // import { EmiterComponent } from './emiter/emiter.component';
@@ -26,6 +26,10 @@ import { AccountPlaidComponent } from './account-plaid/account-plaid.component';
 import {AccountPlaidService} from './accountPlaid.service';
 import { FooterComponent } from './footer/footer.component';
 import { RelativeListComponent } from './relative-list/relative-list.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PortalComponent } from './portal/portal.component';
+import { MinistartComponent } from './ministart/ministart.component';
+import { MiniplaidComponent } from './miniplaid/miniplaid.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -34,8 +38,11 @@ const routes: Routes = [
   { path: 'signup',  component: SignupComponent },
   { path: 'agency',  component: AgencyComponent },
   { path: 'agency/:id',  component: AgencyDetailsComponent },
-  { path: 'profile',  component: UserprofileComponent },
+  { path: 'portal',  component:  PortalComponent },
+  { path: 'profile', component: ProfileComponent},
   { path: 'relativelist', component: RelativeListComponent},
+  { path: 'fundingaccount', component: AccountPlaidComponent},
+  { path: 'relatives', component:  RelativeListComponent},
   // { path: 'phone/:id', component: PhoneDetailsComponent }
 
   { path: '**', redirectTo: '' }
@@ -43,7 +50,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    UserprofileComponent,
+    MiniprofileComponent,
     SignupComponent,
     LoginComponent,
     // EmiterComponent,
@@ -54,7 +61,11 @@ const routes: Routes = [
     RelativeComponent,
     AccountPlaidComponent,
     RelativeListComponent,
-    FooterComponent
+    FooterComponent,
+    ProfileComponent,
+    PortalComponent,
+    MinistartComponent,
+    MiniplaidComponent
     // MaterialModule,
   ],
   imports: [
@@ -64,7 +75,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
     // AppRoutingModule
   ],
-  providers: [SenderService, AgencyService,AccountPlaidService],
+  providers: [SenderService, AgencyService, AccountPlaidService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

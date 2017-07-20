@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,Input } from '@angular/core';
 import { SenderService } from '../sender.service';
 import { Router } from '@angular/router';
 @Component({
@@ -7,29 +7,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./relative.component.css']
 })
 export class RelativeComponent implements OnInit {
-family = {};
-  relative: any;
+  @Input() relativeToDetails: any;
+  relatives: any;
   error: any;
   constructor(private mySessionService: SenderService, private routetheuser: Router) { }
 
   ngOnInit() {
-    this.mySessionService.isLoggedIn()
-    .then((relatives) => {this.routetheuser.navigate(['/profile']);
-  })
-  .catch((err) => { this.routetheuser.navigate(['/signup'])})
+  //   this.mySessionService.isLoggedIn()
+  //   .then((user) => {this.relatives = relativesToDetails;
+  //     console.log('relatives', this.relatives)
+  // })
+  // .catch((err) => { this.routetheuser.navigate(['/signup'])})
 }
-relativ() {
-    const thePromise = this.mySessionService.login(this.family);
-    thePromise.then((relatives) => {
-      this.relative = relatives;
-      this.error = null;
+// relativ() {
+  //   this.mySessionService.getRelatives()
+  //   .then((relatives) => {
+  //     this.relatives = relatives;
+  //     this.error = null;
 
-    });
-    thePromise.catch((err) => {
-      this.relative = null;
-      this.error = err;
-    });
-  }
+  //   })
+  //   .catch((err) => {
+  //     this.relatives = null;
+  //     this.error = err;
+  //   });
+  // }
 
 
 

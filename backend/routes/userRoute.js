@@ -7,7 +7,7 @@ const User = require('../models/userModel.js');
 const Relative = require('../models/relativeModel.js');
 
 
-
+// ------Profile start
 const routeforUser = express.Router();
 // routeforUser.get('/user/:id', (req, res, next) => {
 
@@ -33,6 +33,8 @@ routeforUser.get('/profile',
     )///find
     }
 );
+// --------Profile end
+
 // relatives with user  ok with postman do not touch
 routeforUser.get('/relatives',
    ensure.ensureLoggedIn('/login'),

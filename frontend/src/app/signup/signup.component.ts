@@ -21,7 +21,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.mySessionService.isLoggedIn()
-    .then((userInfo) => {this.routetheuser.navigate(['/profile']);
+    .then((userInfo) => {this.routetheuser.navigate(['/portal']);
   })
   .catch((err) => { this.routetheuser.navigate(['/signup'])})
   }
@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
   signup() {
    this.mySessionService.signup(this.signupInfo)
    .then((theUsercomingFromApi) => {
-     this.routetheuser.navigate(['/profile']);
+     this.routetheuser.navigate(['/portal']);
    })
     .catch((err) => {
     this.user = null;

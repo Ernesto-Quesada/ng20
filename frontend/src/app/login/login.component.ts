@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       .then((theUsercomingFromApi) => {
       // this.user = theUsercomingFromApi;
       this.error = null;
-      this.routetheuser.navigate(['/profile']);
+      this.routetheuser.navigate(['/portal']);
     console.log('USER INFO form api', theUsercomingFromApi);
     console.log('USER', this.user);
     })

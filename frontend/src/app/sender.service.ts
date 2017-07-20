@@ -37,7 +37,7 @@ export class SenderService {
 
 // ------Relative start-----
 
-relative() {
+getRelatives() {
   return this.http
   .get(
     this.BASE_URL + '/relatives',
