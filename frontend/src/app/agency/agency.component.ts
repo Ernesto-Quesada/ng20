@@ -44,9 +44,9 @@ selectedAgency:any
   onSelect(agency): void {
     this.selectedAgency = agency;
   }
-  agencyIsSelected(): void {
-    console.log('agency', this.selectedAgency)
-  }
+  // agencyIsSelected(): void {
+  //   console.log('agency', this.selectedAgency)
+  // }
 
   // gotoDetail(): void {
   //   this.router.navigate(['/detail', this.selectedagency.id]);

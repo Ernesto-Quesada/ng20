@@ -20,7 +20,7 @@ router.get('/agencies', (req, res, next) => {
 
   Agency.find((err, agencyList) => {
     if (err){
-      next(err); 
+      res.json(err); 
       return; 
     }
         
@@ -138,15 +138,21 @@ router.post('/agency',
 
 //========Details of agency =============
 router.get('/agency/:id',(req,res,next) => { 
+  // if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+  //   res.status(400)
+  //      .json({ message: 'Specified id is not valid' });
+  //   return;
+  // }
   const agencyId=req.params.id;
   Agency.findById(agencyId,(err,theAgency) => {
-    if(err){  
-      next(err);
-       return;
+    if (err) {
+      res.json(err);
+      return;
     }
-    res.render('agency/agencyDetails.ejs', {
-       agency: theAgency 
-    })
+    // res.render('agency/agencyDetails.ejs', {
+    //    agency: theAgency 
+    // })
+    res.status(200).json(theAgency);
   });
 });
 

@@ -27,15 +27,24 @@ export class AgencyService {
                .toPromise()
                .then(response => response.json())
                .catch(this.handleError);
-               
   }
-  getAgency(id: number) {
-    const url = `${this.BASE_URL}/${id}`;
-    return this.http.get(url)
+  getAgencyDetailsinService(id) {
+    console.log('from agency service', id);
+return this.http
+.get(
+  this.BASE_URL + `/agency/${id}`)
       .toPromise()
-      .then(response => response.json())
+      .then(res => res.json() )
       .catch(this.handleError);
   }
+
+
+
+
+
+
+
+
   delete(id: number): any  {
     // const url = `${this.BASE_URL}/${id}`;
     // return this.http.delete(url, {headers: this.headers})
