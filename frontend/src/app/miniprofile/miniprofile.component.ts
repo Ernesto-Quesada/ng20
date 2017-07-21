@@ -16,7 +16,7 @@ export class MiniprofileComponent implements OnInit {
 ngOnInit() {
     this.mySessionService.isLoggedIn()
     .then((userInfo) => {
-      // this.user = userInfo;
+      this.user = userInfo;
     console.log('this.user', this.user)
 
       // this.routetheuser.navigate(['/profile']);

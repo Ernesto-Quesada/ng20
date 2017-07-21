@@ -19,13 +19,13 @@
                         <li *ngIf='userLogged'>
                             <a (click)='logMeOut()'>Log Out</a>
                         </li>
-                        <li>
+                        <li *ngIf='userLogged'>
                             <a [routerLink]="['/portal']">portal</a>
                         </li>
-                        <li>
+                        <li *ngIf='userLogged'>
                             <a [routerLink]="['/profile']">profile</a>
                         </li>
-                        <li>
+                        <li *ngIf='!userLogged'>
                             <a [routerLink]="['/signup']">signup</a>
                         </li>
                         <li>

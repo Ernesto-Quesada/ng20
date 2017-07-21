@@ -42,11 +42,11 @@ export class AccountPlaidComponent implements OnInit {
       env: this.PLAID_ENV,
       product: ['transactions'],
       key: this.PLAID_PUBLIC_KEY,
-      //isWebview:false,
+      // isWebview:false,
       onSuccess: function(public_token) {
         accountPlaidComponent._accountPlaidService.get_access_token(public_token)
         .then(()=>{
-          //console.log("llamar_a_los_accounts")
+          // console.log("llamar_a_los_accounts")
         accountPlaidComponent._accountPlaidService.get_accounts()
           .then(accounts=>{
             accountPlaidComponent.accountsUser= accounts.results

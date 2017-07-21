@@ -20,6 +20,8 @@ export class SenderService {
     ) { }
 
   loggedIn(userInfo) {
+    // next line recieve the user info and next pass that
+    // info to 
     this.loggedInSource.next(userInfo);
   }
 
