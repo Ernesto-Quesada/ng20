@@ -16,6 +16,8 @@ const userSchema = new Schema(
     phone:    {type:String},
     address:  {type:String},
     country:    {type:String},
+    ACCESS_TOKEN: {type:String},
+    ITEM_ID: {type:String},
     agencyInUseId: { type: Schema.Types.ObjectId,ref: 'Agency' },
     //relative:[{ type: Schema.Types.ObjectId, ref: 'Relative' }],
 

@@ -11,11 +11,12 @@ const passport     = require('passport');
 const flash        = require('connect-flash');
 const jwt          = require('jsonwebtoken');
 var cors           = require('cors');
+
 require('dotenv').config();
 require('./config/passport-config.js');
 
-mongoose.connect('mongodb://localhost/sender-app');
-//mongoose.connect(process.env.MONGODB_URI);
+//mongoose.connect('mongodb://localhost/sender-app');
+mongoose.connect(process.env.MONGODB_URI);
 
 const app = express();
 app.use(cors({
