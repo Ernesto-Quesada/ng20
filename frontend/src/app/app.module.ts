@@ -31,6 +31,9 @@ import { PortalComponent } from './portal/portal.component';
 import { MinistartComponent } from './ministart/ministart.component';
 import { MiniplaidComponent } from './miniplaid/miniplaid.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
+import { SearchAgencyComponent } from './search-agency/search-agency.component';
+import { AgencySearchService} from './agency-search.service';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -68,7 +71,9 @@ const routes: Routes = [
     PortalComponent,
     MinistartComponent,
     MiniplaidComponent,
-    EditprofileComponent
+    EditprofileComponent,
+    SearchAgencyComponent,
+    PaymentComponent
     // MaterialModule,
   ],
   imports: [
@@ -78,7 +83,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
     // AppRoutingModule
   ],
-  providers: [SenderService, AgencyService, AccountPlaidService],
+  providers: [SenderService, AgencyService, AccountPlaidService, AgencySearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

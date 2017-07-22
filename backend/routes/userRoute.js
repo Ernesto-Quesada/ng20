@@ -262,18 +262,6 @@ res.render('user/amount.ejs',{
     });
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
 // <form method="post" action="/profile/edit">
 routeforUser.post('/profile/edit',
   ensure.ensureLoggedIn('/login'),

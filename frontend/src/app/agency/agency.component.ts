@@ -27,13 +27,16 @@ user: any;
   getAgencies(): void {
     this.agencyService
         .getAgencies()
-        .then(agency => this.agencies = agency);
+        .then((agency )=> {
+          this.agencies = agency;
+        console.log('AGENCIES',this.agencies)});
+        
   }
   // add(name: string): void {
   //   name = name.trim();
   //   if (!name) { return; }
   //   this.agencyService.create(name)
-  //     .then(agency => {
+  //     .then(agency => {z
   //       this.agencies.push(agency);
   //       this.selectedagency = null;
   //     });

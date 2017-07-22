@@ -1,6 +1,7 @@
 //
 //Required components
 //
+const passport = require('passport');
 const express = require('express');
 const routeforPlaid = express.Router();
 const ensure = require('connect-ensure-login');
@@ -51,6 +52,7 @@ routeforPlaid.get('/accountPlaid', (req, res, next) => {
 //
 routeforPlaid.post('/accountPlaid/get_access_token', function(request, response, next) {
   PUBLIC_TOKEN = request.body.publicToken;
+  console.log('PUblic', PUBLIC_TOKEN);
   client.exchangePublicToken(PUBLIC_TOKEN, function(error, tokenResponse) {
     if (error != null) {
       var msg = 'Could not exchange public_token!';
