@@ -10,6 +10,8 @@ const path = require('path');
 const plaid = require('plaid');
 var envvar = require('envvar');
 
+const User = require('../models/userModel.js');
+
 
 
 var APP_PORT = envvar.number('APP_PORT', 8000);
@@ -31,6 +33,8 @@ var client = new plaid.Client(
   PLAID_PUBLIC_KEY,
   plaid.environments[PLAID_ENV]
 );
+  // console.log('USER REQUEST', req.user)
+
 
 //
 //Home controller
@@ -40,6 +44,7 @@ routeforPlaid.get('/accountPlaid', (req, res, next) => {
   //   PLAID_PUBLIC_KEY: PLAID_PUBLIC_KEY,
   //   PLAID_ENV: PLAID_ENV,
   // });
+  //console.log('USER REQUEST', req.user)
   {res.status(200).json({
     PLAID_PUBLIC_KEY: PLAID_PUBLIC_KEY,
     PLAID_ENV: PLAID_ENV,
@@ -51,24 +56,39 @@ routeforPlaid.get('/accountPlaid', (req, res, next) => {
 // Get access token
 //
 routeforPlaid.post('/accountPlaid/get_access_token', function(request, response, next) {
-  PUBLIC_TOKEN = request.body.publicToken;
-  console.log('PUblic', PUBLIC_TOKEN);
-  client.exchangePublicToken(PUBLIC_TOKEN, function(error, tokenResponse) {
-    if (error != null) {
-      var msg = 'Could not exchange public_token!';
-      console.log(msg + '\n' + error);
-      return response.json({
-        error: msg
+      PUBLIC_TOKEN = request.body.publicToken;
+      console.log('PUblic', PUBLIC_TOKEN);
+      client.exchangePublicToken(PUBLIC_TOKEN, function(error, tokenResponse) {
+          if (error != null) {
+            var msg = 'Could not exchange public_token!';
+            console.log(msg + '\n' + error);
+            return response.json({
+              error: msg
+            });
+            }
+          ACCESS_TOKEN = tokenResponse.access_token;
+          ITEM_ID = tokenResponse.item_id;
+          console.log('Access Token: ' + ACCESS_TOKEN);
+          console.log('Item ID: ' + ITEM_ID);
+          // response.json({
+          //   'error': false
+          User.findByIdAndUpdate( { email: 'y'}, 
+
+            { ACCESS_TOKEN: ACCESS_TOKEN ,
+              ITEM_ID: ITEM_ID },
+               (err, savedTokens) => {
+                console.log('=============');
+
+                 console.log('=============',savedTokens);
+                 
+                  if (err) {
+                            response.status(500).json({ message: 'Tokens update went to 💩.' });
+                            return;
+                           }
+                  response.json({'error': false })
+          });
       });
-    }
-    ACCESS_TOKEN = tokenResponse.access_token;
-    ITEM_ID = tokenResponse.item_id;
-    console.log('Access Token: ' + ACCESS_TOKEN);
-    console.log('Item ID: ' + ITEM_ID);
-    response.json({
-      'error': false
-    });
-  });
+    
 });
 
 

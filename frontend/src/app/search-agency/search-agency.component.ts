@@ -34,7 +34,7 @@ export class SearchAgencyComponent implements OnInit {
   }
 ngOnInit(): void {
     this.agencies = this.searchTerms
-      .debounceTime(300)        
+      //.debounceTime(300)        
       .distinctUntilChanged()   
       .switchMap(term => term ? this.agencySearchService.search(term)
         : Observable.of<any[]> ([]))

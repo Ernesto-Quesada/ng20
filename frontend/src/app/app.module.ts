@@ -34,6 +34,7 @@ import { EditprofileComponent } from './editprofile/editprofile.component';
 import { SearchAgencyComponent } from './search-agency/search-agency.component';
 import { AgencySearchService} from './agency-search.service';
 import { PaymentComponent } from './payment/payment.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -48,6 +49,7 @@ const routes: Routes = [
   { path: 'relativelist', component: RelativeListComponent},
   { path: 'fundingaccount', component: AccountPlaidComponent},
   { path: 'relatives', component:  RelativeListComponent},
+  { path: 'payment', component: PaymentComponent},
   // { path: 'phone/:id', component: PhoneDetailsComponent }
 
   { path: '**', redirectTo: '' }
@@ -73,7 +75,8 @@ const routes: Routes = [
     MiniplaidComponent,
     EditprofileComponent,
     SearchAgencyComponent,
-    PaymentComponent
+    PaymentComponent,
+    SearchPipe
     // MaterialModule,
   ],
   imports: [

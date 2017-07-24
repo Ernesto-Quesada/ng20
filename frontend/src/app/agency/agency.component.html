@@ -66,6 +66,17 @@
           </div> -->
         <!-- /.row -->
     </div>
+<div>
+  <label for="agency"> Search agency: </label>
+  <input type="text" [(ngModel)]="pattern">
+</div>
+
+<div *ngFor="let agency of agencies | search:'name':pattern; let i = index">
+    <h2> {{ agency.nameAgency }} </h2>
+</div>
+
+
+
 <div class="row">
   <div class="col-md-6">
     <div class="panel-group" id="accordion" >

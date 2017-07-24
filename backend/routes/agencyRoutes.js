@@ -209,16 +209,16 @@ router.post('/agency/:id', (req, res, next) => {    //----------
 router.get('/agency/',(req,res,next) => { 
   const agencyNa=req.query.name;
   console.log('LOLOLOLO',agencyNa);
-  Agency.findOne({nameAgency: agencyNa},(err,theAgency) => {
+  Agency.findOne({nameAgency: /agencyNa/ },(err,theAgency) => {
     if (err) {
       res.json(err);
       return;
     }
+    console.log(theAgency);
     res.status(200).json(theAgency);
+
   });
 });
-
-
 
 
 
