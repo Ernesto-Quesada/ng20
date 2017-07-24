@@ -34,23 +34,28 @@ import { EditprofileComponent } from './editprofile/editprofile.component';
 import { SearchAgencyComponent } from './search-agency/search-agency.component';
 import { AgencySearchService} from './agency-search.service';
 import { PaymentComponent } from './payment/payment.component';
+import { SecureLayoutComponent } from './secure-layout/secure-layout.component';
+import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login',  component: LoginComponent },
   { path: 'signup',  component: SignupComponent },
-  { path: 'agency',  component: AgencyComponent },
-  { path: 'agency/:id',  component: AgencyDetailsComponent },
-  { path: 'portal',  component:  PortalComponent },
-  { path: 'profile', component: ProfileComponent},
-  { path: 'profile/edit', component: EditprofileComponent},
-  { path: 'relativelist', component: RelativeListComponent},
-  { path: 'fundingaccount', component: AccountPlaidComponent},
-  { path: 'relatives', component:  RelativeListComponent},
+  { path: '', component: SecureLayoutComponent,children:[
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '',  component: HomeComponent },
+      { path: 'agency',  component: AgencyComponent },
+      { path: 'agency/:id',  component: AgencyDetailsComponent },
+      { path: 'portal',  component:  PortalComponent },
+      { path: 'profile', component: ProfileComponent},
+      { path: 'profile/edit', component: EditprofileComponent},
+      { path: 'relativelist', component: RelativeListComponent},
+      { path: 'fundingaccount', component: AccountPlaidComponent},
+      { path: 'relatives', component:  RelativeListComponent},
+  ] },
   // { path: 'phone/:id', component: PhoneDetailsComponent }
-
   { path: '**', redirectTo: '' }
+
+  
 ];
 @NgModule({
   declarations: [
@@ -73,7 +78,9 @@ const routes: Routes = [
     MiniplaidComponent,
     EditprofileComponent,
     SearchAgencyComponent,
-    PaymentComponent
+    PaymentComponent,
+    SecureLayoutComponent,
+    PageNotFoundComponentComponent
     // MaterialModule,
   ],
   imports: [
