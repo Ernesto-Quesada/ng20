@@ -38,7 +38,7 @@ export class AgencyService {
 
   selectAgen(id) {
     return this.http.post(this.BASE_URL + `/agency/${id}/select`, {},
-    ///w cre es siempre el tercero
+    ///with credentials es siempre el tercero
                           {withCredentials: true} )
                .toPromise()
                .then(response => response.json())

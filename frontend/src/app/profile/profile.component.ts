@@ -35,7 +35,7 @@ ngOnInit() {
       const apiInfo = err.json();
             this.errorMessage = apiInfo.message;
     });
-  
+
   }
 
   editUserProfile(){

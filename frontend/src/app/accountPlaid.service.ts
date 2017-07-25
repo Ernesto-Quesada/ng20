@@ -52,8 +52,9 @@ export class AccountPlaidService {
                       });
   }
 
-  get_accounts(){
-    return this.http.post(this.BASE_URL + '/accountPlaid/accounts/get',null)
+  get_accounts() {
+    return this.http.post(this.BASE_URL + '/accountPlaid/accounts/get', null,
+                    {withCredentials: true})
                     .toPromise()
                     .then(response => response.json())
                     .catch(()=> console.log(this.handleError));

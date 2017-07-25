@@ -104,17 +104,26 @@ routeforPlaid.post('/accountPlaid/accounts/get', function(request, response, nex
           error: msg
         });
       }
-
+     // console.log('RESULTS FORM PAID', result);
       var filteredAccounts = result.accounts.filter((value)=>{
+         console.log('valu', value);
           return value.subtype=="checking";
       })
 
-      response.json({
-        error: false,
-        results: filteredAccounts,
-      });
-    });
-    return
+    User.findByIdAndUpdate( request.user._id, 
+      {accountSpec: filteredAccounts},
+    (err,accountSpecsSaved) =>{
+      if (err) {response.status(500).json({ message: 'Tokens update went to 💩.' });
+                return;
+                }
+          response.json({
+              error: false,
+              results: filteredAccounts,
+          });
+
+    })
+  });
+  return
 });
 
 

@@ -18,6 +18,7 @@ const userSchema = new Schema(
     country:    {type:String},
     ACCESS_TOKEN: {type:String},
     ITEM_ID: {type:String},
+    accountSpec: {type:Object},
     agencyInUseId: { type: Schema.Types.ObjectId,ref: 'Agency' },
     //relative:[{ type: Schema.Types.ObjectId, ref: 'Relative' }],
 
