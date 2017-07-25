@@ -36,10 +36,10 @@ import { AgencySearchService} from './agency-search.service';
 import { PaymentComponent } from './payment/payment.component';
 import { SecureLayoutComponent } from './secure-layout/secure-layout.component';
 import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 const routes: Routes = [
-  { path: 'login',  component: LoginComponent },
-  { path: 'signup',  component: SignupComponent },
+  
   { path: '', component: SecureLayoutComponent,children:[
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '',  component: HomeComponent },
@@ -51,9 +51,13 @@ const routes: Routes = [
       { path: 'relativelist', component: RelativeListComponent},
       { path: 'fundingaccount', component: AccountPlaidComponent},
       { path: 'relatives', component:  RelativeListComponent},
+      { path: 'payment', component: PaymentComponent},
   ] },
+  { path: 'login',  component: LoginComponent },
+  { path: 'signup',  component: SignupComponent },
   // { path: 'phone/:id', component: PhoneDetailsComponent }
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
+  
 
   
 ];
@@ -80,7 +84,8 @@ const routes: Routes = [
     SearchAgencyComponent,
     PaymentComponent,
     SecureLayoutComponent,
-    PageNotFoundComponentComponent
+    PageNotFoundComponentComponent,
+    SearchPipe
     // MaterialModule,
   ],
   imports: [

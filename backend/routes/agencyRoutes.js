@@ -206,10 +206,10 @@ router.post('/agency/:id', (req, res, next) => {    //----------
     });
 });
 
-router.get('/agency/',(req,res,next) => { 
-  const agencyNa=req.query.name;
-  console.log('LOLOLOLO',agencyNa);
-  Agency.findOne({nameAgency: agencyNa},(err,theAgency) => {
+router.get('/agency/', (req, res, next) => {
+  const agencyNa = req.query.name;
+  console.log('LOLOLOLO', agencyNa);
+  Agency.find({nameAgency: { $regex: '.*' + agencyNa + '.*' }}, (err, theAgency) => {
     if (err) {
       res.json(err);
       return;
@@ -217,8 +217,6 @@ router.get('/agency/',(req,res,next) => {
     res.status(200).json(theAgency);
   });
 });
-
-
 
 
 

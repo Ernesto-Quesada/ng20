@@ -1,10 +1,10 @@
 <section class="section-login" >
-
-   <img  class="back " src="assets/images/cash-flow-button.jpg"/>
-   <h2>Take advantage of your time!</h2>
-
-  <div *ngIf="!user" class="row">
-    <div class="col-sm-4 col-md-3 pull-right shadow-effect-1" style="background:#fff;height:97.2vh">
+ 
+  <div class="col-sm-8 col-md-9 hidden-xs">  
+   <img  class="back-single-layout" src="assets/images/cash-flow-button.jpg"/>
+   <h2 class="title-single-layout">Take advantage of your time!</h2>
+  </div>
+  <div *ngIf="!user" class="col-xs-12  col-sm-4 col-md-3" style="background:#fff;height:100vh">
       <h3 class="margin-bottom-30 fg-black">Login</h3>
       <div class="margin-bottom-30">
       <form class="login">
@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-    </div>
+    
   </div>
 
   <div *ngIf="user" class="row">

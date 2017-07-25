@@ -23,18 +23,18 @@ export class SearchAgencyComponent implements OnInit {
   agencies: Observable<any[]>;
   
 
-  constructor(
-    private agencySearchService: AgencySearchService,
-    private router: Router) {}
+  constructor(private agencySearchService: AgencySearchService, private router: Router) {}
 
   // Push a search term into the observable stream.
   search(term) {
     console.log('ageniiiiiii', term);
     this.searchTerms.next(term);
+    console.log(this.agencies)
   }
+  
 ngOnInit(): void {
     this.agencies = this.searchTerms
-      .debounceTime(300)        
+      //.debounceTime(300)        
       .distinctUntilChanged()   
       .switchMap(term => term ? this.agencySearchService.search(term)
         : Observable.of<any[]> ([]))

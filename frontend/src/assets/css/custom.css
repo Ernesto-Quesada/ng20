@@ -32,30 +32,64 @@ body{
 .footer_block {
     color: #767676;
     font-family: "Segoe UI Webfont","Helvetica Neue","Lucida Grande","Roboto","Ebrima","Nirmala UI","Gadugi","Segoe Xbox Symbol","Segoe UI Symbol","Meiryo UI","Khmer UI","Tunga","Lao UI","Raavi","Iskoola Pota","Latha","Leelawadee","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Estrangelo Edessa","Microsoft Himalaya","Microsoft New Tai Lue","Microsoft PhagsPa","Microsoft Tai Le","Microsoft Yi Baiti","Mongolian Baiti","MV Boli","Myanmar Text","Cambria Math";
-    
 }
 
 .section-login{
-  height: 97.2vh;
+  height: 100vh;
   background-color: rgb(0, 162, 233); 
   visibility: visible;
 }
-.section-login img.back{
+.back-single-layout{
     opacity: 0.08;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     position: absolute;
-    width: 100%; 
-    height: 100%;
+    width: 100vh; 
+    height: 100vh;
 }
 
-.section-login h2{
+h2.title-single-layout{
     color: #fff;
     position: absolute;
-    top: 38%;
+    top: 4em;
     font-size: 41px;
     left: 3%;
     font-family: "Segoe UI"
+}
+
+.well 
+{
+    border-radius:0;
+    color:#fff;
+}
+
+.bg-dark-primary-blue
+{
+    background:#1875d2 !important
+}
+.bg-primary-blue
+{
+    background: #2095f2 !important
+}
+.bg-light-primary
+{
+    background: #baddf9 !important
+}
+
+
+.fg-primary-text
+{
+    color:#202020 !important
+}
+
+.fg-secondary-text
+{
+    color:#717171 !important
+}
+
+.bg-acent-color
+{
+    color:#02a8f4 !important
 }

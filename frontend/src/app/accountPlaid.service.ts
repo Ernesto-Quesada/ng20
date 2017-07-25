@@ -28,18 +28,25 @@ export class AccountPlaidService {
 
   //get account data
   get_access_token(publicToken: string) {
-    let body = 'request='+publicToken;
-    var headers = new Headers();
+    const body = 'request='+ publicToken;
+    console.log('{{{{{{{{{{', body);
+
+    const headers = new Headers();
+    console.log('>>>>>>>', headers)
     headers.append('Content-Type', 'application/json');
 
-    return this.http.post(this.BASE_URL + '/accountPlaid/get_access_token'
-                          , JSON.stringify({"publicToken": publicToken})
-                          , { headers: headers })
+    return this.http.post(this.BASE_URL + '/accountPlaid/get_access_token',
+                          JSON.stringify({'publicToken': publicToken}),
+                          { headers: headers })
                     .toPromise()
-                    .then(()=>{
-                      response => response.json()
-                      })
-                    .catch(()=>{
+                    // .then(()=>{
+                    //   response => response.json()
+                    //   })
+                    // better this ..changed on Jul 22
+                    .then((response) => {
+                      console.log('?????????' , response)
+                      response.json() })
+                    .catch(() => {
                         console.log(this.handleError) 
                       });
   }

@@ -24,14 +24,14 @@ export class AccountPlaidComponent implements OnInit {
   }
   
   configKeys(): void {
-    console.log("before"+this.PLAID_PUBLIC_KEY)
+    console.log('before' + this.PLAID_PUBLIC_KEY)
     this._accountPlaidService
       .accountPlaidHome()
-      .then(accountData=>{
-        this.PLAID_ENV=accountData.PLAID_ENV;
-        this.PLAID_PUBLIC_KEY=accountData.PLAID_PUBLIC_KEY
+      .then(accountData => {
+        this.PLAID_ENV = accountData.PLAID_ENV;
+        this.PLAID_PUBLIC_KEY = accountData.PLAID_PUBLIC_KEY
       });
-    console.log("after"+this.PLAID_PUBLIC_KEY)
+    console.log('after' + this.PLAID_PUBLIC_KEY)
   }
 
   openLink() {
@@ -45,7 +45,7 @@ export class AccountPlaidComponent implements OnInit {
       // isWebview:false,
       onSuccess: function(public_token) {
         accountPlaidComponent._accountPlaidService.get_access_token(public_token)
-        .then(()=>{
+        .then(() => {
           // console.log("llamar_a_los_accounts")
         accountPlaidComponent._accountPlaidService.get_accounts()
           .then(accounts=>{
@@ -53,9 +53,7 @@ export class AccountPlaidComponent implements OnInit {
 
             accounts.results.forEach(element => {
               console.log(element.name);
-            });  
-
-            
+            }); 
           })
         })
 
@@ -71,7 +69,7 @@ export class AccountPlaidComponent implements OnInit {
         // });
       },
     });
-     
+
     handler.open();
     // handler.open({
     //   name: 'Demo Site',
