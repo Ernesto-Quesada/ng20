@@ -17,15 +17,14 @@ const authRoutes = express.Router();
 //   }
 // );
 
-
-// <form method="post" action="/signup">
+//===============================================
+// ============= SIGNUP =========================
+//===============================================
 authRoutes.post('/signup',
   ensure.ensureNotLoggedIn('/'),
-
   (req, res, next) => {
     const emailInput = req.body.emailInput;
     const signupPassword = req.body.signupPassword;
-
     // Don't let users submit blank emails or passwords
     if (emailInput === '' || signupPassword === '') {
       res.status(400).json({ message: 'Provide username and password.' });
@@ -38,7 +37,6 @@ authRoutes.post('/signup',
     //   });
     //   return;
     // }
-
     User.findOne(
       { email: emailInput },
       { email: 1 },
@@ -47,19 +45,16 @@ authRoutes.post('/signup',
           res.status(500).json({ message: 'Something went wrong.' });
           return;
         }
-
-        // Don't let the user register if the email is taken
+      // Don't let the user register if the email is taken
         if (foundUser) {
           res.status(400).json({ message: 'The username already exists.' });
           return;
         }
         console.log('founduser',foundUser)
         // We are good to go, time to save the user.
-
         // Encrypt the password
         const salt = bcrypt.genSaltSync(10);
         const hashPass = bcrypt.hashSync(signupPassword, salt);
-
         // Create the user
         const theUser = new User({
           firstName: req.body.firstNameInput,
@@ -70,7 +65,6 @@ authRoutes.post('/signup',
           country:req.body.countryInput,
           encryptedPassword: hashPass
         });
-
         // Save it
         theUser.save((err) => {
           if (err) {
@@ -83,9 +77,7 @@ authRoutes.post('/signup',
             if (err) {
               res.status(500).json({ message: 'Something went wrong.' });
               return;
-            }
-           
-          
+            }          
             res.status(200).json(req.user);
           });
         });
@@ -96,55 +88,37 @@ authRoutes.post('/signup',
 
 
 
-authRoutes.get('/login',
-    //        redirects to '/' (home page) if you ARE logged in
-    //                      |
-  ensure.ensureNotLoggedIn('/'),
-
-  (req, res, next) => {
-
-    res.render('auth/loginView.ejs', {
-      errorMessage: req.flash('error')
-        //                       |
-    }); //    default name for error messages in Passport
-  }
-);
-//++++++LOGIN WORKING ON EXPRESS++++
-// <form method="post" action="/login">
-// authRoutes.post('/login',
+// authRoutes.get('/login',
 //     //        redirects to '/' (home page) if you ARE logged in
 //     //                      |
 //   ensure.ensureNotLoggedIn('/'),
 
-//     //                   local as in "LocalStrategy" (our method of logging in)
-//     //                     |
-//   passport.authenticate('local', {
-//     successRedirect: '/profile',
-//     successFlash: true,        // req.flash('success')
-//     failureRedirect: '/login',
-//     failureFlash: true         // req.flash('error')
-//   } )
-// );
+//   (req, res, next) => {
 
-//-------LOGIN BY NICK-----
+//     res.render('auth/loginView.ejs', {
+//       errorMessage: req.flash('error')
+//         //                       |
+//     }); //    default name for error messages in Passport
+//   }
+// );
+//=========================
+//======= LOGIN BY NICK ====
+//==========================
 authRoutes.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
     if (err) {
       res.status(500).json({ message: 'Something went wrong.' });
       return;
     }
-
     if (!theUser) {
       res.status(401).json(failureDetails);
       return;
     }
-
     req.login(theUser, (err) => {
       if (err) {
         res.status(500).json({ message: 'Something went wrong.' });
         return;
       }
-
       res.status(200).json(req.user);
     });
   })(req, res, next);

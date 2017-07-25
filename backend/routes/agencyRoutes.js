@@ -3,53 +3,131 @@ const router = express.Router();
 const ensure = require('connect-ensure-login');
 const multer = require('multer');
 const path = require('path');
+const passport = require('passport');
 
 
 // require the Agency model here
 const Agency = require('../models/agencyModel.js');
-
 //requires the User model because there is a query in one 
 //route that will use the User model
 const User = require('../models/userModel.js');
 
-// ===   Render a list of all Agencys and sends ================
+//=========================================================
+// ===   Render a LIST OF ALL AGENCIES and sends ==========
 //====   the list with AgencyList variable ================
 //====    to the view =====================================
 router.get('/agencies', (req, res, next) => {
-  //const AgencyList = ["/images/animalseries1.jpg", "/images"]
-
   Agency.find((err, agencyList) => {
-    if (err){
-      res.json(err); 
-      return; 
-    }
-        
-        //   { agencyList: agencyList});
-          console.log('thelist',agencyList);
-        // }
-        {res.status(200).json(agencyList)}//working ok jul17
+      if (err) {
+        res.status(500).json({ message: 'Something went wrong.' });
+        return;
+      }
+     //{ agencyList: agencyList});
+        console.log('thelist',agencyList);
+        {res.status(200).json(agencyList)}//working ok jul23
        })
     }
- // }
-  );
-//});
+);
 
-//=== Get  and render  the view for   ================
-//======== the form of new Agencys   =====================
-router.get('/agency/new', (req, res, next) => {
+// ===================================
+//======= DETAILS of AGENCY ==========
+// ===================================
+router.get('/agency/:id',(req,res,next) => { 
+  // if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+  //   res.status(400)
+  //      .json({ message: 'Specified id is not valid' });
+  //   return;
+  // }
+  const agencyId=req.params.id;
+  Agency.findById(agencyId,(err,theAgency) => {
+    if (err) {
+      res.status(500).json({ message: 'Something went wrong.' });
+      return;
+    }
+    // res.render('agency/agencyDetails.ejs', {
+    //    agency: theAgency 
+    // })
+    res.status(200).json(theAgency);
+  });
+});
 
-  res.render('agency/newAgency.ejs', {
-      
+//=======================================
+//========= SELECT AGENCY FOR CLIENT ====
+//=======================================
+router.post('/agency/:id/select', 
+            // ensure.ensureLoggedIn('/login'), not working 
+            (req,res,next) => { 
+                      const agencyId=req.params.id;
+                      console.log('param picking up agency',agencyId)
+                      // const userChanges={
+                      //   agencyInUseId: agencyId
+                      // };
+                  User.findByIdAndUpdate( req.user._id , {agencyInUseId: agencyId }, (err,updatedUser) =>{
+                        if(err){
+                          next(err);
+                          return;
+                        }
+                        res.status(200).json(updatedUser)
+                    });
+});
+//=================================================
+//====== for Queries as user types it     =========
+//====== returns agency with keys pressed =========
+//=================================================
+router.get('/agency/', (req, res, next) => {
+    const agencyNa = req.query.name;
+    console.log('LOLOLOLO', agencyNa);
+    Agency.find({nameAgency: { $regex: '.*' + agencyNa + '.*' }}, (err, theAgency) => {
+      if (err) {
+        res.json(err);
+        return;
+      }
+    res.status(200).json(theAgency);
+    });
+});
+
+
+// >>>>>>For ADMIN ONLY and not for presentation of project3
+router.get('/agency/:id/edit',(req,res,next) => {  //-----------
+    const AgencyId = req.params.id;                 //           |
+    Agency.findById(AgencyId,(err,theAgency) => {     //           |
+     if (err) {
+      res.status(500).json({ message: 'Something went wrong.' });
+      return;
+    }
+    res.render('Agencys/editAgency.ejs', {
+      Agency:theAgency
+    });
+    }); 
+});    
+                                              // .        |
+// >>>>>>For ADMIN ONLY and not for presentation of project3
+router.post('/agency/:id', (req, res, next) => {    //----------
+    const agencyId = req.params.id;
+        
+      const agencyChanges = {
+        agencyTitle: req.body.AgencyTitle,
+        yearTaken: req.body.yearTaken,
+        // author: req.body.author,
+        description: req.body.description,
+        // imageUrl: req.body.imageUrl,
+      };
+      Agency.findByIdAndUpdate( agencyId,agencyChanges, (err,theAgency) =>{
+        if(err){
+          next(err);
+          return;
+        }
+        res.redirect('/Agency');
     });
 });
 
 
 //=== Post the form and save the data   =======
 //======== in the data base   =====================
-//const myUploader = multer({dest: path.join(__dirname, '../public/images')});
+// ONLY FOR ADMIN not for project3 presentation
 router.post('/agency',
  //ensure.ensureLoggedIn('/login'),
- //myUploader.single('Agency'),
+
     (req, res, next) => {      
         const nameAgency = req.body.nameAgencyInput;
         const emailAgency = req.body.emailAgencyInput;
@@ -134,104 +212,30 @@ router.post('/agency',
      });
 });
 
+//=== Get  and render  the view for   ================
+//======== the form of new Agencys   =====================
+//>>>>>>for ADMIN ONLY 
+router.get('/agency/new', (req, res, next) => {
 
-
-//========Details of agency =============
-router.get('/agency/:id',(req,res,next) => { 
-  // if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-  //   res.status(400)
-  //      .json({ message: 'Specified id is not valid' });
-  //   return;
-  // }
-  const agencyId=req.params.id;
-  Agency.findById(agencyId,(err,theAgency) => {
-    if (err) {
-      res.json(err);
-      return;
-    }
-    // res.render('agency/agencyDetails.ejs', {
-    //    agency: theAgency 
-    // })
-    res.status(200).json(theAgency);
-  });
-});
-
-//==========setting the agency for the client=====
-router.post('/agency/:id/select',(req,res,next) => { 
-  const agencyId=req.params.id;
-  // const userChanges={
-  //   agencyInUseId: agencyId
-  // };
-  User.findByIdAndUpdate( req.user._id , {agencyInUseId: agencyId }, (err,updatedUser) =>{
-        if(err){
-          next(err);
-          return;
-        }
-        res.status(200).json(updatedUser)
+  res.render('agency/newAgency.ejs', {
+      
     });
 });
 
-
-router.get('/agency/:id/edit',(req,res,next) => {  //-----------
-    const AgencyId = req.params.id;                 //           |
-    Agency.findById(AgencyId,(err,theAgency) => {     //           |
-      if(err){
-        next(err);
-        return;
-      }
-
-
-    res.render('Agencys/editAgency.ejs', {
-      Agency:theAgency
-    });
-    }); 
-});                                                // .        |
-                                                    //         |
-router.post('/agency/:id', (req, res, next) => {    //----------
-    const agencyId = req.params.id;
-        
-      const agencyChanges = {
-        agencyTitle: req.body.AgencyTitle,
-        yearTaken: req.body.yearTaken,
-        // author: req.body.author,
-        description: req.body.description,
-        // imageUrl: req.body.imageUrl,
-      };
-      Agency.findByIdAndUpdate( agencyId,agencyChanges, (err,theAgency) =>{
-        if(err){
-          next(err);
-          return;
-        }
-        res.redirect('/Agency');
-    });
-});
-
-router.get('/agency/', (req, res, next) => {
-  const agencyNa = req.query.name;
-  console.log('LOLOLOLO', agencyNa);
-  Agency.find({nameAgency: { $regex: '.*' + agencyNa + '.*' }}, (err, theAgency) => {
-    if (err) {
-      res.json(err);
-      return;
-    }
-    res.status(200).json(theAgency);
-  });
-});
-
-
-
+// ----delete agencies
+//>>>>>>>for ADMIN ONLY
 router.delete('/agency/:id/', 
-//ensure.ensureLoggedIn('/login'),
-(req, res, next) => {
-    const agencyId = req.params.id;
-    Agency.findByIdAndRemove(agencyId,(err, theAgency) =>{
-      if(err){
-        next(err);
-        return;
-      }
-      {res.status(200).json(theAgency)}
-    });
-});
+  //ensure.ensureLoggedIn('/login'),
+  (req, res, next) => {
+      const agencyId = req.params.id;
+      Agency.findByIdAndRemove(agencyId,(err, theAgency) =>{
+        if(err){
+          next(err);
+          return;
+        }
+        {res.status(200).json(theAgency)}
+      });
+  });
 
 
 

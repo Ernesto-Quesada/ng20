@@ -30,12 +30,20 @@ export class AgencyService {
   }
   getAgencyDetailsinService(id) {
     console.log('from agency service', id);
-return this.http
-.get(
-  this.BASE_URL + `/agency/${id}`)
+    return this.http.get(this.BASE_URL + `/agency/${id}`)
       .toPromise()
       .then(res => res.json() )
       .catch(this.handleError);
+  }
+
+  selectAgen(id) {
+    return this.http.post(this.BASE_URL + `/agency/${id}/select`, {},
+    ///w cre es siempre el tercero
+                          {withCredentials: true} )
+               .toPromise()
+               .then(response => response.json())
+               .catch(this.handleError);
+
   }
 
 

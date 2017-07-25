@@ -24,8 +24,9 @@ export class AccountPlaidComponent implements OnInit {
   }
   
   configKeys(): void {
-    console.log('before' + this.PLAID_PUBLIC_KEY)
+    console.log('before ' + this.PLAID_PUBLIC_KEY)
     this._accountPlaidService
+    // .accountPlaidHome() request to BE public keys
       .accountPlaidHome()
       .then(accountData => {
         this.PLAID_ENV = accountData.PLAID_ENV;

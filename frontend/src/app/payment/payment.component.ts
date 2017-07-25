@@ -6,16 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
-cucAmount: Int16Array;
-USD: Number;
+cucAmount: number;
+usdAmount: number;
   constructor() {
   }
 
   ngOnInit() {
   }
-  // onKey(value): {
-  //   this.USD =  parseFloat(value)+ parseFloat(value * 0.12)
-  // }
+  onKeycuc() {
+    this.usdAmount =  this.cucAmount* 1.12
+  }
+  onKeyusd() {
+    this.cucAmount = this.usdAmount / 1.12
+  }
   
 
 }

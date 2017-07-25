@@ -101,7 +101,8 @@ logout() {
       .toPromise()
         .then(res => res.json());
   }
-      editProfile(editInfo) {
+      // ---EDIT PROFILE-----
+  editProfile(editInfo) {
       return this.http
       .post(this.BASE_URL + '/profile/edit',
       editInfo,

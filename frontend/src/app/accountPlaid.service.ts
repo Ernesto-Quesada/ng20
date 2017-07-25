@@ -28,16 +28,17 @@ export class AccountPlaidService {
 
   //get account data
   get_access_token(publicToken: string) {
-    const body = 'request='+ publicToken;
-    console.log('{{{{{{{{{{', body);
+    // const body = 'request='+ publicToken;
+    // console.log('{{{{{{{{{{', body);
 
-    const headers = new Headers();
-    console.log('>>>>>>>', headers)
-    headers.append('Content-Type', 'application/json');
+    // const headers = new Headers();
+    // console.log('>>>>>>>', headers)
+    // headers.append('Content-Type', 'application/json');
 
-    return this.http.post(this.BASE_URL + '/accountPlaid/get_access_token',
-                          JSON.stringify({'publicToken': publicToken}),
-                          { headers: headers })
+    return this.http.post(this.BASE_URL + `/accountPlaid/get_access_token`, {publicToken: publicToken},
+                              {withCredentials: true})
+                          // JSON.stringify({'publicToken': publicToken}),
+                          // { headers: headers })//already has 3 parameter ..no more accepted
                     .toPromise()
                     // .then(()=>{
                     //   response => response.json()

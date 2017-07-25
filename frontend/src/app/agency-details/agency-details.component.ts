@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 import { Location } from '@angular/common';
 import {AgencyService} from '../agency.service'
-
+import { Router } from '@angular/router';
 
 import { AgencyComponent} from '../agency/agency.component';
 @Component({
@@ -15,7 +15,7 @@ export class AgencyDetailsComponent implements OnInit {
 @Input() user: any;
 err: any;
 
-  constructor(private agencyService: AgencyService ) { }
+  constructor(private agencyService: AgencyService , private routetheuser: Router) { }
 
   //   ngOnInit(): void {
   //   this.route.paramMap
@@ -28,6 +28,19 @@ err: any;
     //   console.log('--PAR', params['id'])
     // });
   }
+    selectAgency(id) {
+    this.agencyService.selectAgen(id)
+    .then((theUserfromapi) => {
+      this.routetheuser.navigate(['/portal']);
+    })
+      .catch((err) => {
+      this.user = null;
+      this.err = err;
+      });
+    }
+
+  }
+
 
   // getAgencyDetails(id) {
   //   this.agencyService.getAgencyDetailsinService(id)
@@ -42,5 +55,5 @@ err: any;
   // }
 
 
-}
+
 

@@ -1,11 +1,11 @@
 <div>calculadora</div>
 <label for="cucInput">amount to be paid in Cuba in CUC</label>
-<input [(ngModel)]='cucAmount'>
+<input type='number' [(ngModel)]='cucAmount' (keyup)="onKeycuc()">
 <hr>
 <br>
-<!-- <label for="cucInput">amount you pay now in USD</label>
-<input type="text" [(ngModel)]='USD'> -->
-<p>{{USD}}</p>
+ <label for="usdInput">amount you pay now in USD</label>
+<input type="number" [(ngModel)]='usdAmount' (keyup)="onKeyusd()"> 
+<p>{{usdAmount}}</p>
 
 <!-- <app-ministart></app-ministart>
 <app-miniplaid></app-miniplaid> -->

@@ -21,6 +21,7 @@ export class SearchAgencyComponent implements OnInit {
 
   private searchTerms = new Subject();
   agencies: Observable<any[]>;
+  selectedAgency: any;
   
 
   constructor(private agencySearchService: AgencySearchService, private router: Router) {}
@@ -34,22 +35,26 @@ export class SearchAgencyComponent implements OnInit {
   
 ngOnInit(): void {
     this.agencies = this.searchTerms
-      //.debounceTime(300)        
-      .distinctUntilChanged()   
-      .switchMap(term => term ? this.agencySearchService.search(term)
-        : Observable.of<any[]> ([]))
+     .debounceTime(300)        
+     .distinctUntilChanged()   
+      .switchMap(term => {
+        const searchAjax  = this.agencySearchService.search(term);
+        // searchAjax.subscribe(res => console.log('holaaaaaaaaaaaaa', res))
+        return term ? searchAjax
+                    : Observable.of<any[]> ([])
+      })
       .catch(error => {
         // TODO: add real error handling
         console.log('ERROR MES',error);
         return Observable.of<any[]>([]);
       });
-    // console.log('agen222222yyyyy',this.agencies);
-    // console.log('agen222222',this.searchTerms);
-
+    console.log('agen222222yyyyy',this.agencies);
+    console.log('agen222222',this.searchTerms);
   }
-    gotoDetail(agency): void {
-    const link = ['/detail', agency.id];
-    this.router.navigate(link);
+gotoDetail(agency) {
+    // const link = ['/detail', agency._id];
+    // this.router.navigate(link);
+    this.selectedAgency = agency;
   }
 
 }

@@ -13,7 +13,8 @@ export class AgencySearchService {
   search(term): Observable<any[]> {
     return this.http
               .get(this.BASE_URL + `/agency/?name=${term}`)
-              .map(response => response.json().data as any[] );
+              .map(response => response.json() );
+              
 }
 
 }

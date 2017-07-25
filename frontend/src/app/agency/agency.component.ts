@@ -7,14 +7,14 @@ import { SenderService } from '../sender.service';
   styleUrls: ['./agency.component.css']
 })
 export class AgencyComponent implements OnInit {
-agencies: any;
+agencies: any
 selectedAgency: any;
 user: any;
   constructor(
               private agencyService: AgencyService,
               private mySessionService: SenderService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getAgencies();
     this.mySessionService.isLoggedIn()
       .then((theUsercomingFromApi ) => {
@@ -29,13 +29,7 @@ user: any;
         .getAgencies()
         .then((agency )=> {
           this.agencies = agency;
-          this.agencies.forEach((oneagency) => {
-          //  this.agencyname.push(oneagency);
-        console.log('AGENCIES', oneagency);
-        //console.log('agencyname', this.agencyname);
-      
-      });
-    })
+        console.log('AGENCIES',this.agencies)});
         
   }
   // add(name: string): void {
