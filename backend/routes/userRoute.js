@@ -11,8 +11,7 @@ const Relative = require('../models/relativeModel.js');
 const routeforUser = express.Router();
 // routeforUser.get('/user/:id', (req, res, next) => {
 
-routeforUser.get('/profile',
-    ensure.ensureLoggedIn('/login'),(req, res, next) => {
+routeforUser.get('/profile',  ensure.ensureLoggedIn('/login'),(req, res, next) => {
       User.findOne(req.user._id)
       .populate('agencyInUseId')
       .exec((err,completeUSerProfile) =>{

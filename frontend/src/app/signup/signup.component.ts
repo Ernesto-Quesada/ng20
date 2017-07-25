@@ -35,16 +35,6 @@ export class SignupComponent implements OnInit {
     this.user = null;
     this.error = err;
     });
-
-    // thePromise.then((userInfo) => {
-    //   this.user = userInfo;
-    //   this.error = null;
-    // });
-
-    // thePromise.catch((err) => {
-    //   this.user = null;
-    //   this.error = err;
-    // });
   }
 
 }

@@ -2,9 +2,13 @@
   <h4>Search</h4>
   <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
   <div>
+    
     <div *ngFor="let agency of agencies | async"
          (click)="gotoDetail(agency)" class="search-result" >
-      {{oneAgency.name}}
+      {{agency.nameAgency}}
     </div>
   </div>
+</div>
+<div *ngIf='selectedAgency'>
+      <div class="panel-body"><app-agency-details [agencyToDetails]="selectedAgency" [user]="user"></app-agency-details></div>
 </div>

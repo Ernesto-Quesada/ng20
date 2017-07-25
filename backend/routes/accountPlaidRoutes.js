@@ -15,9 +15,9 @@ const User = require('../models/userModel.js');
 
 
 var APP_PORT = envvar.number('APP_PORT', 8000);
-var PLAID_CLIENT_ID = envvar.string('PLAID_CLIENT_ID',"595154f64e95b81c69ae98b9");
-var PLAID_SECRET = envvar.string('PLAID_SECRET',"7cce0a621ea2e694f996d49289c356");
-var PLAID_PUBLIC_KEY = envvar.string('PLAID_PUBLIC_KEY',"f304c07f2fa4a2844443e8b4b1afbe");
+var PLAID_CLIENT_ID = envvar.string('PLAID_CLIENT_ID',process.env.PLAID_CLIENT_ID);
+var PLAID_SECRET = envvar.string('PLAID_SECRET',process.env.PLAID_SECRET);
+var PLAID_PUBLIC_KEY = envvar.string('PLAID_PUBLIC_KEY',process.env.PLAID_PUBLIC_KEY);
 var PLAID_ENV = envvar.string('PLAID_ENV', 'sandbox');
 
 // We store the access_token in memory - in production, store it in a secure
@@ -72,12 +72,12 @@ routeforPlaid.post('/accountPlaid/get_access_token', function(request, response,
           console.log('Item ID: ' + ITEM_ID);
           // response.json({
           //   'error': false
-          User.findByIdAndUpdate( { email: 'y'}, 
+          User.findByIdAndUpdate( request.user._id, 
 
             { ACCESS_TOKEN: ACCESS_TOKEN ,
               ITEM_ID: ITEM_ID },
                (err, savedTokens) => {
-                console.log('=============');
+                console.log('=============',savedTokens);
 
                  console.log('=============',savedTokens);
                  

@@ -1,12 +1,12 @@
 <div *ngIf='agencyToDetails'>
   <h2>{{agencyToDetails.nameAgency}} details!</h2>
-  <div>
-    <label>id: </label>{{agencyToDetails.email}}</div>
-  <div>
+  
     <div *ngIf='user'>
-    <form method='post'  >
+    <form  >
             <input type="radio" name="selectedAgency" value="selected">
-            <input type="submit" value="Select">
+            <!-- <input type="submit" value="Select"> -->
+  <button (click)="selectAgency(agencyToDetails._id)" class="btn btn-lg">Select</button>
+
     </form>      
     </div>
 <!--    <label>name: </label>
