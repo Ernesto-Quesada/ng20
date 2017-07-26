@@ -19,8 +19,8 @@ const userSchema = new Schema(
     ACCESS_TOKEN: {type:String},
     ITEM_ID: {type:String},
     accountSpec: {type:Object},
-    agencyInUseId: { type: Schema.Types.ObjectId,ref: 'Agency' },
-    //relative:[{ type: Schema.Types.ObjectId, ref: 'Relative' }],
+    agencyInUseId:     { type: Schema.Types.ObjectId,ref: 'Agency' },
+    relativeSendingNow:{ type: Schema.Types.ObjectId, ref: 'Relative' },
 
     // role: { type: String,
     //         enum: [ 'guest', 'admin' ],

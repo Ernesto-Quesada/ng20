@@ -1,7 +1,7 @@
 
 
       <div class="col-md-4">
-          <div class="row" [routerLink]="['/profile']">
+          <div class="row" [routerLink]="['/profile']" >
             <div class="panel-heading">
               <h2 class="panel-title"> {{user.theUserProfile.firstName}} {{user.theUserProfile.lastName}} </h2>
               <h3 class="panel-title"> {{user.theUserProfile.email}} </h3>
@@ -11,12 +11,15 @@
           <div class="row">
             <div class="panel-body">
                 <div class="panel-heading">
-                  <h3 class="panel-title">You are currently using <h3><b>{{user.theUserProfile.agencyInUseId.nameAgency}}</b></h3> as your money sender</h3>
-                  <p> agency phone here</p>
-                  {{user.theUserProfile.agencyInUseId._id}}
+                  <div class="panel-title">You are currently using <h3><b>{{user.theUserProfile.agencyInUseId.nameAgency}}</b></h3> 
+                    <span>as your money sender</span> 
+                  </div>
+                  <br>
+                  <p> {{user.theUserProfile.agencyInUseId.email}}</p>
+                  <!-- {{user.theUserProfile.agencyInUseId._id}} -->
                 </div>
-              <button [routerLink]="['agency/:id', user.theUserProfile.agencyInUseId._id]" class="pull-left">see details</button>
-              <button [routerLink]="['/agency']" class="pull-right">more agencies</button>
+              <!-- <button [routerLink]="['/agency',user.theUserProfile.agencyInUseId._id]" class="pull-left">see details</button>
+              <button [routerLink]="['/agency']" class="pull-right">more agencies</button> -->
             </div>
           </div>      
       </div>

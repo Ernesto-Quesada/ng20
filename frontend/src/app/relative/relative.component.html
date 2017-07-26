@@ -1,6 +1,12 @@
-<div *ngIf='relativeToDetails' class="row well">
-  <h2>{{relativeToDetails.name}}</h2>
+<div *ngIf='relativeToDetails'>
+  <h2>{{relativeToDetails.name}} {{relativeToDetails.firstApell}} {{relativeToDetails.secondApell}}</h2>
   <h3>choose your relative</h3>
+  <form>
+    <input type="radio" name="selectedAgency" value="selected">
+    <!-- <input type="submit" value="Select"> -->
+    <button (click)="selectRelative(relativeToDetails._id)" class="btn btn-lg">Select</button>
+
+   </form> 
   
   
 </div>

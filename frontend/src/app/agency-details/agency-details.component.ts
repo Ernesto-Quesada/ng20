@@ -17,11 +17,6 @@ err: any;
 
   constructor(private agencyService: AgencyService , private routetheuser: Router) { }
 
-  //   ngOnInit(): void {
-  //   this.route.paramMap
-  //     .switchMap((params: ParamMap) => this.agencyService.getAgencyDetails(+params.get('id')))
-  //     .subscribe(agency => this.agency = agency);
-  // }
     ngOnInit() {
     // this.route.params.subscribe(params => {
     //   this.getAgencyDetails(params['id']);

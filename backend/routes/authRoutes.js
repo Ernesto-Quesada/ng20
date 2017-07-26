@@ -68,8 +68,6 @@ authRoutes.post('/signup',
         // Save it
         theUser.save((err) => {
           if (err) {
-            // next(err);
-            // return;
             res.status(500).json({ message: 'Something went wrong.' });
             return;
           }
@@ -81,8 +79,7 @@ authRoutes.post('/signup',
             res.status(200).json(req.user);
           });
         });
-      }
-    );
+      });
   });
 
 

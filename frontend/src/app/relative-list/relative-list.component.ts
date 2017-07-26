@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RelativeService } from '../relative.service'
 import { SenderService } from '../sender.service';
 import { Router } from '@angular/router';
 
@@ -15,7 +16,7 @@ selectedRelative: any;
 user: any;
 errorMessage: any;
 
-  constructor(
+  constructor(private relativeServive: SenderService,
               private mySessionService: SenderService,
               private routetheuser: Router) { }
 

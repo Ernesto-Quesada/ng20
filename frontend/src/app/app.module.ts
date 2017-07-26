@@ -35,6 +35,8 @@ import { SearchAgencyComponent } from './search-agency/search-agency.component';
 import { AgencySearchService} from './agency-search.service';
 import { PaymentComponent } from './payment/payment.component';
 import { SearchPipe } from './pipes/search.pipe';
+import { RelativeNewComponent } from './relative-new/relative-new.component';
+import { RelativeService } from './relative.service'
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -50,6 +52,7 @@ const routes: Routes = [
   { path: 'fundingaccount', component: AccountPlaidComponent},
   { path: 'relatives', component:  RelativeListComponent},
   { path: 'payment', component: PaymentComponent},
+  { path: 'relative/new', component: RelativeNewComponent},
   // { path: 'phone/:id', component: PhoneDetailsComponent }
 
   { path: '**', redirectTo: '' }
@@ -76,7 +79,8 @@ const routes: Routes = [
     EditprofileComponent,
     SearchAgencyComponent,
     PaymentComponent,
-    SearchPipe
+    SearchPipe,
+    RelativeNewComponent
     // MaterialModule,
   ],
   imports: [
@@ -86,7 +90,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
     // AppRoutingModule
   ],
-  providers: [SenderService, AgencyService, AccountPlaidService, AgencySearchService],
+  providers: [SenderService, AgencyService, 
+              AccountPlaidService, AgencySearchService,
+            RelativeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
