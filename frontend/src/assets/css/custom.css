@@ -155,6 +155,10 @@ h2.title-single-layout{
     
 }
 
+.cursor{
+    cursor: pointer;
+}
+
 
 @media screen and (max-width: 750px){
      .content-mini
