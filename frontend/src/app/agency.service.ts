@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { Http, Response ,Headers} from '@angular/http';
+import { Http, Response , Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
@@ -39,7 +39,7 @@ export class AgencyService {
 
   selectAgen(id) {
     return this.http.post(this.BASE_URL + `/agency/${id}/select`, {},
-    ///w cre es siempre el tercero
+    ///with credentials es siempre el tercero
                           {withCredentials: true} )
                .toPromise()
                .then(response => response.json())

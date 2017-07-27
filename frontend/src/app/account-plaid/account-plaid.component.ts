@@ -26,7 +26,6 @@ export class AccountPlaidComponent implements OnInit {
   configKeys(): void {
     console.log('before ' + this.PLAID_PUBLIC_KEY)
     this._accountPlaidService
-    // .accountPlaidHome() request to BE public keys
       .accountPlaidHome()
       .then(accountData => {
         this.PLAID_ENV = accountData.PLAID_ENV;
@@ -49,12 +48,12 @@ export class AccountPlaidComponent implements OnInit {
         .then(() => {
           // console.log("llamar_a_los_accounts")
         accountPlaidComponent._accountPlaidService.get_accounts()
-          .then(accounts=>{
-            accountPlaidComponent.accountsUser= accounts.results
+          .then(accounts => {
+            accountPlaidComponent.accountsUser = accounts.results
 
             accounts.results.forEach(element => {
               console.log(element.name);
-            }); 
+            });
           })
         })
 

@@ -1,3 +1,46 @@
+        <div class="row">
+            <div class="col-lg-10 col-md-6 col-xs-6">
+                <h1 class="page-header">Agencies</h1>
+                 
+            </div>
+              
+        </div>
+    
+<div class="row">
+  <div class="col-md-6 col-sm-6 col-xs-6">
+    <div class="panel-group">
+
+        <div class="panel panel-default" *ngFor="let agency of agencies">
+          <a  (click)="onSelect(agency)">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                {{agency.nameAgency}}
+              </h4>
+            </div>
+          </a>
+          <div class="panel-collapse collapse">
+      </div>
+
+        </div>
+   </div>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-6">
+          <div>
+            <div class="panel-body">
+              <app-agency-details [agencyToDetails]="selectedAgency" [user]="user"></app-agency-details></div>
+          </div>
+  </div>
+      
+</div>
+<div>
+  <button [routerLink]="['/portal']" >Home</button>
+</div>
+
+
+
+
+
+
 <!--<h2>list of agencies</h2>
 <div>
   <label>Agency name:</label> <input #agencyName />
@@ -19,27 +62,7 @@
   </h2>
   <button (click)="gotoDetail()">View Details</button>
   <button (click)="agencyIsSelected()">console view</button>
-</div>-->
-
-<!-- Page Content -->
-    <div class="container">
-
-        <!-- Page Heading/Breadcrumbs -->
-        <div class="row">
-            <div class="col-lg-10 col-md-6 col-xs-6">
-                <h1 class="page-header">Agencies</h1>
-                
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
-                    </li>
-                    <li class="active">One Column Portfolio</li>
-                </ol>
-            </div>
-              <div class="col-lg-2 col-md-6 col-xs-6">
-                <app-search-agency></app-search-agency>
-              </div>
-        </div>
-          
+</div>-->   
         <!-- /.row -->
 
         <!-- Project One -->
@@ -68,7 +91,7 @@
             </div>
           </div> -->
         <!-- /.row -->
-    </div>
+    <!-- </div> -->
 
 
     <!-- ======PREGUNTAR A NICK SOBRE ESTO -->
@@ -83,25 +106,5 @@
 
 
 
-<div class="row">
-  <div class="col-md-6 col-sm-6 col-xs-6">
-    <div class="panel-group">
 
-        <div class="panel panel-default" *ngFor="let agency of agencies">
-          <a  (click)="onSelect(agency)"   data-toggle="collapse" data-parent="#accordion" href="#{{agency._id}}">
-            <div class="panel-heading">
-              <h4 class="panel-title">{{agency.nameAgency}}
-              </h4>
-            </div>
-          </a>
-        </div>
-   </div>
-  </div>
-  <div class="col-md-6 col-sm-6 col-xs-6">
-          <div>
-            <div class="panel-body"><app-agency-details [agencyToDetails]="selectedAgency" [user]="user"></app-agency-details></div>
-          </div>
-  </div>
-</div>
-<!-- <app-search-agency></app-search-agency> -->
         

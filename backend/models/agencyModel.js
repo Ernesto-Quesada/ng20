@@ -8,7 +8,7 @@ const agencySchema = new Schema(
     nameAgency: { type: String },
     email:           {type:String},
     usersWithThisAgency: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-    //contactPhone:    {type:String},
+    contactPhone:    {type:String},
     //address:         {type:String},
     //country:         {type:String},
     // Traditional registration users

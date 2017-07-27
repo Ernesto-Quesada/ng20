@@ -18,8 +18,9 @@ const userSchema = new Schema(
     country:    {type:String},
     ACCESS_TOKEN: {type:String},
     ITEM_ID: {type:String},
-    agencyInUseId: { type: Schema.Types.ObjectId,ref: 'Agency' },
-    //relative:[{ type: Schema.Types.ObjectId, ref: 'Relative' }],
+    accountSpec: {type:Object},
+    agencyInUseId:     { type: Schema.Types.ObjectId,ref: 'Agency' },
+    relativeSendingNow:{ type: Schema.Types.ObjectId, ref: 'Relative' },
 
     // role: { type: String,
     //         enum: [ 'guest', 'admin' ],

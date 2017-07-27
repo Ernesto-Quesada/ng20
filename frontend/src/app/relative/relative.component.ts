@@ -1,6 +1,7 @@
-import { Component, OnInit, Output,Input } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { SenderService } from '../sender.service';
 import { Router } from '@angular/router';
+import { RelativeService} from '../relative.service'
 @Component({
   selector: 'app-relative',
   templateUrl: './relative.component.html',
@@ -8,9 +9,12 @@ import { Router } from '@angular/router';
 })
 export class RelativeComponent implements OnInit {
   @Input() relativeToDetails: any;
+  @Input() user: any;
   relatives: any;
   error: any;
-  constructor(private mySessionService: SenderService, private routetheuser: Router) { }
+  constructor(private mySessionService: SenderService, 
+              private routetheuser: Router,
+              private relativeService: RelativeService) { }
 
   ngOnInit() {
   //   this.mySessionService.isLoggedIn()
@@ -19,18 +23,18 @@ export class RelativeComponent implements OnInit {
   // })
   // .catch((err) => { this.routetheuser.navigate(['/signup'])})
 }
-// relativ() {
-  //   this.mySessionService.getRelatives()
-  //   .then((relatives) => {
-  //     this.relatives = relatives;
-  //     this.error = null;
+   selectRelative(id) {
+     this.relativeService.selectRelative(id)
+     .then((theUserFromApi) => {
+     this.routetheuser.navigate(['/payment']);
+   this.error = null;
 
-  //   })
-  //   .catch((err) => {
-  //     this.relatives = null;
-  //     this.error = err;
-  //   });
-  // }
+    })
+    .catch((err) => {
+      this.relatives = null;
+      this.error = err;
+    });
+  }
 
 
 

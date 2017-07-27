@@ -37,6 +37,8 @@ import { PaymentComponent } from './payment/payment.component';
 import { SecureLayoutComponent } from './secure-layout/secure-layout.component';
 import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
 import { SearchPipe } from './pipes/search.pipe';
+import { RelativeNewComponent } from './relative-new/relative-new.component';
+import { RelativeService } from './relative.service'
 
 const routes: Routes = [
   
@@ -51,6 +53,7 @@ const routes: Routes = [
       { path: 'relativelist', component: RelativeListComponent},
       { path: 'fundingaccount', component: AccountPlaidComponent},
       { path: 'relatives', component:  RelativeListComponent},
+      { path: 'relative/new', component: RelativeNewComponent},
       { path: 'payment', component: PaymentComponent},
   ] },
   { path: 'login',  component: LoginComponent },
@@ -85,7 +88,8 @@ const routes: Routes = [
     PaymentComponent,
     SecureLayoutComponent,
     PageNotFoundComponentComponent,
-    SearchPipe
+    SearchPipe,
+    RelativeNewComponent
     // MaterialModule,
   ],
   imports: [
@@ -95,7 +99,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
     // AppRoutingModule
   ],
-  providers: [SenderService, AgencyService, AccountPlaidService, AgencySearchService],
+  providers: [SenderService, AgencyService, 
+              AccountPlaidService, AgencySearchService,
+            RelativeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

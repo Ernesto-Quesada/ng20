@@ -19,7 +19,7 @@ const User = require('../models/userModel.js');
 router.get('/agencies', (req, res, next) => {
   Agency.find((err, agencyList) => {
       if (err) {
-        res.status(500).json({ message: 'Something went wrong.' });
+        res.status(500).json({ message: 'Sooomething went wrong.' });
         return;
       }
      //{ agencyList: agencyList});
@@ -28,6 +28,13 @@ router.get('/agencies', (req, res, next) => {
        })
     }
 );
+/// NEW AGENCY ONLY ADMINISTRATOR VIEW 
+router.get('/agency/new', (req, res, next) => {
+
+  res.render('agency/newAgency.ejs', {
+      
+    });
+});
 
 // ===================================
 //======= DETAILS of AGENCY ==========
@@ -131,7 +138,7 @@ router.post('/agency',
     (req, res, next) => {      
         const nameAgency = req.body.nameAgencyInput;
         const emailAgency = req.body.emailAgencyInput;
-        //contactPhone: req.body.yearTaken,
+        contactPhone: req.body.phoneInput,
         //author: req.user._id,
         //usersWithThisAgency:req.user._id,
        // address: req.body.description,
@@ -175,7 +182,7 @@ router.post('/agency',
         const theAgency = new Agency({
           nameAgency: req.body.nameAgencyInput,
           email: req.body.emailAgencyInput,
-          //phone: req.body.phoneInput,
+          phone: req.body.phoneInput,
           //address:,
         });
          // Save it
@@ -215,12 +222,7 @@ router.post('/agency',
 //=== Get  and render  the view for   ================
 //======== the form of new Agencys   =====================
 //>>>>>>for ADMIN ONLY 
-router.get('/agency/new', (req, res, next) => {
 
-  res.render('agency/newAgency.ejs', {
-      
-    });
-});
 
 // ----delete agencies
 //>>>>>>>for ADMIN ONLY

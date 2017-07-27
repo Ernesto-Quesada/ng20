@@ -54,7 +54,7 @@ routeforUser.get('/relatives',
       })
     }
 );
-  // view only to develop after is dione deltete
+  // view only to develop after is done delete
 routeforUser.get('/relative/new', (req, res, next) => {
   res.render('user/addFamily.ejs', {
   });
@@ -62,18 +62,19 @@ routeforUser.get('/relative/new', (req, res, next) => {
 });
 
 //-------ADD a RELATIVE----- ok +- on sund 17
-// from html <form method="post" action="/relative/new">
-routeforUser.post('/relative/new',
-    //        redirects to login if you ARE NOT logged in
-    //                      |
-    ensure.ensureLoggedIn('/login'), (req, res, next) => {
+
+routeforUser.post('/relative/new', ensure.ensureLoggedIn('/login'), (req, res, next) => {
 
       //---receive all inputs from the form ----
+      console.log('<><><><REQ>BODY', req.body)
+
       const nameR = req.body.relativeName;
       const firstApellR = req.body.firstApell;
       const secondApellR = req.body.secondApell;
-      const cIdentidadR = req.body.carnetId;
-      //   const phoneR = req.body.phoneRelative,
+      const cIdentidadR = req.body.cIdentidad;
+      console.log('<><><><CI', cIdentidadR);
+
+       const phoneR = req.body.phoneRelative;
       const addressR = req.body.addressRelative;
       const parentescoR = req.body.parentesco;
       //       emailR: req.body.emailRelative,
@@ -81,86 +82,26 @@ routeforUser.post('/relative/new',
 
     // Don't let users submit blank relatives info-----poner esto abajo|| addressR === '' || parentescoR === ''
       if (nameR === '' || firstApellR === '' || secondApellR === '' ) {
-        res.render('user/addFamily.ejs', {
-          errorMessage: 'Please provide all required fields.'
-        });
-        return;
+        res.status(400).json({message: 'provide all requiered fields' });
+              return;
       }
-      //----- Find a relative with criteria:cIdentidad anf put the 
-      //-----the info in foundRelative
-      // User.findById(req.user._id, (err,theUser)=>{
-      //       if(err){  
-      //         next(err);
-      //         return;
-      //       }
-      //       console.log('=========theUser');
-      //       console.log(theUser);
+      
 
-            
-      //       // if foundRelative don't let the user register it because is already there
-      //     theUser.relative.forEach((oneRelative)=>{
-      //       console.log('PPPPPPPPPP',oneRelative)
-      //         if(oneRelative.cIdentidad===cIdentidadR){
-      //               res.render('user/addFamily.ejs', {
-      //               errorMessage: 'member already in list',
-                    
-      //               });
-      //             console.log('================');
-      //             console.log(oneRelative);
-      //             return;
-      //         }
-      //       // Create the new Relative
-      //       const theRelative = new Relative({
-      //           name: nameR,
-      //           firstApell:     firstApellR,
-      //           secondApell:    secondApellR,
-      //           relativeOfUser: req.user._id,
-      //           cIdentidad:     cIdentidadR,
-      //         // phone:phoneR,
-      //           address:        addressR,
-      //           parentesco:     parentescoR,
-      //           //email: emailR,
-      //           //country:countryR,
-      //       });
-      //       // Save it
-      //       theRelative.save((err) => {
-      //           if (err) {
-      //             next(err);
-      //             return;
-      //           }
-
-      //           // Store a message in the box to display after the redirect
-      //           req.flash(
-      //             // 1st arg -> key of message
-      //             'success',
-      //             // 2nd arg -> the actual message
-      //             'You have registered your family member successfully!'
-      //           );
-
-      //           // Redirect to profile page if save is successful
-      //           res.redirect('/profile');
-      //       });
-      //     }
-      //   );
-      // });
- //       }
-//);
+      
       Relative.findOne(
             // 1st arg -> criteria of the findOne (which documents)
             { cIdentidad: cIdentidadR , relativeOfUser: req.user._id},
-            // 2nd arg -> projection (which fields)
-            { cIdentidad: 1 },
+            
             // 3rd arg -> callback
             (err, foundRelative) => {
-              if (err) {
-                next(err);
+              if (err) { 
+                res.status(500).json({ message: 'Something went wrong.' });
                 return;
               }
             // if foundRelative don't let the user register it because is already there
             if (foundRelative) {
-              res.render('user/addFamily.ejs', {
-                errorMessage: 'member already in list'
-              });
+              res.status(400).json({message: 'member already in list' });
+              console.log('REQ.USER in RELATIVE NEW', req.user)
               return;
             }
 
@@ -181,26 +122,42 @@ routeforUser.post('/relative/new',
             });
             //Save it
             theRelative.save((err) => {
-              if (err) {
-                next(err);
-                return;
-              }
+                  if (err) {
+                    res.status(500).json({ message: 'Something went wrong.' });
+                    return;
+                  }
 
               // Store a message in the box to display after the redirect
-              req.flash(
-                // 1st arg -> key of message
-                'success',
-                // 2nd arg -> the actual message
-                'You have registered your family member successfully!'
-              );
+              // req.flash(
+              //   // 1st arg -> key of message
+              //   'success',
+              //   // 2nd arg -> the actual message
+              //   'You have registered your family member successfully!'
+              // );
 
               // Redirect to profile page if save is successful
-              res.redirect('/profile');
+              res.status(200).json(theRelative)
         });
-        }
-    );
-  }
-);
+      });
+  });
+//=======================================
+//========= SELECT RELATIVE to SEND NOW ====
+//=======================================
+routeforUser.post('/relative/:id/select', 
+            // ensure.ensureLoggedIn('/login'), not working 
+            (req,res,next) => { 
+                      const relativeId=req.params.id;
+                      console.log('param picking up relative',relativeId)
+                      
+                  User.findByIdAndUpdate( req.user._id , {relativeSendingNow: relativeId }, (err,updatedUser) =>{
+                        if(err){
+                          next(err);
+                          return;
+                        }
+                        res.status(200).json(updatedUser)
+                    });
+});
+
 
 
 
