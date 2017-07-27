@@ -1,16 +1,17 @@
-<div class="col-md-3 well shadow-effect-1" [routerLink]="['/profile']">
-
-  <div class="panel-heading">
-    <h3 class="panel-title"> {{user.theUserProfile.firstName}}</h3>
-    <h5 class="panel-title"> {{user.theUserProfile.email}}</h5>
+<div class="content-mini col-md-4 well-custom shadow-effect-1 shadow-effect-null fg-primary-text overflow-h">
+  <div class="block block-mini"  [routerLink]="['/profile']">
+    <i class="fa fa-user fg-acent-color icon-mini"></i>
+    <span class="title-mini">
+      <h4>
+        <b> {{user.theUserProfile.firstName}} {{user.theUserProfile.lastName}}</b>
+        <br/>
+        <small> {{user.theUserProfile.country}}</small>
+      </h4>
+    </span>
   </div>
-
-  <div class="panel-body">
-    <fieldset>
-      <div class="panel-heading">
-        <h3 class="panel-title">You are currently using <b>{{user.theUserProfile.agencyInUseId}}</b> agency</h3>
-      </div>
-    </fieldset>
-  </div>
-
+  <span class="pull-left description-mini" >You are currently using <b [routerLink]="['agency/:id', user.theUserProfile.agencyInUseId._id]">{{user.theUserProfile.agencyInUseId.nameAgency}}</b> agency 
+    <span class="hidden-md hidden-lg">for send money to your families</span>
+    <small [routerLink]="['/agency']"><i>view more</i></small>
+  </span>
+  
 </div>

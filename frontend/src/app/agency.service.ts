@@ -28,6 +28,7 @@ export class AgencyService {
                .then(response => response.json())
                .catch(this.handleError);
   }
+              
   getAgencyDetailsinService(id) {
     console.log('from agency service', id);
     return this.http.get(this.BASE_URL + `/agency/${id}`)
