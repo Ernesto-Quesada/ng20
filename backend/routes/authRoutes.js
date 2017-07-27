@@ -85,19 +85,6 @@ authRoutes.post('/signup',
 
 
 
-// authRoutes.get('/login',
-//     //        redirects to '/' (home page) if you ARE logged in
-//     //                      |
-//   ensure.ensureNotLoggedIn('/'),
-
-//   (req, res, next) => {
-
-//     res.render('auth/loginView.ejs', {
-//       errorMessage: req.flash('error')
-//         //                       |
-//     }); //    default name for error messages in Passport
-//   }
-// );
 //=========================
 //======= LOGIN BY NICK ====
 //==========================
