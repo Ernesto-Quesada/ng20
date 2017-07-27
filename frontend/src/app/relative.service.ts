@@ -28,7 +28,7 @@ private headers = new Headers({'Content-Type': 'application/json'});
   addRelativeInService (relative) {
     console.log('relative________)))))))from service', relative)
     return this.http.post(this.BASE_URL + `/relative/new`,
-         {relative},
+         relative,
          { withCredentials: true }
          )
         .toPromise()

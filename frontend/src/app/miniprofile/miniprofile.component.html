@@ -3,19 +3,19 @@
       <div class="col-md-4">
           <div class="row" [routerLink]="['/profile']" >
             <div class="panel-heading">
-              <h2 class="panel-title"> {{user.theUserProfile.firstName}} {{user.theUserProfile.lastName}} </h2>
-              <h3 class="panel-title"> {{user.theUserProfile.email}} </h3>
+              <h2 class="panel-title"> {{user.firstName}} {{user.lastName}} </h2>
+              <h3 class="panel-title"> {{user.email}} </h3>
             </div>
           </div>  
           <hr>    
           <div class="row">
             <div class="panel-body">
                 <div class="panel-heading">
-                  <div class="panel-title">You are currently using <h3><b>{{user.theUserProfile.agencyInUseId.nameAgency}}</b></h3> 
+                  <div class="panel-title">You are currently using <h3><b>{{user.agencyInUseId.nameAgency}}</b></h3> 
                     <span>as your money sender</span> 
                   </div>
                   <br>
-                  <p> {{user.theUserProfile.agencyInUseId.email}}</p>
+                  <p> {{user.agencyInUseId.email}}</p>
                   <!-- {{user.theUserProfile.agencyInUseId._id}} -->
                 </div>
               <!-- <button [routerLink]="['/agency',user.theUserProfile.agencyInUseId._id]" class="pull-left">see details</button>

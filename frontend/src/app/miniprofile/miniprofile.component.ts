@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./miniprofile.component.css']
 })
 export class MiniprofileComponent implements OnInit {
-  user: any;
+  user: any = {
+    agencyInUseId: {}
+  };
   errorMessage: any;
 
   constructor(private mySessionService: SenderService, private routetheuser: Router) { }
@@ -16,25 +18,21 @@ export class MiniprofileComponent implements OnInit {
 ngOnInit() {
     this.mySessionService.isLoggedIn()
     .then((userInfo) => {
-      this.user = userInfo;
-    console.log('this.user', this.user)
+
+        this.mySessionService.getProfile()
+              .then((theUsercomingFromApi) => {
+              this.user = theUsercomingFromApi.theUserProfile;
+              this.errorMessage = null;
+              this.routetheuser.navigate(['/portal']);
+            })
+            .catch((err) => {
+              const apiInfo = err.json();
+                    this.errorMessage = apiInfo.message;
+            });
 
       // this.routetheuser.navigate(['/profile']);
   })
   .catch((err) => { this.routetheuser.navigate(['/'])});
-
-  this.mySessionService.getProfile()
-      .then((theUsercomingFromApi) => {
-      this.user = theUsercomingFromApi;
-      console.log('llllll', theUsercomingFromApi);
-      console.log('this.user', this.user)
-      this.errorMessage = null;
-      this.routetheuser.navigate(['/portal']);
-    })
-    .catch((err) => {
-      const apiInfo = err.json();
-            this.errorMessage = apiInfo.message;
-    });
   
   }
 

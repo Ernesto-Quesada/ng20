@@ -66,14 +66,15 @@ routeforUser.get('/relative/new', (req, res, next) => {
 routeforUser.post('/relative/new', ensure.ensureLoggedIn('/login'), (req, res, next) => {
 
       //---receive all inputs from the form ----
+      console.log('<><><><REQ>BODY', req.body)
+
       const nameR = req.body.relativeName;
-      console.log('<><><><nameR', nameR)
       const firstApellR = req.body.firstApell;
       const secondApellR = req.body.secondApell;
-      const cIdentidadR = req.body.carnetId;
-      console.log('<><><><CI', cIdentidadR)
+      const cIdentidadR = req.body.cIdentidad;
+      console.log('<><><><CI', cIdentidadR);
 
-      //   const phoneR = req.body.phoneRelative,
+       const phoneR = req.body.phoneRelative;
       const addressR = req.body.addressRelative;
       const parentescoR = req.body.parentesco;
       //       emailR: req.body.emailRelative,
@@ -84,6 +85,8 @@ routeforUser.post('/relative/new', ensure.ensureLoggedIn('/login'), (req, res, n
         res.status(400).json({message: 'provide all requiered fields' });
               return;
       }
+      
+
       
       Relative.findOne(
             // 1st arg -> criteria of the findOne (which documents)

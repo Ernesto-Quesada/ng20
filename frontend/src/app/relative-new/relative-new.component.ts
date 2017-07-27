@@ -40,13 +40,13 @@ error: any;
 
     this.newRelativeInfo =
     {
-    name: relativeInfoForm.value. relativeName,
+    relativeName: relativeInfoForm.value. relativeName,
     firstApell: relativeInfoForm.value.firstApell,
     secondApell: relativeInfoForm.value.secondApell,
     email: relativeInfoForm.value.emailRelative,
-    phone:  relativeInfoForm.value. phoneRelative,
+    phoneRelative:  relativeInfoForm.value. phoneRelative,
     cIdentidad: relativeInfoForm.value.carnetId,
-    address:  relativeInfoForm.value.addressRelative,
+    addressRelative:  relativeInfoForm.value.addressRelative,
     parentesco: relativeInfoForm.value. parentesco,
     }
     console.log('IIINFO', this.newRelativeInfo)
