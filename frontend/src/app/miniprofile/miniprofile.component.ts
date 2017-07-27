@@ -21,7 +21,7 @@ ngOnInit() {
 
         this.mySessionService.getProfile()
               .then((theUsercomingFromApi) => {
-                console.log("asdasdasdasdasdasdas"+theUsercomingFromApi.theUserProfile.firstName)
+              console.log("asdasdasdasdasdasdas"+theUsercomingFromApi.theUserProfile.firstName)
               this.user = theUsercomingFromApi.theUserProfile;
               this.errorMessage = null;
               this.routetheuser.navigate(['/portal']);

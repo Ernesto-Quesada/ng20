@@ -1,5 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,300,700);
 body{
-    font-family: "Segoe UI";
+    font-family: "PT Sans";
     background:#eaeaea;
 }
 
