@@ -7,6 +7,7 @@
   <div *ngIf="!user" class="col-xs-12  col-sm-4 col-md-3" style="background:#fff;height:100vh">
       <h3 class="margin-bottom-30 fg-black">Login</h3>
       <div class="margin-bottom-30">
+
       <form class="login">
         <fieldset>
           <div class="form-group">
@@ -19,9 +20,11 @@
           </div>
           <!-- Change this to a button or input when using this as a form -->
           <button (click)="login()" class="btn btn-sm btn-primary col-md-4">Login</button>
-          <small class="pull-right"> Not account?<a href="/signup"> Create one! </a></small>
+          <small class="pull-right"> Not account?<a [routerLink]="['/signup']"> Create one! </a></small>
         </fieldset>
       </form>
+
+      
       </div>
       <div id="footer_table" class="footer_block">
         <div class="corporate_footer">
