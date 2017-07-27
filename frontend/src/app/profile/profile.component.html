@@ -1,23 +1,24 @@
-  <div class="row well" >
-
-      
-        <div class="panel-heading">
-          <h3> {{user.theUserProfile.firstName}} {{user.theUserProfile.lastName}} </h3>
-          <p> {{user.theUserProfile.email}}</p>
-          <p> {{user.theUserProfile.phone}}</p>
-          <p> {{user.theUserProfile.address}}</p>          
-        </div>
-                    
-        <div class="panel-body">
-          
-          <fieldset>
-            <div class="panel-heading">
-              <h3 class="panel-title">You are currently using <b>{{user.theUserProfile.agencyInUseId.nameAgency}}</b> agency</h3>
+<div class="container">  
+    <div class="row" >
+        <div class="content-mini col-md-4 well-custom shadow-effect-1 shadow-effect-null fg-primary-text overflow-h">
+          <div class="block block-mini"  [routerLink]="['/profile']">
+            <i class="fa fa-user fg-acent-color icon-mini"></i>
+            <div class="title-mini">
+              <h3> {{user.theUserProfile.firstname}} {{user.theUserProfile.lastName}} </h3>
+                <p> {{user.theUserProfile.email}}</p>
+                <p> {{user.theUserProfile.phone}}</p>
+                <p> {{user.theUserProfile.address}}</p>   
             </div>
-          </fieldset>
+          </div>
+          <span class="pull-left description-mini" >You are currently using <b class="cursor" [routerLink]="['agency/:id', user.theUserProfile.agencyInUseId._id]">{{user.theUserProfile.agencyInUseId.nameAgency}}</b> agency 
+            <span class="hidden-md hidden-lg">for send money to your families</span>
+            <small class="cursor" [routerLink]="['/agency']"><i>view more</i></small>
+          </span>
+          
+          <div class="btn btn-primary pull-left btn-sm" [routerLink]="['/relative/new']">Add a family member</div>
+          <div class="btn btn-primary pull-rigth btn-sm" [routerLink]="['/profile/edit']">Edit your profile</div>
+          
         </div>
-        <div [routerLink]="['/profile/edit']">Edit your profile</div>
-        <div [routerLink]="['/relative/new']">Add a family member</div>
-    
-   
+       
   </div>
+</div>
