@@ -43,11 +43,11 @@ this.getAccountBalance(userInfo);
   
   }
   onKeycuc() {
-    this.usdAmount =  this.cucAmount * 1.12;
+    this.usdAmount =  Math.round(this.cucAmount * 1.12);
   
   }
   onKeyusd() {
-    this.cucAmount = this.usdAmount / 1.12
+    this.cucAmount = Math.round(this.usdAmount / 1.12)
   }
   getRelatives(userInfo): void {
     this.mySenderService
@@ -64,7 +64,8 @@ this.getAccountBalance(userInfo);
   })
 }
 getAccountBalance(userInfo) {
-  this.balance = userInfo.accountSpec[0].balances.available
+  this.balance = userInfo.accountSpec[0].balances.available;
+  this.accountName = userInfo.accountSpec[0].name;
 }
 
 

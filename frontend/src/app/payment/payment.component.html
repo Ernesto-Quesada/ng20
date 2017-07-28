@@ -5,10 +5,10 @@
 <br>
  <label for="usdInput">amount you pay now in USD</label>
 <input type="number" [(ngModel)]='usdAmount' (keyup)="onKeyusd()"> 
-<p>{{usdAmount}}</p>
+
 <hr>
 You are sending money to {{sending}}
-your balance is {{balance}}
+your account named {{accountName}} has a balance of {{balance}} dollars
 
 
 <!-- <app-ministart></app-ministart>

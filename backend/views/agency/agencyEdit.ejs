@@ -3,12 +3,12 @@
   <div class="row">
             <div class="col-md-8">
                
-                <form method="post"  action="/photo/<%= photo._id %> ">
+                <form method="post"  action="/agency/<%= agency._id %> ">
 
                     <div class="control-group form-group">
                         <div class="controls">
-                            <label for="photoTitle">Title</label>
-                            <input type="text" class="form-control" id="photoTitle" type="text" name="photoTitle" value="<%= photo.photoTitle%>">
+                            <label for="nameAgency">Name</label>
+                            <input type="text" class="form-control" id="agencyName" type="text" name="nameAgency" value="<%= agency.nameAgency%>">
                             <p class="help-block"></p>
                         </div>
                     </div>
@@ -16,15 +16,15 @@
 
                     <div class="control-group form-group">
                         <div class="controls">
-                            <label for="yearTaken"> Year: </label>
-                            <input class="form-control" type="number" name="yearTaken" id="yearTaken">
+                            <label for="email"> email </label>
+                            <input class="form-control" type="text" name="email" id="email">
                         </div>
                     </div>
                     
                     <div class="control-group form-group">
                         <div class="controls">
-                            <label for="description"> Description </label>
-                            <textarea rows="10" cols="100" class="form-control" id="description" name="description" placeholder="<%= photo.description%>"></textarea>
+                            <label for="contactPhone"> phone </label>
+                            <textarea rows="10" cols="100" class="form-control" id="contactPhone" name="contactPhone" placeholder="<%= agency.contactPhone%>"></textarea>
                         </div>
                     </div>
                     <div id="success"></div>
@@ -33,9 +33,7 @@
                 </form>
             </div>
             <br>
-            <div class="col-md-4">
-                <img class="img-responsive" src="<%= photo.imageUrl%>" alt="">
-            </div>
+           
 
         </div>
             
