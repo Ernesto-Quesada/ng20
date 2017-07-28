@@ -12,6 +12,8 @@ export class PaymentComponent implements OnInit {
   sending:any;
   error: any;
   relativeSend:any;
+  balance:any;
+  accountName:any;
   relatives:any;
 cucAmount: number;
 usdAmount: number;
@@ -22,7 +24,8 @@ ngOnInit() {
     .then((userInfo) => {
 this.user = userInfo
 console.log('ASDFGHJK', this.user);
-this.getRelatives(userInfo)
+this.getRelatives(userInfo);
+this.getAccountBalance(userInfo);
         // this.mySenderService.getPrle()
         //       .then((theUsercomingFromApi) => {
         //       this.user = theUsercomingFromApi.theUserProfile;
@@ -59,8 +62,11 @@ this.getRelatives(userInfo)
         })
 
   })
-
-
-
 }
+getAccountBalance(userInfo) {
+  this.balance = userInfo.accountSpec[0].balances.available
+}
+
+
+
 }

@@ -107,13 +107,15 @@ routeforPlaid.post('/accountPlaid/accounts/get', function(request, response, nex
      // console.log('RESULTS FORM PAID', result);
       var filteredAccounts = result.accounts.filter((value)=>{
          console.log('valu', value);
+         //returns only checking acc
           return value.subtype=="checking";
       })
-
+      console.log('FILTERED ACCOUNTS', filteredAccounts)
     User.findByIdAndUpdate( request.user._id, 
       {accountSpec: filteredAccounts},
     (err,accountSpecsSaved) =>{
-      if (err) {response.status(500).json({ message: 'Tokens update went to 💩.' });
+      if (err) {response.status(500)
+                .json({ message: 'Tokens update went to 💩.' });
                 return;
                 }
           response.json({

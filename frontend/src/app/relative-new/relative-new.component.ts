@@ -10,7 +10,16 @@ import { NgForm} from '@angular/forms'
   styleUrls: ['./relative-new.component.css']
 })
 export class RelativeNewComponent implements OnInit {
-newRelativeInfo: {};
+newRelativeInfo = { relativeName: '',
+                    firstApell: '',
+                    secondApell: '',
+                    parentesco: '',
+                    addressRelative: '',
+                    cIdentidad: '',
+                    phoneRelative: '',
+                    // emailRelative: '',
+
+                }
 relative: any;
 user: any;
 error: any;
@@ -43,9 +52,9 @@ error: any;
     relativeName: relativeInfoForm.value. relativeName,
     firstApell: relativeInfoForm.value.firstApell,
     secondApell: relativeInfoForm.value.secondApell,
-    email: relativeInfoForm.value.emailRelative,
+    cIdentidad: relativeInfoForm.value.cIdentidad,
     phoneRelative:  relativeInfoForm.value. phoneRelative,
-    cIdentidad: relativeInfoForm.value.carnetId,
+    // email: relativeInfoForm.value.emailRelative,
     addressRelative:  relativeInfoForm.value.addressRelative,
     parentesco: relativeInfoForm.value. parentesco,
     }

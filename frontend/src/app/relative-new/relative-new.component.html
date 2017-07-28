@@ -16,47 +16,47 @@
                         <form class="new-relative" (ngSubmit)='addRelative(relativeInfoForm)' #relativeInfoForm='ngForm' onSubmit="return false">
                             <div class="control-group form-group">
                                 <div class="controls">
-                                    <input type="text" placeholder="Your Relative's Name" class="form-control" id="relativeName" name='relativeName' [(ngModel)]="relativeName"
+                                    <input type="text" placeholder="Your Relative's Name" class="form-control" id="relativeName" name='relativeName' [(ngModel)]="newRelativeInfo.relativeName"
                                         autofocus>
                                     <p class="help-block"></p>
                                 </div>
                             </div>
                             <div class="control-group form-group">
                                 <div class="controls">
-                                    <input class="form-control" placeholder="First Surname" type="text" name='firstApell' [(ngModel)]="firstApell" id="firstApell">
+                                    <input class="form-control" placeholder="First Surname" type="text" name='firstApell' [(ngModel)]="newRelativeInfo.firstApell" id="firstApell">
                                 </div>
                             </div>
                             <div class="control-group form-group">
                                 <div class="controls">
-                                    <input class="form-control" placeholder="Second Surname" type="text" name='secondApell' [(ngModel)]="secondApell" id="secondApell">
+                                    <input class="form-control" placeholder="Second Surname" type="text" name='secondApell' [(ngModel)]="newRelativeInfo.secondApell" id="secondApell">
                                 </div>
                             </div>
                             <div class="control-group form-group">
                                 <div class="controls">
-                                    <input class="form-control" placeholder="Parentesco" type="text" name='parentesco' [(ngModel)]="parentesco" id="parentesco">
+                                    <input class="form-control" placeholder="Parentesco" type="text" name='parentesco' [(ngModel)]="newRelativeInfo.parentesco" id="parentesco">
                                 </div>
                             </div>
                             <div class="control-group form-group">
                                 <div class="controls">
-                                    <input class="form-control" placeholder="Relative's Address" type="text" name='addressRelative' [(ngModel)]="addressRelative"
+                                    <input class="form-control" placeholder="Relative's Address" type="text" name='addressRelative' [(ngModel)]="newRelativeInfo.addressRelative"
                                         id="addressRelative">
                                 </div>
                             </div>
                             <div class="control-group form-group">
                                 <div class="controls">
-                                    <input class="form-control" placeholder="Carnet Id" type="text" name='carnetId' [(ngModel)]="carnetId" id="carnetId">
+                                    <input class="form-control" placeholder="Carnet Id" type="text" name='cIdentidad' [(ngModel)]="newRelativeInfo.cIdentidad" id="cIdentidad">
                                 </div>
                             </div>
                             <div class="control-group form-group">
                                 <div class="controls">
-                                    <input class="form-control" placeholder="Relative's Phone" type="text" name='phoneRelative' [(ngModel)]="phoneRelative" id="phoneRelative">
+                                    <input class="form-control" placeholder="Relative's Phone" type="text" name='phoneRelative' [(ngModel)]="newRelativeInfo.phoneRelative" id="phoneRelative">
                                 </div>
                             </div>
-                            <div class="control-group form-group">
+                            <!-- <div class="control-group form-group">
                                 <div class="controls">
-                                    <input class="form-control" placeholder="Relative's Email" type="text" name="emailRelative" [(ngModel)]="emailRelative" id="emailRelative">
+                                    <input class="form-control" placeholder="Relative's Email" type="text" name="emailRelative" [(ngModel)]="newRelativeInfo.emailRelative" id="emailRelative">
                                 </div>
-                            </div>
+                            </div> -->
                             <div id="success"></div>
                             <!-- For success/fail messages -->
                             <button [routerLink]="['/profile']" class="btn btn-default btn-sm pull-left">Cancel</button>
