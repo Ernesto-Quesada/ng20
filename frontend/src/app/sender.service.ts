@@ -5,10 +5,13 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Rx';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class SenderService {
-  BASE_URL: string = 'http://localhost:3000';
+  // BASE_URL: string = 'http://localhost:3000';
+    BASE_URL: string = environment.API_URL;
+
 
   private loggedInSource = new Subject<any>();
 
@@ -27,6 +30,7 @@ export class SenderService {
 
 // ------isLoggedIn  start-----
   isLoggedIn () {
+    console.log('APIURL',this.BASE_URL)
   return this.http
   .get(
     this.BASE_URL + '/loggedin',

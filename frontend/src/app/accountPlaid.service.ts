@@ -4,13 +4,15 @@ import { Http, Response ,Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class AccountPlaidService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   // tslint:disable-next-line:no-inferrable-types
-  BASE_URL: string = 'http://localhost:3000';
+  // BASE_URL: string = 'http://localhost:3000';
+  BASE_URL: string = environment.API_URL
 
   constructor(private http: Http) { }
 

@@ -24,7 +24,7 @@ ngOnInit() {
               // console.log("asdasdasdasdasdasdas" +theUsercomingFromApi.theUserProfile.firstName)
               this.user = theUsercomingFromApi.theUserProfile;
               this.errorMessage = null;
-              this.routetheuser.navigate(['/portal']);
+              // this.routetheuser.navigate(['/portal']);
             })
             .catch((err) => {
               const apiInfo = err.json();
