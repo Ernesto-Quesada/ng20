@@ -1,4 +1,41 @@
-<div class="row">
+<div class="container">  
+    <div class="row" >
+        <div class="content-mini col-md-4 well-custom shadow-effect-1 shadow-effect-null fg-primary-text overflow-h">
+          <div class="row">
+            <div class="block block-mini">
+              <i class="fa fa-users fg-acent-color icon-mini"></i>
+              <div>
+                <h2>Relatives</h2>
+              </div>
+            </div>
+          </div>
+          <div *ngIf='!relatives'>
+            <h3>You still dont have any relative added</h3>
+            <button [routerLink]="['/relative/new']" class="btn btn-primary btn-lg">Add a relative</button>
+
+          </div>
+           <div *ngIf='relatives'> 
+             <button [routerLink]="['/relative/new']" > Add a relative</button>
+              <div class="row list-agencies-content">
+                    <div class="col-md-12" *ngFor="let relative of relatives">
+                      <h3 (click)="onSelect(relative)" style="border-bottom:solid 1px #ededed; padding-bottom:5px">
+                        {{relative.name}}
+                      </h3>
+                    </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-8 well-custom bg-gray-light shadow-effect-1 content-agency-right">
+          <app-relative [relativeToDetails]="selectedRelative"></app-relative>
+        </div>
+  </div>
+</div>
+
+   
+
+
+
+<!-- <div class="row">
   <div class="col-lg-10 col-md-6 col-xs-6">
     <h1 class="page-header">Relatives</h1>
   </div>
@@ -31,7 +68,7 @@
 <div>
         <div class="panel-body"><app-relative [relativeToDetails]="selectedRelative"></app-relative></div>
   </div>
-</div>
+</div> -->
 <!-- <div *ngIf='user'>
  <a [routerLink]="['/payment']">Next</a>
 </div> -->

@@ -23,7 +23,6 @@ body{
 
 .shadow-effect-1
 {
-  padding: 2em !important;
   box-shadow: 0 0.5px 0 0 #ffffff inset, 0 1px 2px 0 #B3B3B3;
 }
 
@@ -39,6 +38,8 @@ body{
   -moz-box-shadow: 0 8px 8px -6px #777;
    box-shadow: 0 8px 8px -6px #777;
 }
+
+
 
 .margin-bottom-30{
     padding-bottom: 30px;
@@ -86,6 +87,9 @@ h2.title-single-layout{
     font-family: "Segoe UI"
 }
 
+.icon-mini-o{
+        font-size: 3em;
+     }
 .well-custom 
 {
     border-radius:0;
@@ -109,6 +113,11 @@ h2.title-single-layout{
 .bg-gray
 {
     background:#717171 !important
+}
+
+.bg-gray-light
+{
+    background: #969696
 }
 
 .bg-divide-color
@@ -177,6 +186,14 @@ h2.title-single-layout{
         display: none;
     }   
    
+    .list-agencies-content
+    {
+        height: 15em;
+        overflow-y: auto
+    }
+    .content-agency-right{
+        padding: 1em 0
+    }
 }
 
 @media screen and (max-width: 990px) and (min-width: 751px) {
@@ -185,12 +202,44 @@ h2.title-single-layout{
          text-align: left
      }
      .icon-mini{
-        font-size: 4em;
-        height: 2em;
-        width: 2em;
+        font-size: 4.5em;
+        margin-top: 0.3em;
+        margin-left: 0.5em;
+        height: 1em;
+        width: 1.5em;
         padding-top: 0.3em;
         float: left;
      }
+    .panel-buttom{
+        
+        overflow: hidden;
+        position: absolute;
+        bottom: 1em;
+        right: 1em;
+    }
+    .panel-buttom .btn{
+        float: right;
+    }
+
+    .icon-mini-o
+    {
+        float: left;
+        margin: 0.2em;    
+    }
+
+    .content-right-data{
+        float:left
+    }
+    .form-right-content
+    {
+        float:right
+    }
+    
+    .list-agencies-content
+    {
+        height: 27em;
+        overflow-y: auto
+    }
 }
 
 @media screen and (max-width: 1170px) and (min-width: 991px) {
@@ -213,8 +262,22 @@ h2.title-single-layout{
         min-height: 22em;
     }
     .shadow-effect-1{
-        padding: 2em !important;
         box-shadow: 6px -2.5px 4px -3px rgba(0, 0, 0, 0.45) inset, 0 1px 2px 0 #fbf8f8;
+    }
+    .panel-buttom{
+        
+        overflow: hidden;
+        position: absolute;
+        bottom: 1em;
+        right: 1em;
+    }
+    .panel-buttom .btn{
+        float: right;
+    }
+
+     .form-right-content{
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
 }
 
@@ -237,11 +300,60 @@ h2.title-single-layout{
     }   
     .well-custom{
         min-height: 25em;
-        margin: 0 0.5em 0 0.5em;
-        max-width: 26em;
+        /* margin: 0 0.5em 0 0.5em; */
+       
     }
     .shadow-effect-1{
-        padding: 2em !important;
         box-shadow: none;
     }
+
+    .panel-buttom{
+        
+        overflow: hidden;
+        position: absolute;
+        bottom: 1em;
+       
+    }
+    .panel-buttom .btn{
+        float: right;
+    }
+
+    .form-right-content{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+.btn-default{
+        background-color: #e2dbdb;
+}
+
+.btn-circle {
+  width: 1em;
+  height: 1empx;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
+.currency{
+    font-size: 1.5em
 }
