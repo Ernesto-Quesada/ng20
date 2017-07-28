@@ -102,7 +102,7 @@ router.get('/agency/:id/edit',(req,res,next) => {  //-----------
       res.status(500).json({ message: 'Something went wrong.' });
       return;
     }
-    res.render('Agencys/editAgency.ejs', {
+    res.render('agency/agencyEdit.ejs', {
       Agency:theAgency
     });
     }); 
@@ -113,10 +113,13 @@ router.post('/agency/:id', (req, res, next) => {    //----------
     const agencyId = req.params.id;
         
       const agencyChanges = {
-        agencyTitle: req.body.AgencyTitle,
-        yearTaken: req.body.yearTaken,
+        nameAgency: req.body.agencyName,
+        email:req.body.email,
+        contactPhone: req.body.contactPhone
+
+        
         // author: req.body.author,
-        description: req.body.description,
+        
         // imageUrl: req.body.imageUrl,
       };
       Agency.findByIdAndUpdate( agencyId,agencyChanges, (err,theAgency) =>{
@@ -138,7 +141,7 @@ router.post('/agency',
     (req, res, next) => {      
         const nameAgency = req.body.nameAgencyInput;
         const emailAgency = req.body.emailAgencyInput;
-        contactPhone: req.body.phoneInput,
+        
         //author: req.user._id,
         //usersWithThisAgency:req.user._id,
        // address: req.body.description,
@@ -182,7 +185,7 @@ router.post('/agency',
         const theAgency = new Agency({
           nameAgency: req.body.nameAgencyInput,
           email: req.body.emailAgencyInput,
-          phone: req.body.phoneInput,
+          contactPhone: req.body.phoneInput,
           //address:,
         });
          // Save it

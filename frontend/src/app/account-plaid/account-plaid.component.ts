@@ -9,14 +9,14 @@ import {AccountPlaidService} from '../accountPlaid.service'
 
 export class AccountPlaidComponent implements OnInit {
 
-  PLAID_ENV:string;
-  PLAID_PUBLIC_KEY:string;
-  _accountPlaidService:AccountPlaidService;
-  accountsUser:any;
+  PLAID_ENV: string;
+  PLAID_PUBLIC_KEY: string;
+  _accountPlaidService: AccountPlaidService;
+  accountsUser: any;
 
   constructor(private accountPlaidService: AccountPlaidService) 
   {
-    this._accountPlaidService=accountPlaidService;
+    this._accountPlaidService = accountPlaidService;
   }
 
   ngOnInit() {
@@ -52,7 +52,7 @@ export class AccountPlaidComponent implements OnInit {
             accountPlaidComponent.accountsUser = accounts.results
 
             accounts.results.forEach(element => {
-              console.log(element.name);
+              console.log('elements from plaid--->', element.name);
             });
           })
         })

@@ -11,7 +11,7 @@
           </div>
           <div class="row list-agencies-content">
                 <div class="col-md-12" *ngFor="let agency of agencies">
-                  <h3 (click)="onSelect(agency)" style="border-bottom:solid 1px #ededed; padding-bottom:5px">
+                  <h3 (click)="onSelect(agency)" class="cursor" style="border-bottom:solid 1px #ededed; padding-bottom:5px">
                     {{agency.nameAgency}}
                   </h3>
                 </div>

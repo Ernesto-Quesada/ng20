@@ -12,6 +12,8 @@ export class PaymentComponent implements OnInit {
   sending:any;
   error: any;
   relativeSend:any;
+  balance:any;
+  accountName:any;
   relatives:any;
 cucAmount: number;
 usdAmount: number;
@@ -22,7 +24,8 @@ ngOnInit() {
     .then((userInfo) => {
 this.user = userInfo
 console.log('ASDFGHJK', this.user);
-this.getRelatives(userInfo)
+this.getRelatives(userInfo);
+this.getAccountBalance(userInfo);
         // this.mySenderService.getPrle()
         //       .then((theUsercomingFromApi) => {
         //       this.user = theUsercomingFromApi.theUserProfile;
@@ -40,11 +43,11 @@ this.getRelatives(userInfo)
   
   }
   onKeycuc() {
-    this.usdAmount =  this.cucAmount * 1.12;
+    this.usdAmount =  Math.round(this.cucAmount * 1.12);
   
   }
   onKeyusd() {
-    this.cucAmount = this.usdAmount / 1.12
+    this.cucAmount = Math.round(this.usdAmount / 1.12)
   }
   getRelatives(userInfo): void {
     this.mySenderService
@@ -59,8 +62,12 @@ this.getRelatives(userInfo)
         })
 
   })
-
-
-
 }
+getAccountBalance(userInfo) {
+  this.balance = userInfo.accountSpec[0].balances.available;
+  this.accountName = userInfo.accountSpec[0].name;
+}
+
+
+
 }

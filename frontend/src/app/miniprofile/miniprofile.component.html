@@ -12,8 +12,16 @@
       </h4>
     </span>
   </div>
+  <div *ngIf='user.agencyInUseId'>
   <span class="pull-left description-mini" >You are currently using <b class="cursor" [routerLink]="['agency/:id', user.agencyInUseId._id]">{{user.agencyInUseId.nameAgency}}</b> agency 
     <span class="hidden-md">for send money to your families</span>
     <small class="cursor" [routerLink]="['/agency']"><i>view more</i></small>
   </span>
+  </div>
+  <div *ngIf='!user.agencyInUseId'> 
+      <span class="pull-left description-mini" >You currently have not selected any agency
+        <small class="cursor" [routerLink]="['/agency']"><i>view more</i></small>
+      </span>
+
+  </div>
 </div>

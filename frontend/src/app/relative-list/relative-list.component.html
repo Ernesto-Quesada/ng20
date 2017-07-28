@@ -18,7 +18,7 @@
              <button [routerLink]="['/relative/new']" > Add a relative</button>
               <div class="row list-agencies-content">
                     <div class="col-md-12" *ngFor="let relative of relatives">
-                      <h3 (click)="onSelect(relative)" style="border-bottom:solid 1px #ededed; padding-bottom:5px">
+                      <h3 (click)="onSelect(relative)" class="cursor" style="border-bottom:solid 1px #ededed; padding-bottom:5px">
                         {{relative.name}}
                       </h3>
                     </div>

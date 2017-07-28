@@ -13,7 +13,13 @@ export class SignupComponent implements OnInit {
 
   // loginInfo = {};
   //signupInfo: Signup;
-  signupInfo = {};
+  signupInfo = {firstNameInput: '',
+                lastNameInput: '',
+                emailInput: '',
+                 phoneInput: '',
+                 signupPassword: '',
+                countryInput: ''
+                }
 
   user: any;
   error: string;

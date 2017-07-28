@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class MiniprofileComponent implements OnInit {
   user: any = {
-     agencyInUseId: {}
+     agencyInUseId: { _id: '',
+                    nameAgency: ''}
   };
   errorMessage: any;
 

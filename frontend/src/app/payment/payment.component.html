@@ -21,6 +21,20 @@
 
 
         <!-- <app-ministart></app-ministart>
+<div>calculadora</div>
+<label for="cucInput">amount to be paid in Cuba in CUC</label>
+<input type='number' [(ngModel)]='cucAmount' (keyup)="onKeycuc()">
+<hr>
+<br>
+ <label for="usdInput">amount you pay now in USD</label>
+<input type="number" [(ngModel)]='usdAmount' (keyup)="onKeyusd()"> 
+
+<hr>
+You are sending money to {{sending}}
+your account named {{accountName}} has a balance of {{balance}} dollars
+
+
+<!-- <app-ministart></app-ministart>
 <app-miniplaid></app-miniplaid> -->
 
     </div>

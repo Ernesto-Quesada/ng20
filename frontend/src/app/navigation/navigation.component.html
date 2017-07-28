@@ -19,7 +19,7 @@
                             <a [routerLink]="['/login']">Log In</a>
                         </li>
                         <li *ngIf='userLogged'>
-                            <a (click)='logMeOut()'>Log Out</a>
+                            <a (click)='logMeOut()' class="cursor">Log Out</a>
                         </li>
                         <li *ngIf='userLogged'>
                             <a [routerLink]="['/portal']">portal</a>
