@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // importing the service that will call the Express API
 import { SenderService } from '../sender.service';
 import { Router } from '@angular/router';
+// import { Signup } from '../models/signupmodel'
 
 @Component({
   selector: 'app-signup',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   // loginInfo = {};
+  //signupInfo: Signup;
   signupInfo = {};
 
   user: any;

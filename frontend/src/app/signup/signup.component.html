@@ -36,7 +36,7 @@
                                 
 <!-- Change this to a button or input when using this as a form -->
        <button (click)="signup()" class="btn btn-sm btn-primary col-md-4">Sign Up</button>
-       <small class="pull-right"> Do you already have an account?<a href="/login"> login! </a></small>
+       <small class="pull-right"> Do you already have an account?<a [routerLink]="['/login']"> login! </a></small>
        </fieldset>
       </form>
       </div>
