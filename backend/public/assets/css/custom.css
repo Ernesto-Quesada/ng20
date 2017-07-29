@@ -23,7 +23,6 @@ body{
 
 .shadow-effect-1
 {
-  padding: 2em !important;
   box-shadow: 0 0.5px 0 0 #ffffff inset, 0 1px 2px 0 #B3B3B3;
 }
 
@@ -40,6 +39,8 @@ body{
    box-shadow: 0 8px 8px -6px #777;
 }
 
+
+
 .margin-bottom-30{
     padding-bottom: 30px;
 }
@@ -47,8 +48,19 @@ body{
 
 .footer_block {
     color: #767676;
-    font-family: "Segoe UI Webfont","Helvetica Neue","Lucida Grande","Roboto","Ebrima","Nirmala UI","Gadugi","Segoe Xbox Symbol","Segoe UI Symbol","Meiryo UI","Khmer UI","Tunga","Lao UI","Raavi","Iskoola Pota","Latha","Leelawadee","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Estrangelo Edessa","Microsoft Himalaya","Microsoft New Tai Lue","Microsoft PhagsPa","Microsoft Tai Le","Microsoft Yi Baiti","Mongolian Baiti","MV Boli","Myanmar Text","Cambria Math";
+    
+    font-family: "PT Sans","Segoe UI Webfont","Helvetica Neue","Lucida Grande","Roboto","Ebrima","Nirmala UI","Gadugi","Segoe Xbox Symbol","Segoe UI Symbol","Meiryo UI","Khmer UI","Tunga","Lao UI","Raavi","Iskoola Pota","Latha","Leelawadee","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Estrangelo Edessa","Microsoft Himalaya","Microsoft New Tai Lue","Microsoft PhagsPa","Microsoft Tai Le","Microsoft Yi Baiti","Mongolian Baiti","MV Boli","Myanmar Text","Cambria Math";
 }
+
+
+#footer{
+    margin-top:10px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    color: #827474;
+    background: url("../images/texture/t6.png") repeat #212121;;
+}
+
 
 .section-login{
   height: 100vh;
@@ -62,7 +74,7 @@ body{
     bottom: 0;
     right: 0;
     position: absolute;
-    width: 100vh; 
+    width: 100%;
     height: 100vh;
 }
 
@@ -75,6 +87,9 @@ h2.title-single-layout{
     font-family: "Segoe UI"
 }
 
+.icon-mini-o{
+        font-size: 3em;
+     }
 .well-custom 
 {
     border-radius:0;
@@ -98,6 +113,11 @@ h2.title-single-layout{
 .bg-gray
 {
     background:#717171 !important
+}
+
+.bg-gray-light
+{
+    background: #969696
 }
 
 .bg-divide-color
@@ -147,21 +167,33 @@ h2.title-single-layout{
     border-top:solid 1px #ededed
 }
 
-#footer{
-    margin-top:10px;
-    padding-top: 35px;
-    padding-bottom: 35px;
-    color: #827474;
-    background: #212121;
-    
-}
-
 .cursor{
     cursor: pointer;
 }
 
 
+
+
+
+
+
 @media screen and (max-width: 750px){
+
+.icon-lg {
+    font-size: 5em;
+    height: 2em;
+    width: 2em;
+    padding-top: 0.3em;
+    line-height: 108px;
+    color: #fff;
+    margin: 10px;
+    background-color: rgb(0, 162, 233);
+    text-align: center;
+    display: inline-block !important;
+    border-radius: 100%;
+box-shadow: 0px 5.1px 18px #8a8a8a;
+}
+
      .content-mini
      {
          text-align: left
@@ -175,20 +207,77 @@ h2.title-single-layout{
         display: none;
     }   
    
+    .list-agencies-content
+    {
+        height: 15em;
+        overflow-y: auto
+    }
+    .content-agency-right{
+        padding: 1em 0
+    }
 }
 
 @media screen and (max-width: 990px) and (min-width: 751px) {
+
+    .icon-lg {
+    font-size: 8em;
+    height: 2em;
+    width: 2em;
+    padding-top: 0.5em;
+    line-height: 108px;
+    color: #fff;
+    margin: 10px;
+    background-color: rgb(0, 162, 233);
+    text-align: center;
+    display: inline-block !important;
+    border-radius: 100%;
+box-shadow: 0px 5.1px 18px #8a8a8a;
+}
+
+
      .content-mini
      {
          text-align: left
      }
      .icon-mini{
-        font-size: 4em;
-        height: 2em;
-        width: 2em;
+        font-size: 4.5em;
+        margin-top: 0.3em;
+        margin-left: 0.5em;
+        height: 1em;
+        width: 1.5em;
         padding-top: 0.3em;
         float: left;
      }
+    .panel-buttom{
+        
+        overflow: hidden;
+        position: absolute;
+        bottom: 1em;
+        right: 1em;
+    }
+    .panel-buttom .btn{
+        float: right;
+    }
+
+    .icon-mini-o
+    {
+        float: left;
+        margin: 0.2em;    
+    }
+
+    .content-right-data{
+        float:left
+    }
+    .form-right-content
+    {
+        float:right
+    }
+    
+    .list-agencies-content
+    {
+        height: 27em;
+        overflow-y: auto
+    }
 }
 
 @media screen and (max-width: 1170px) and (min-width: 991px) {
@@ -211,12 +300,56 @@ h2.title-single-layout{
         min-height: 22em;
     }
     .shadow-effect-1{
-        padding: 2em !important;
         box-shadow: 6px -2.5px 4px -3px rgba(0, 0, 0, 0.45) inset, 0 1px 2px 0 #fbf8f8;
     }
+    .panel-buttom{
+        
+        overflow: hidden;
+        position: absolute;
+        bottom: 1em;
+        right: 1em;
+    }
+    .panel-buttom .btn{
+        float: right;
+    }
+
+     .form-right-content{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .icon-lg {
+    font-size: 8em;
+    height: 2em;
+    width: 2em;
+    padding-top: 0.5em;
+    line-height: 108px;
+    color: #fff;
+    margin: 10px;
+    background-color: rgb(0, 162, 233);
+    text-align: center;
+    display: inline-block !important;
+    border-radius: 100%;
+box-shadow: 0px 5.1px 18px #8a8a8a;
+}
 }
 
 @media screen and (min-width: 1171px) {
+.icon-lg {
+    font-size: 8em;
+    height: 2em;
+    width: 2em;
+    padding-top: 0.5em;
+    line-height: 108px;
+    color: #fff;
+    margin: 10px;
+    background-color: rgb(0, 162, 233);
+    text-align: center;
+    display: inline-block !important;
+    border-radius: 100%;
+box-shadow: 0px 5.1px 18px #8a8a8a;
+}
+
     .content-mini
      {
          text-align: center
@@ -235,11 +368,60 @@ h2.title-single-layout{
     }   
     .well-custom{
         min-height: 25em;
-        margin: 0 0.5em 0 0.5em;
-        max-width: 26em;
+        /* margin: 0 0.5em 0 0.5em; */
+       
     }
     .shadow-effect-1{
-        padding: 2em !important;
         box-shadow: none;
     }
+
+    .panel-buttom{
+        
+        overflow: hidden;
+        position: absolute;
+        bottom: 1em;
+       
+    }
+    .panel-buttom .btn{
+        float: right;
+    }
+
+    .form-right-content{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+.btn-default{
+        background-color: #e2dbdb;
+}
+
+.btn-circle {
+  width: 1em;
+  height: 1empx;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
+.currency{
+    font-size: 1.5em
 }

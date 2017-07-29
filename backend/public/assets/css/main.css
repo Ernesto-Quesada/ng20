@@ -53,7 +53,7 @@ a:focus {
 
 }
 #main-slider {
-  background-image: url(../images/slider-bg.jpg);
+  background-image: url(../images/slider-background.png);
   background-attachment: fixed;
   background-size: cover;
   background-position: 50% 50%;
@@ -180,7 +180,7 @@ a:focus {
   font-size: 48px;
 }
 #portfolio .box {
-  background: #f3f3f3;
+  background: url("../images/connected.png")  #00a2e9;
 }
 .portfolio-items,
 .portfolio-filter {
@@ -314,6 +314,7 @@ a:focus {
   transition: none;
 }
 #pricing .box {
+  background: url("../images/connected2.png") repeat-y;
   background-color: #f9f9f9;
 }
 #pricing .plan {
