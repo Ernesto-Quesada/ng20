@@ -7,44 +7,28 @@
                 <h2 class="fg-white title-mini">Money to send </h2>
             </div>
             <div class="" >
-                <label for="cucInput">amount to be paid in Cuba in <span class="currency">CUC</span></label>
+                <label for="cucInput">amount to be paid in <span class="currency">CUC</span></label>
                 <input type='number' [(ngModel)]='cucAmount' (keyup)="onKeycuc()" class="fg-primary-text">
                 <hr>
                 <br>
                 <label for="usdInput">amount you pay now in <span class="currency">USD</span></label>
                 <input type="number" [(ngModel)]='usdAmount' (keyup)="onKeyusd()" class="fg-primary-text">
                 <p>{{usdAmount}}</p>
-                <hr> Yuo are sending money to <h3 class="fg-white">{{sending}}</h3>
+                <hr> You are sending money to <h3 class="fg-white">{{sending}}</h3>
+                <p>your account named {{accountName}} will be charged for {{usdAmount}} USD</p>
             </div>
             
             </div>
 
+            <div>
+                <a [routerLink]="['/portal']">Cancel</a>
+            </div>
+            <div>
+            <div (click)='sendMoney()'>
+                <h1>Send</h1>
+            </div> 
+            </div>
 
-        <!-- <app-ministart></app-ministart>
-<div>calculadora</div>
-<label for="cucInput">amount to be paid in Cuba in CUC</label>
-<input type='number' [(ngModel)]='cucAmount' (keyup)="onKeycuc()">
-<hr>
-<br>
- <label for="usdInput">amount you pay now in USD</label>
-<input type="number" [(ngModel)]='usdAmount' (keyup)="onKeyusd()"> 
-
-<hr>
-You are sending money to {{sending}}
-your account named {{accountName}} has a balance of {{balance}} dollars
-<div>
-    <a [routerLink]="['/portal']">Cancel</a>
-</div>
-<div>
- <div (click)='sendMoney()'>
-    <h1>Send</h1>
-</div> 
-</div>
-
-
-<!-- <app-ministart></app-ministart>
-<app-miniplaid></app-miniplaid> -->
-
-    </div>
-</div>
+                </div>
+            </div>
 </section>

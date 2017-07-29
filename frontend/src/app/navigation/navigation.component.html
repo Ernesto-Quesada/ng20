@@ -22,13 +22,13 @@
                             <a (click)='logMeOut()' class="cursor">Log Out</a>
                         </li>
                         <li *ngIf='userLogged'>
-                            <a [routerLink]="['/portal']">portal</a>
+                            <a [routerLink]="['/portal']">Portal</a>
                         </li>
-                        <li *ngIf='userLogged'>
+                        <!-- <li *ngIf='userLogged'>
                             <a [routerLink]="['/profile']">profile</a>
-                        </li>
+                        </li> -->
                         <li *ngIf='!userLogged'>
-                            <a [routerLink]="['/signup']">signup</a>
+                            <a [routerLink]="['/signup']">Signup</a>
                         </li>
                         <li>
                         <a [routerLink]="['/agency']" >Agencies</a>
