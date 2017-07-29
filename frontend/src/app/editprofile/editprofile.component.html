@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 well-custom bg-white overflow-h">
+    <div class="col-md-12 well-custom bg-white overflow-h" style="padding:2em">
       <div class="row">
-        <div class="content-mini col-md-4 well-custom shadow-effect-1 shadow-effect-null fg-primary-text overflow-h">
+        <div class="content-mini col-md-4 well-custom fg-primary-text overflow-h">
           <div class="block block-mini">
 
             <i class="fa fa-user fg-acent-color icon-mini"></i>
@@ -11,7 +11,7 @@
             </div>
           </div>
         </div>
-        <div class="content-mini col-md-8  well-custom shadow-effect-1 shadow-effect-null fg-white overflow-h">
+        <div class="content-mini col-md-8  well-custom fg-white overflow-h">
           <div class="block block-mini">
             <form class="form">
               <div class="control-group form-group">
@@ -43,8 +43,8 @@
               </div>
               <div id="success"></div>
               <!-- For success/fail messages -->
-              <button (click)="editProfile()" class="btn btn-default btn-sm pull-left" [routerLink]="['/profile']">Cancel</button>
-              <button (click)="editProfile()" class="btn btn-primary btn-sm pull-right">Done</button>
+              <button (click)="editProfile()" class="btn btn-default btn-md pull-left" [routerLink]="['/profile']">Cancel</button>
+              <button (click)="editProfile()" class="btn btn-primary btn-md pull-right">Done</button>
 
             </form>
           </div>

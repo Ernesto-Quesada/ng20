@@ -1,11 +1,16 @@
 <div *ngIf='relativeToDetails'>
-  <h2>{{relativeToDetails.name}} {{relativeToDetails.firstApell}} {{relativeToDetails.secondApell}}</h2>
-  <h3>choose your relative</h3>{{relativeToDetails._id}}
-  <form>
-    <input type="radio" name="selectedAgency" value="selected">
-    <!-- <input type="submit" value="Select"> -->
-    <button (click)="selectRelative(relativeToDetails._id)" class="btn btn-lg">Select</button>
-
-   </form> 
-  
+  <div style="text-align:center"> 
+    <div>
+      <h1 class="icon-right-content"><i class="fa fa-users icon-mini-o fg-primary-text"></i></h1>
+      <div class="content-right-data">
+      <h2 class="fg-white title-right-content"> {{relativeToDetails.name}} {{relativeToDetails.firstApell}} {{relativeToDetails.secondApell}} </h2>
+      
+    </div>
+    <div class="form-right-content" style="margin-top:30px">
+      <!-- <p>Select {{agencyToDetails.nameAgency}} as your prefered agency</p> -->
+      <form>
+        <button (click)="selectRelative(relativeToDetails._id)" class="btn btn-warning btn-lg">Select</button>
+      </form>
+    </div>
+  </div>
 </div>

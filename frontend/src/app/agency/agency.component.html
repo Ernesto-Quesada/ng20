@@ -1,110 +1,26 @@
-        <div class="row">
-            <div class="col-lg-10 col-md-6 col-xs-6">
-                <h1 class="page-header">Agencies</h1>
-                 
-            </div>
-              
-        </div>
-    
-<div class="row">
-  <div class="col-md-6 col-sm-6 col-xs-6">
-    <div class="panel-group">
-
-        <div class="panel panel-default" *ngFor="let agency of agencies">
-          <a  (click)="onSelect(agency)">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                {{agency.nameAgency}}
-              </h4>
-            </div>
-          </a>
-          <div class="panel-collapse collapse">
-      </div>
-
-        </div>
-   </div>
-  </div>
-  <div class="col-md-6 col-sm-6 col-xs-6">
-          <div>
-            <div class="panel-body">
-              <app-agency-details [agencyToDetails]="selectedAgency" [user]="user"></app-agency-details></div>
-          </div>
-  </div>
-      
-</div>
-<div>
-  <button [routerLink]="['/portal']" >Home</button>
-</div>
-
-
-
-
-
-
-<!--<h2>list of agencies</h2>
-<div>
-  <label>Agency name:</label> <input #agencyName />
-  <button (click)="add(agencyName.value); agencyName.value=''">
-    Add
-  </button>
-</div>
-<ul class="agencies">
-  <li *ngFor="let agency of agencies" (click)="onSelect(agency)"[class.selected]="agency === selectedagency">
-    <span class="badge">{{agency.email}}</span>
-    <span>{{agency.nameAgency}}</span>
-    <button class="delete"
-      (click)="delete(agency); $event.stopPropagation()"> x </button>
-  </li>
-</ul>
-<div *ngIf="selectedAgency">
-  <h2>
-    {{selectedAgency.nameAgency | uppercase}} is my agency
-  </h2>
-  <button (click)="gotoDetail()">View Details</button>
-  <button (click)="agencyIsSelected()">console view</button>
-</div>-->   
-        <!-- /.row -->
-
-        <!-- Project One -->
-<!--  <div class="row">
-        <div class="col-md-6">
-          <div class=" col-md-12 " data-toggle="collapse" data-target="#demo" *ngFor="let agency of agencies" (click)="onSelect(agency)"[class.selected]="agency === selectedagency">
-            <div class="col-md-12 well">
-                <h3>{{agency.nameAgency}}</h3>
-            <div class="col-md-3">
-                <p>{{agency.email}}</p>
-            </div>-->
-            <!--<button class="delete" (click)="delete(agency); $event.stopPropagation()"> x </button>-->
-            
-           <!-- <a [routerLink]="['/agency', agency._id]">agency details</a>
+<div class="container">  
+    <div class="row" >
+        <div class="content-mini col-md-4 well-custom shadow-effect-1 shadow-effect-null fg-primary-text overflow-h">
+          <div class="row">
+            <div class="block block-mini">
+              <i class="fa fa-building fg-acent-color icon-mini"></i>
+              <div>
+                <h2>Agencies</h2>
+              </div>
             </div>
           </div>
-        </div>--><!-- row -->
-<!--        <div class="col-md-6">
-            <div *ngIf="selectedAgency" id="demo" class="col-md-5 collapse">
-              <h2>
-                {{selectedAgency.nameAgency | uppercase}} is my agency
-              </h2>
-                <button (click)="gotoDetail()">View Details</button>
-                <button (click)="agencyIsSelected()">console view</button>
-                
-            </div>
-          </div> -->
-        <!-- /.row -->
-    <!-- </div> -->
-
-
-    <!-- ======PREGUNTAR A NICK SOBRE ESTO -->
-<!-- <div>
-  <label for="agency"> Search agency: </label>
-  <input type="text" [(ngModel)]="pattern">
+          <div class="row list-agencies-content">
+                <div class="col-md-12" *ngFor="let agency of agencies">
+                  <h3 (click)="onSelect(agency)" class="cursor" style="border-bottom:solid 1px #ededed; padding-bottom:5px">
+                    {{agency.nameAgency}}
+                  </h3>
+                </div>
+          </div>
+        </div>
+        <div class="col-md-8 well-custom bg-gray-light shadow-effect-1 content-agency-right">
+          <app-agency-details [agencyToDetails]="selectedAgency" [user]="user"></app-agency-details>
+        </div>
+  </div>
 </div>
 
-<div *ngFor="let agency of agencies | search:'name':pattern; let i = index">
-    <h2> {{ agency.nameAgency }} </h2>
-</div> -->
-
-
-
-
-        
+   

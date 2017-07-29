@@ -1,14 +1,18 @@
 <div *ngIf='agencyToDetails'>
-  <h2>{{agencyToDetails.nameAgency}}</h2>
-  <h3>{{agencyToDetails.contactPhone}}</h3>
-  
-    <div *ngIf='user'>
-      <p>Select {{agencyToDetails.nameAgency}} as your prefered agency</p>
-   <form>
-    <input type="radio" name="selectedAgency" value="selected">
-    <!-- <input type="submit" value="Select"> -->
-    <button (click)="selectAgency(agencyToDetails._id)" class="btn btn-lg">Select</button>
-
-   </form>      
+  <div style="text-align:center"> 
+    <div>
+      <h1 class="icon-right-content"><i class="fa fa-building-o icon-mini-o fg-primary-text"></i></h1>
+      <div class="content-right-data">
+      <h2 class="fg-white title-right-content"> {{agencyToDetails.nameAgency}} </h2>
+      <h3 class="fg-white title-right-content"> correo@gmail.com </h3>
+      <span class="fg-white slogan-right-content">telf:9897-9879-898-797</span>
+      </div>
+    </div>
+    <div *ngIf='user' class="form-right-content" style="margin-top:30px">
+      <!-- <p>Select {{agencyToDetails.nameAgency}} as your prefered agency</p> -->
+      <form>
+        <button (click)="selectAgency(agencyToDetails._id)" class="btn btn-warning btn-lg">Select</button>
+      </form>
+    </div>
   </div>
 </div>
