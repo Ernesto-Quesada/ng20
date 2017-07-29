@@ -38,7 +38,8 @@ import { SecureLayoutComponent } from './secure-layout/secure-layout.component';
 import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { RelativeNewComponent } from './relative-new/relative-new.component';
-import { RelativeService } from './relative.service'
+import { RelativeService } from './relative.service';
+import { ConfirmationComponent } from './confirmation/confirmation.component'
 
 const routes: Routes = [
   
@@ -55,6 +56,7 @@ const routes: Routes = [
       { path: 'relatives', component:  RelativeListComponent},
       { path: 'relative/new', component: RelativeNewComponent},
       { path: 'payment', component: PaymentComponent},
+      { path: 'confirmation', component: ConfirmationComponent},
   ] },
   { path: 'login',  component: LoginComponent },
   { path: 'signup',  component: SignupComponent },
@@ -89,7 +91,8 @@ const routes: Routes = [
     SecureLayoutComponent,
     PageNotFoundComponentComponent,
     SearchPipe,
-    RelativeNewComponent
+    RelativeNewComponent,
+    ConfirmationComponent
     // MaterialModule,
   ],
   imports: [

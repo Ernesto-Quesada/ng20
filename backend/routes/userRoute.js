@@ -11,7 +11,7 @@ const Relative = require('../models/relativeModel.js');
 const routeforUser = express.Router();
 // routeforUser.get('/user/:id', (req, res, next) => {
 
-routeforUser.get('/profile',  ensure.ensureLoggedIn('/login'),(req, res, next) => {
+routeforUser.get('/api/profile',  ensure.ensureLoggedIn('/login'),(req, res, next) => {
       User.findOne(req.user._id)
       .populate('agencyInUseId')
       .exec((err,completeUSerProfile) =>{
@@ -35,7 +35,7 @@ routeforUser.get('/profile',  ensure.ensureLoggedIn('/login'),(req, res, next) =
 // --------Profile end
 
 // relatives with user  ok with postman do not touch
-routeforUser.get('/relatives',
+routeforUser.get('/api/relatives',
    ensure.ensureLoggedIn('/login'),
     (req, res, next) => {
       Relative.find({relativeOfUser: req.user._id } ,(err,theRelativeList) =>{
@@ -55,15 +55,15 @@ routeforUser.get('/relatives',
     }
 );
   // view only to develop after is done delete
-routeforUser.get('/relative/new', (req, res, next) => {
-  res.render('user/addFamily.ejs', {
-  });
-  console.log('<><><><>',req.user._id)
-});
+// routeforUser.get('/relative/new', (req, res, next) => {
+//   res.render('user/addFamily.ejs', {
+//   });
+//   console.log('<><><><>',req.user._id)
+// });
 
 //-------ADD a RELATIVE----- ok +- on sund 17
 
-routeforUser.post('/relative/new', ensure.ensureLoggedIn('/login'), (req, res, next) => {
+routeforUser.post('/api/relative/new', ensure.ensureLoggedIn('/login'), (req, res, next) => {
 
       //---receive all inputs from the form ----
       console.log('<><><><REQ>BODY', req.body)
@@ -143,7 +143,7 @@ routeforUser.post('/relative/new', ensure.ensureLoggedIn('/login'), (req, res, n
 //=======================================
 //========= SELECT RELATIVE to SEND NOW ====
 //=======================================
-routeforUser.post('/relative/:id/select', 
+routeforUser.post('/api/relative/:id/select', 
             // ensure.ensureLoggedIn('/login'), not working 
             (req,res,next) => { 
                       const relativeId=req.params.id;
@@ -200,7 +200,7 @@ routeforUser.post('/relative/:id/select',
 
 
 
-routeforUser.get('/useramount/:familyid',(req,res,next)=>{
+routeforUser.get('/api/useramount/:familyid',(req,res,next)=>{
 //                              |
 const myFamilyId =req.params.familyid;
 Relative.findById(myFamilyId, (err, theRelative) =>{

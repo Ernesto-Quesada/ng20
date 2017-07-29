@@ -30,10 +30,10 @@ export class SenderService {
 
 // ------isLoggedIn  start-----
   isLoggedIn () {
-    console.log('APIURL',this.BASE_URL)
+    console.log('APIURL', this.BASE_URL)
   return this.http
   .get(
-    this.BASE_URL + '/loggedin',
+    this.BASE_URL + '/api/loggedin',
    {withCredentials: true}
    )
     .toPromise()
@@ -46,7 +46,7 @@ export class SenderService {
 getRelatives() {
   return this.http
   .get(
-    this.BASE_URL + '/relatives',
+    this.BASE_URL + '/api/relatives',
    {withCredentials: true}
    )
     .toPromise()
@@ -57,7 +57,7 @@ getRelatives() {
 login (credentials) {
     return this.http
     .post(
-      this.BASE_URL + '/login',
+      this.BASE_URL + '/api/login',
       credentials,
      {withCredentials: true}
      )
@@ -71,7 +71,7 @@ login (credentials) {
   signup (user) {
     return this.http
     .post(
-        this.BASE_URL + '/signup',
+        this.BASE_URL + '/api/signup',
          user,
          { withCredentials: true }
          )
@@ -82,7 +82,7 @@ login (credentials) {
 logout() {
       return this.http
         .post(
-          this.BASE_URL + '/logout',
+          this.BASE_URL + '/api/logout',
           {},
           { withCredentials: true }
         )
@@ -99,7 +99,7 @@ logout() {
 
 
   getProfile() {
-    return this.http.get(this.BASE_URL + '/profile',
+    return this.http.get(this.BASE_URL + '/api/profile',
     {withCredentials: true}
     )
       .toPromise()
@@ -108,7 +108,7 @@ logout() {
       // ---EDIT PROFILE-----
   editProfile(editInfo) {
       return this.http
-      .post(this.BASE_URL + '/profile/edit',
+      .post(this.BASE_URL + '/api/profile/edit',
       editInfo,
       {withCredentials: true}
     )

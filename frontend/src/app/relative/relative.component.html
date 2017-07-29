@@ -1,4 +1,5 @@
 <div *ngIf='relativeToDetails'>
+<<<<<<< HEAD
   <div style="text-align:center"> 
     <div>
       <h1 class="icon-right-content"><i class="fa fa-users icon-mini-o fg-primary-text"></i></h1>
@@ -13,4 +14,15 @@
       </form>
     </div>
   </div>
+=======
+  <h2>{{relativeToDetails.name}} {{relativeToDetails.firstApell}} {{relativeToDetails.secondApell}}</h2>
+  <h3>choose your relative</h3>{{relativeToDetails._id}}
+  <form>
+    <input type="radio" name="selectedAgency" value="selected">
+    <!-- <input type="submit" value="Select"> -->
+    <button (click)="selectRelative(relativeToDetails._id)" class="btn btn-lg">Select</button>
+
+   </form> 
+  
+>>>>>>> fd6b205177871d9efe46c38aadad62377b9cc2b6
 </div>

@@ -90,6 +90,10 @@ const myAccountPlaidRoutes = require('./routes/accountPlaidRoutes.js');
 app.use('/', myAccountPlaidRoutes); 
 
 
+// app.use((req, res, next) => {
+//   res.sendfFile(__dirname + '/public/index.html');
+// });
+
 // const users = require('./routes/users');
 // app.use('/users', users);
 
