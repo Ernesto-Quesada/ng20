@@ -19,17 +19,20 @@ private headers = new Headers({'Content-Type': 'application/json'});
     return Observable.throw(e.json().message);
   }
     selectRelative(id) {
-    return this.http.post(this.BASE_URL + `/relative/${id}/select`, {},
+      console.log('legue a servicio relatibve', id)
+    return this.http.post(this.BASE_URL + `/api/relative/${id}/select`, {},
     /// with credentials es siempre el tercero
                           {withCredentials: true} )
                .toPromise()
-               .then(response => response.json())
+               .then((response) => {
+                console.log('respuesta del server', response)
+                response.json()})
                .catch(this.handleError);
 
   }
   addRelativeInService (relative) {
-    console.log('relative________)))))))from service', relative)
-    return this.http.post(this.BASE_URL + `/relative/new`,
+    // console.log('relative________)))))))from service', relative)
+    return this.http.post(this.BASE_URL + `/api/relative/new`,
          relative,
          { withCredentials: true }
          )

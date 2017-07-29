@@ -20,7 +20,7 @@ const authRoutes = express.Router();
 //===============================================
 // ============= SIGNUP =========================
 //===============================================
-authRoutes.post('/signup',
+authRoutes.post('/api/signup',
   ensure.ensureNotLoggedIn('/'),
   (req, res, next) => {
     const emailInput = req.body.emailInput;
@@ -88,7 +88,7 @@ authRoutes.post('/signup',
 //=========================
 //======= LOGIN BY NICK ====
 //==========================
-authRoutes.post('/login', (req, res, next) => {
+authRoutes.post('/api/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
     if (err) {
       res.status(500).json({ message: 'Something went wrong.' });
@@ -108,7 +108,7 @@ authRoutes.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 
-authRoutes.post('/logout', (req, res, next) => {
+authRoutes.post('/api/logout', (req, res, next) => {
   // req.logout() method provided by Passport
   req.logout();
 
@@ -117,7 +117,7 @@ authRoutes.post('/logout', (req, res, next) => {
 });
 
 
-authRoutes.get('/loggedin', (req, res, next) => {
+authRoutes.get('/api/loggedin', (req, res, next) => {
   if (req.isAuthenticated()) {
     console.log('i get in here ---------')
     res.status(200).json(req.user);

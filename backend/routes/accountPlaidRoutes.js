@@ -39,7 +39,7 @@ var client = new plaid.Client(
 //
 //Home controller
 //
-routeforPlaid.get('/accountPlaid', (req, res, next) => {
+routeforPlaid.get('/api/accountPlaid', (req, res, next) => {
   // res.render('accountPlaid/home',{
   //   PLAID_PUBLIC_KEY: PLAID_PUBLIC_KEY,
   //   PLAID_ENV: PLAID_ENV,
@@ -55,7 +55,7 @@ routeforPlaid.get('/accountPlaid', (req, res, next) => {
 //
 // Get access token
 //
-routeforPlaid.post('/accountPlaid/get_access_token', function(request, response, next) {
+routeforPlaid.post('/api/accountPlaid/get_access_token', function(request, response, next) {
       PUBLIC_TOKEN = request.body.publicToken;
       console.log('PUblic', PUBLIC_TOKEN);
       client.exchangePublicToken(PUBLIC_TOKEN, function(error, tokenResponse) {
@@ -92,7 +92,7 @@ routeforPlaid.post('/accountPlaid/get_access_token', function(request, response,
 });
 
 
-routeforPlaid.post('/accountPlaid/accounts/get', function(request, response, next) {
+routeforPlaid.post('/api/accountPlaid/accounts/get', function(request, response, next) {
 
   client.getAccounts(ACCESS_TOKEN, (error, result) => {
     // Handle err

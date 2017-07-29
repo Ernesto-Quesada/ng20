@@ -68,6 +68,12 @@ getAccountBalance(userInfo) {
   this.accountName = userInfo.accountSpec[0].name;
 }
 
-
+sendMoney(){
+  console.log('Send to Stripe:', this.balance, 'from account ', this.accountName);
+        if(confirm('You are authorizing KinPay.com to withdraw ' +
+        this.usdAmount + ' USD from your checking account. \nClick Ok to accept') == true){ 
+          this.routetheuser.navigate(['/confirmation'])
+        } else { this.routetheuser.navigate(['/'])}
+  }
 
 }

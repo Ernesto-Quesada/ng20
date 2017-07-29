@@ -24,8 +24,11 @@ export class RelativeComponent implements OnInit {
   // .catch((err) => { this.routetheuser.navigate(['/signup'])})
 }
    selectRelative(id) {
+            console.log('THEUSERFROM RELATIVE', id)
+
      this.relativeService.selectRelative(id)
      .then((theUserFromApi) => {
+       console.log('THEUSERFROMresponse RELATIVE',theUserFromApi)
      this.routetheuser.navigate(['/payment']);
    this.error = null;
 

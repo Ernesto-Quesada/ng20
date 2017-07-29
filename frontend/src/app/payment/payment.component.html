@@ -9,6 +9,14 @@
 <hr>
 You are sending money to {{sending}}
 your account named {{accountName}} has a balance of {{balance}} dollars
+<div>
+    <a [routerLink]="['/portal']">Cancel</a>
+</div>
+<div>
+<div (click)='sendMoney()'>
+    <h1>Send</h1>
+</div>
+</div>
 
 
 <!-- <app-ministart></app-ministart>

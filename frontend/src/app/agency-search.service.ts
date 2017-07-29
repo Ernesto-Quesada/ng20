@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
 export class AgencySearchService {
  
   // BASE_URL: string = 'http://localhost:3000';
-BASE_URL: string =environment.API_URL
+BASE_URL: string = environment.API_URL
   constructor( private http: Http) { }
 
   search(term): Observable<any[]> {

@@ -16,7 +16,7 @@ const User = require('../models/userModel.js');
 // ===   Render a LIST OF ALL AGENCIES and sends ==========
 //====   the list with AgencyList variable ================
 //====    to the view =====================================
-router.get('/agencies', (req, res, next) => {
+router.get('/api/agencies', (req, res, next) => {
   Agency.find((err, agencyList) => {
       if (err) {
         res.status(500).json({ message: 'Sooomething went wrong.' });
@@ -39,7 +39,7 @@ router.get('/agency/new', (req, res, next) => {
 // ===================================
 //======= DETAILS of AGENCY ==========
 // ===================================
-router.get('/agency/:id',(req,res,next) => { 
+router.get('/api/agency/:id',(req,res,next) => { 
   // if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
   //   res.status(400)
   //      .json({ message: 'Specified id is not valid' });
@@ -61,7 +61,7 @@ router.get('/agency/:id',(req,res,next) => {
 //=======================================
 //========= SELECT AGENCY FOR CLIENT ====
 //=======================================
-router.post('/agency/:id/select', 
+router.post('/api/agency/:id/select', 
             // ensure.ensureLoggedIn('/login'), not working 
             (req,res,next) => { 
                       const agencyId=req.params.id;
@@ -81,7 +81,7 @@ router.post('/agency/:id/select',
 //====== for Queries as user types it     =========
 //====== returns agency with keys pressed =========
 //=================================================
-router.get('/agency/', (req, res, next) => {
+router.get('/api/agency/', (req, res, next) => {
     const agencyNa = req.query.name;
     console.log('LOLOLOLO', agencyNa);
     Agency.find({nameAgency: { $regex: '.*' + agencyNa + '.*' }}, (err, theAgency) => {

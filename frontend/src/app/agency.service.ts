@@ -24,7 +24,7 @@ export class AgencyService {
   //     .catch(this.handleError);
   // }
   getAgencies() {
-    return this.http.get(this.BASE_URL + '/agencies')
+    return this.http.get(this.BASE_URL + '/api/agencies')
                .toPromise()
                .then(response => response.json())
                .catch(this.handleError);
@@ -32,14 +32,14 @@ export class AgencyService {
               
   getAgencyDetailsinService(id) {
     console.log('from agency service', id);
-    return this.http.get(this.BASE_URL + `/agency/${id}`)
+    return this.http.get(this.BASE_URL + `/api/agency/${id}`)
       .toPromise()
       .then(res => res.json() )
       .catch(this.handleError);
   }
 
   selectAgen(id) {
-    return this.http.post(this.BASE_URL + `/agency/${id}/select`, {},
+    return this.http.post(this.BASE_URL + `/api/agency/${id}/select`, {},
     ///with credentials es siempre el tercero
                           {withCredentials: true} )
                .toPromise()
@@ -61,7 +61,7 @@ export class AgencyService {
     //   .toPromise()
     //   .then(() => null)
     //   .catch(this.handleError);
-    return this.http.delete(`${this.BASE_URL}/agency/${id}`)
+    return this.http.delete(`${this.BASE_URL}/api/agency/${id}`)
       .toPromise()
       .then(response => response.json())
                .catch(this.handleError);

@@ -22,7 +22,7 @@ export class AccountPlaidService {
   
   //get public data for plaid webview
   accountPlaidHome() {
-    return this.http.get(this.BASE_URL + '/accountPlaid')
+    return this.http.get(this.BASE_URL + '/api/accountPlaid')
                .toPromise()
                .then(response => response.json())
                .catch(this.handleError);
@@ -37,7 +37,7 @@ export class AccountPlaidService {
     // console.log('>>>>>>>', headers)
     // headers.append('Content-Type', 'application/json');
 
-    return this.http.post(this.BASE_URL + `/accountPlaid/get_access_token`, {publicToken: publicToken},
+    return this.http.post(this.BASE_URL + `/api/accountPlaid/get_access_token`, {publicToken: publicToken},
                               {withCredentials: true})
                           // JSON.stringify({'publicToken': publicToken}),
                           // { headers: headers })//already has 3 parameter ..no more accepted
@@ -55,7 +55,7 @@ export class AccountPlaidService {
   }
 
   get_accounts() {
-    return this.http.post(this.BASE_URL + '/accountPlaid/accounts/get', null,
+    return this.http.post(this.BASE_URL + '/api/accountPlaid/accounts/get', null,
                     {withCredentials: true})
                     .toPromise()
                     .then(response => response.json())
