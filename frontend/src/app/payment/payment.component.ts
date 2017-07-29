@@ -22,10 +22,10 @@ usdAmount: number;
 ngOnInit() {
     this.mySenderService.isLoggedIn()
     .then((userInfo) => {
-this.user = userInfo
-console.log('ASDFGHJK', this.user);
-this.getRelatives(userInfo);
-this.getAccountBalance(userInfo);
+      this.user = userInfo
+
+      this.getRelatives(userInfo);
+      this.getAccountBalance(userInfo);
         // this.mySenderService.getPrle()
         //       .then((theUsercomingFromApi) => {
         //       this.user = theUsercomingFromApi.theUserProfile;
@@ -64,6 +64,10 @@ this.getAccountBalance(userInfo);
   })
 }
 getAccountBalance(userInfo) {
+  if (userInfo.accountSpec.length === 0) {
+    alert('Please choose an account.');
+    return;
+  }
   this.balance = userInfo.accountSpec[0].balances.available;
   this.accountName = userInfo.accountSpec[0].name;
 }

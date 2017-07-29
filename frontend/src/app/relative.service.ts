@@ -19,14 +19,14 @@ private headers = new Headers({'Content-Type': 'application/json'});
     return Observable.throw(e.json().message);
   }
     selectRelative(id) {
-      console.log('legue a servicio relatibve', id)
+      console.log('arrived to relative service', id)
     return this.http.post(this.BASE_URL + `/api/relative/${id}/select`, {},
     /// with credentials es siempre el tercero
                           {withCredentials: true} )
                .toPromise()
                .then((response) => {
-                console.log('respuesta del server', response)
-                response.json()})
+                console.log('response from server', response)
+                return response.json()})
                .catch(this.handleError);
 
   }
