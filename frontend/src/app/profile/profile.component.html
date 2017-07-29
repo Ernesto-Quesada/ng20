@@ -1,36 +1,30 @@
-<div class="container">  
-    <div class="row" >
-        <div class="content-mini col-md-4 well-custom shadow-effect-1 shadow-effect-null fg-primary-text overflow-h">
-          <div class="block block-mini"  [routerLink]="['/profile']">
-            <i class="fa fa-user fg-acent-color icon-mini"></i>
-            <div class="title-mini">
-              <h3> {{user.firstname}} {{user.lastName}} </h3>
-                <p> {{user.email}}</p>
-                <p> {{user.phone}}</p>
-                <p> {{user.address}}</p>   
-            </div>
-          </div>
-          <div *ngIf='user.agencyInUseId'>
-            <span class="pull-left description-mini" >You are currently using <b class="cursor" [routerLink]="['agency/:id', user.agencyInUseId._id]">{{user.agencyInUseId.nameAgency}}</b> agency 
+<div class="container">
+  <div class="row">
+    <div class="content-mini col-md-4 well-custom shadow-effect-1 shadow-effect-null fg-primary-text overflow-h">
+      <div class="block block-mini" [routerLink]="['/profile']">
+        <i class="fa fa-user fg-acent-color icon-mini"></i>
+        <div class="title-mini">
+          <h3> {{user.firstname}} {{user.lastName}} </h3>
+          <p> {{user.email}}</p>
+          <p> {{user.phone}}</p>
+          <p> {{user.address}}</p>
+        </div>
+      </div>
+      <div *ngIf='user.agencyInUseId'>
+        <span class="pull-left description-mini">You are currently using <b class="cursor" [routerLink]="['agency/:id', user.agencyInUseId._id]">{{user.agencyInUseId.nameAgency}}</b> agency 
              <span class="hidden-md">for send money to your families</span>
-              <small class="cursor" [routerLink]="['/agency']"><i>view more</i></small>
-            </span>
-          </div>
-        <div *ngIf='!user.agencyInUseId'> 
-          <span class="pull-left description-mini" >You currently have not selected any agency
+        <small class="cursor" [routerLink]="['/agency']"><i>view more</i></small>
+        </span>
+      </div>
+      <div *ngIf='!user.agencyInUseId'>
+        <span class="pull-left description-mini">You currently have not selected any agency
           <small class="cursor" [routerLink]="['/agency']"><i>view more</i></small>
         </span>
+      </div>
+    </div>
+    <div class="btn btn-primary pull-left btn-sm" [routerLink]="['/relative/new']">Add a family member</div>
+    <div class="btn btn-primary pull-rigth btn-sm" [routerLink]="['/profile/edit']">Edit your profile</div>
 
-<<<<<<< HEAD
-            </div>
-          
-=======
-        </div>
-          <div class="btn btn-primary pull-left btn-sm" [routerLink]="['/relative/new']">Add a family member</div>
-          <div class="btn btn-primary pull-rigth btn-sm" [routerLink]="['/profile/edit']">Edit your profile</div>
->>>>>>> fd6b205177871d9efe46c38aadad62377b9cc2b6
-          
-        </div>
-       
   </div>
+
 </div>
