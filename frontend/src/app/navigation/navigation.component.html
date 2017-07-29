@@ -24,9 +24,9 @@
                         <li *ngIf='userLogged'>
                             <a [routerLink]="['/portal']">Portal</a>
                         </li>
-                        <li *ngIf='userLogged'>
-                            <a [routerLink]="['/profile']">Profile</a>
-                        </li>
+                        <!-- <li *ngIf='userLogged'>
+                            <a [routerLink]="['/profile']">profile</a>
+                        </li> -->
                         <li *ngIf='!userLogged'>
                             <a [routerLink]="['/signup']">Signup</a>
                         </li>

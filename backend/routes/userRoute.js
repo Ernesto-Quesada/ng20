@@ -154,6 +154,7 @@ routeforUser.post('/api/relative/:id/select',
                           next(err);
                           return;
                         }
+                        console.log('\n','\n','\n', 'UPDATED USER FROM API', updatedUser)
                         res.status(200).json(updatedUser)
                     });
 });

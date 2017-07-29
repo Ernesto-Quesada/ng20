@@ -31,7 +31,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
-
+<script>
+  $(document).on('click','.navbar-collapse.in',function(e) {
+    if( $(e.target).is('a') ) {
+        $(this).collapse('hide');
+    }
+});
+</script>
   <!--<script src="assets/js/jquery.isotope.min.js"></script>
   <script src="assets/js/jquery.prettyPhoto.js"></script>
   <script src="assets/js/main.js"></script>-->
