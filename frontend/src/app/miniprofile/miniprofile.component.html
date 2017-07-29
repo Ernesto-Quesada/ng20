@@ -5,21 +5,20 @@
   <div class="block block-mini cursor"  [routerLink]="['/profile']">
     <i class="fa fa-user fg-acent-color icon-mini"></i>
     <span class="title-mini">
-      <h4>
-        <b> {{user.firstName}} {{user.lastName}}</b>
-        <br/>
-        <small> {{user.country}}</small>
-      </h4>
+      <h2>
+        <b class="name"> {{user.firstName}} {{user.lastName}}</b>
+       <small class="name"> {{user.country}}</small>
+      </h2>
     </span>
   </div>
   <div *ngIf='user.agencyInUseId'>
-  <span class="pull-left description-mini" >You are currently using <b class="cursor" [routerLink]="['agency/:id', user.agencyInUseId._id]">{{user.agencyInUseId.nameAgency}}</b> agency 
+  <span class="" >You are currently using <b class="cursor" [routerLink]="['agency/:id', user.agencyInUseId._id]">{{user.agencyInUseId.nameAgency}}</b> agency 
     <span class="hidden-md">for send money to your families</span>
     <small class="cursor" [routerLink]="['/agency']"><i>view more</i></small>
   </span>
   </div>
   <div *ngIf='!user.agencyInUseId'> 
-      <span class="pull-left description-mini" >You currently have not selected any agency
+      <span class="description-mini" >You currently have not selected any agency
         <small class="cursor" [routerLink]="['/agency']"><i>view more</i></small>
       </span>
 

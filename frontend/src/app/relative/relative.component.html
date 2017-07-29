@@ -3,13 +3,13 @@
     <div>
       <h1 class="icon-right-content"><i class="fa fa-users icon-mini-o fg-primary-text"></i></h1>
       <div class="content-right-data">
-      <h2 class="fg-white title-right-content"> {{relativeToDetails.name}} {{relativeToDetails.firstApell}} {{relativeToDetails.secondApell}} </h2>
+      <h2 class="fg-primary-text title-right-content"> {{relativeToDetails.name}} {{relativeToDetails.firstApell}} {{relativeToDetails.secondApell}} </h2>
       
     </div>
-    <div class="form-right-content" style="margin-top:30px">
+    <div class="form-right-content agency-right-form">
       <!-- <p>Select {{agencyToDetails.nameAgency}} as your prefered agency</p> -->
       <form>
-        <button (click)="selectRelative(relativeToDetails._id)" class="btn btn-warning btn-lg">Select</button>
+        <button (click)="selectRelative(relativeToDetails._id)" class="btn btn-primary btn-lg btn-right-content-agency">Select</button>
       </form>
     </div>
   </div>
