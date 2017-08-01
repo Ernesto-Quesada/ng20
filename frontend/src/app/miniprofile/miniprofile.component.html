@@ -13,7 +13,7 @@
   </div>
   <div *ngIf='user.agencyInUseId'>
   <span class="" >You are currently using <b class="cursor" [routerLink]="['agency/:id', user.agencyInUseId._id]">{{user.agencyInUseId.nameAgency}}</b> agency 
-    <span class="hidden-md">for send money to your family</span>
+    <span class="hidden-md">to send money to your family</span>
     <small class="cursor" [routerLink]="['/agency']"><i>view more</i></small>
   </span>
   </div>

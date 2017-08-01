@@ -15,10 +15,14 @@
 
           </div>
            <div *ngIf='relatives'> 
+<<<<<<< HEAD
              <div>
 
              <button [routerLink]="['/relative/new']" class="btn btn-default btn-lg add-relative-sm"> Add new relative</button>
              </div>
+=======
+             <button [routerLink]="['/relative/new']" class="btn btn-default btn-lg add-relative-sm"> Add a relative</button>
+>>>>>>> c27c7a0d77695c01751c78de1f5cb4d7b384d2d0
               <div class="row list-agencies-content">
                     <div class="col-md-12" *ngFor="let relative of relatives">
                       <h3 (click)="onSelect(relative)" class="cursor btn-right-content-agency" >
