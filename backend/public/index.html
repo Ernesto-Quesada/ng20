@@ -31,11 +31,17 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
-
+<script>
+  $(document).on('click','.navbar-collapse.in',function(e) {
+    if( $(e.target).is('a') ) {
+        $(this).collapse('hide');
+    }
+});
+</script>
   <!--<script src="assets/js/jquery.isotope.min.js"></script>
   <script src="assets/js/jquery.prettyPhoto.js"></script>
   <script src="assets/js/main.js"></script>-->
 
-<script type="text/javascript" src="inline.8a791aa7fbcc972806c0.bundle.js"></script><script type="text/javascript" src="polyfills.652ef966ac5414a711ed.bundle.js"></script><script type="text/javascript" src="vendor.32e6f255d043ad4e1c7f.bundle.js"></script><script type="text/javascript" src="main.96a16518e48cafc0dbf5.bundle.js"></script></body>
+<script type="text/javascript" src="inline.bd14e1216548bda3725a.bundle.js"></script><script type="text/javascript" src="polyfills.652ef966ac5414a711ed.bundle.js"></script><script type="text/javascript" src="vendor.32e6f255d043ad4e1c7f.bundle.js"></script><script type="text/javascript" src="main.187cd494fa701ded0f0c.bundle.js"></script></body>
 </html>
 

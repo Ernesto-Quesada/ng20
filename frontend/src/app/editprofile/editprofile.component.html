@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 well-custom bg-white overflow-h" style="padding:2em">
+    <div class="col-md-12 well-custom bg-white overflow-h padding-2">
       <div class="row">
-        <div class="content-mini col-md-4 well-custom fg-primary-text overflow-h">
+        <div class="content-mini relative-new-component col-md-4 well-custom fg-primary-text overflow-h">
           <div class="block block-mini">
 
             <i class="fa fa-user fg-acent-color icon-mini"></i>
             <div class="title-mini">
-              <h3>Profile Edition </h3>
+              <h2>Profile Edition </h2>
             </div>
           </div>
         </div>
@@ -43,9 +43,10 @@
               </div>
               <div id="success"></div>
               <!-- For success/fail messages -->
-              <button (click)="editProfile()" class="btn btn-default btn-md pull-left" [routerLink]="['/profile']">Cancel</button>
-              <button (click)="editProfile()" class="btn btn-primary btn-md pull-right">Done</button>
-
+<div class="btn-actions2">
+              <button (click)="editProfile()" class="btn btn-default btn-md btn-1" [routerLink]="['/profile']">Cancel</button>
+              <button (click)="editProfile()" class="btn btn-primary btn-md btn-2">Done</button>
+</div>
             </form>
           </div>
         </div>

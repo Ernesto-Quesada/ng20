@@ -1,17 +1,17 @@
 <div *ngIf='agencyToDetails'>
-  <div style="text-align:center"> 
+  <div class="text-center"> 
     <div>
       <h1 class="icon-right-content"><i class="fa fa-building-o icon-mini-o fg-primary-text"></i></h1>
-      <div class="content-right-data">
-      <h2 class="fg-white title-right-content"> {{agencyToDetails.nameAgency}} </h2>
-      <h3 class="fg-white title-right-content"> correo@gmail.com </h3>
-      <span class="fg-white slogan-right-content">telf:9897-9879-898-797</span>
+      <div class="content-right-data agency">
+      <h2 class="fg-primary-text title-right-content"> {{agencyToDetails.nameAgency}} </h2>
+      <h3 class="fg-primary-text title-right-content"> correo@gmail.com </h3>
+      <span class="fg-primary-text slogan-right-content">telf:9897-9879-898-797</span>
       </div>
     </div>
-    <div *ngIf='user' class="form-right-content" style="margin-top:30px">
+    <div *ngIf='user' class="form-right-content agency-right-form">
       <!-- <p>Select {{agencyToDetails.nameAgency}} as your prefered agency</p> -->
       <form>
-        <button (click)="selectAgency(agencyToDetails._id)" class="btn btn-warning btn-lg">Select</button>
+        <button (click)="selectAgency(agencyToDetails._id)" class="btn btn-primary btn-lg btn-right-content-agency">Select</button>
       </form>
     </div>
   </div>

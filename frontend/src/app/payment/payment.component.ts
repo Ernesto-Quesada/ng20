@@ -39,7 +39,8 @@ ngOnInit() {
 
       // this.routetheuser.navigate(['/profile']);
   })
-  .catch((err) => { this.routetheuser.navigate(['/'])});
+  .catch((err) => { this.routetheuser.navigate(['/']);
+                  console.log('-------error--->>',err)});
   
   }
   onKeycuc() {
@@ -56,7 +57,7 @@ ngOnInit() {
         console.log('the fam in getR', this.relatives)
         this.relatives.forEach((oneRelative)=>{
           if (oneRelative._id === this.user.relativeSendingNow){
-            this.sending =oneRelative.name;
+            this.sending = oneRelative.name;
             console.log('sending',this.sending)
           }
         })

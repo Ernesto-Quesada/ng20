@@ -39,7 +39,9 @@ import { PageNotFoundComponentComponent } from './page-not-found-component/page-
 import { SearchPipe } from './pipes/search.pipe';
 import { RelativeNewComponent } from './relative-new/relative-new.component';
 import { RelativeService } from './relative.service';
-import { ConfirmationComponent } from './confirmation/confirmation.component'
+import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 
 const routes: Routes = [
   
@@ -62,9 +64,7 @@ const routes: Routes = [
   { path: 'signup',  component: SignupComponent },
   // { path: 'phone/:id', component: PhoneDetailsComponent }
   { path: '**', redirectTo: '' },
-  
 
-  
 ];
 @NgModule({
   declarations: [
@@ -99,7 +99,8 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { useHash: true }),
     // AppRoutingModule
   ],
   providers: [SenderService, AgencyService, 

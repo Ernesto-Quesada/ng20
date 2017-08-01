@@ -1,34 +1,62 @@
 <section>
-    <div class="container" style="margin-top:7em">
+    <div class="container " >
         <div class="row">
-
-            <div class="content-mini cursor col-md-6 well-custom shadow-effect-1 overflow-h bg-gray">
+            <div class="content-mini  col-md-5 col-md-offset-4 overflow-h payment-component">
             <div class="block block-mini">
                 <h2 class="fg-white title-mini">Money to send </h2>
             </div>
             <div class="" >
-                <label for="cucInput">amount to be paid in <span class="currency">CUC</span></label>
-                <input type='number' [(ngModel)]='cucAmount' (keyup)="onKeycuc()" class="fg-primary-text">
+                <label for="cucInput">amount to be paid in Cuba in </label>
+                <div>
+                        <span class="currency">CUC</span>
+                        <input type='number' [(ngModel)]='cucAmount' (keyup)="onKeycuc()" class="money-input">
+                </div>
+                
                 <hr>
                 <br>
-                <label for="usdInput">amount you pay now in <span class="currency">USD</span></label>
-                <input type="number" [(ngModel)]='usdAmount' (keyup)="onKeyusd()" class="fg-primary-text">
-                <p>{{usdAmount}}</p>
-                <hr> You are sending money to <h3 class="fg-white">{{sending}}</h3>
-                <p>your account named {{accountName}} will be charged for {{usdAmount}} USD</p>
-            </div>
-            
-            </div>
-
-            <div>
-                <a [routerLink]="['/portal']">Cancel</a>
-            </div>
-            <div>
-            <div (click)='sendMoney()'>
-                <h1>Send</h1>
-            </div> 
-            </div>
-
+                <label for="usdInput">amount you pay now in </label>
+                <div>
+                <span class="currency">USD</span>
+                <input type="number" [(ngModel)]='usdAmount' (keyup)="onKeyusd()" class="money-input fg-white">
                 </div>
+                <!-- <p>{{usdAmount}}</p> -->
+                <hr> Yuo are sending money to <h2 class="fg-white">{{sending}}</h2>
             </div>
+            <div (click)='sendMoney()' class="btn btn-lg acept-payment cursor">
+                    <h1 class="fg-white">Send</h1>
+                </div>
+            <div>
+                    <a [routerLink]="['/portal']" class="btn btn-xs cancel-payment">Cancel</a>
+                </div>
+                
+                
+            </div>
+
+    </div>
+</div>
 </section>
+        <!-- <app-ministart></app-ministart>
+<div>calculadora</div>
+<label for="cucInput">amount to be paid in Cuba in CUC</label>
+<input type='number' [(ngModel)]='cucAmount' (keyup)="onKeycuc()">
+<hr>
+<br>
+ <label for="usdInput">amount you pay now in USD</label>
+<input type="number" [(ngModel)]='usdAmount' (keyup)="onKeyusd()"> 
+
+<hr>
+You are sending money to {{sending}}
+your account named {{accountName}} has a balance of {{balance}} dollars
+<div>
+    <a [routerLink]="['/portal']">Cancel</a>
+</div>
+<div>
+<div (click)='sendMoney()'>
+    <h1>Send</h1>
+</div>
+</div>
+
+
+<!-- <app-ministart></app-ministart>
+<app-miniplaid></app-miniplaid> -->
+
