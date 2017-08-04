@@ -40,7 +40,9 @@ import { SearchPipe } from './pipes/search.pipe';
 import { RelativeNewComponent } from './relative-new/relative-new.component';
 import { RelativeService } from './relative.service';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
+/// new from adele
+// import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 const routes: Routes = [
@@ -100,7 +102,7 @@ const routes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    RouterModule.forRoot(routes, { useHash: true }),
+    // RouterModule.forRoot(routes, { useHash: true }),
     // AppRoutingModule
   ],
   providers: [SenderService, AgencyService, 
