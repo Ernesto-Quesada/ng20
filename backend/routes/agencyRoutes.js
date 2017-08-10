@@ -132,25 +132,22 @@ router.post('/agency/:id', (req, res, next) => {    //----------
 });
 
 
-//=== Post the form and save the data   =======
+//======== Post the form and save the data   =======
 //======== in the data base   =====================
-// ONLY FOR ADMIN not for project 3 presentation
+// ONLY FOR ADMIN not for USERS
 router.post('/agency',
- //ensure.ensureLoggedIn('/login'),
+  ensure.ensureLoggedIn('/login'),
 
     (req, res, next) => {      
         const nameAgency = req.body.nameAgencyInput;
         const emailAgency = req.body.emailAgencyInput;
-        
-        //author: req.user._id,
-        //usersWithThisAgency:req.user._id,
-       // address: req.body.description,
-        //country: req.body.country
+        address: req.body.description;
+        country: req.body.country
         //imageUrl: `/images/${req.file.filename}`
-      console.log('NMAE AGENCY',nameAgency);
+      console.log('NAME AGENCY',nameAgency);
       console.log('email AGENCY',emailAgency);
 
-        if (emailAgency === '' || nameAgency === '') {
+        if (emailAgency == '' || nameAgency == '') {
             res.render('agency/newAgency.ejs', {
                 errorMessage: 'Please provide both email and password.'
             });
