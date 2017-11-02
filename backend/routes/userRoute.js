@@ -63,8 +63,9 @@ routeforUser.get('/api/relatives',
 
 //-------ADD a RELATIVE----- ok +- on sund 17
 
-routeforUser.post('/api/relative/new', ensure.ensureLoggedIn('/login'), (req, res, next) => {
-
+routeforUser.post('/api/relative/new',
+ ensure.ensureLoggedIn('/login'), 
+ (req, res, next) => {
       //---receive all inputs from the form ----
       console.log('<><><><REQ>BODY', req.body)
 
@@ -74,7 +75,7 @@ routeforUser.post('/api/relative/new', ensure.ensureLoggedIn('/login'), (req, re
       const cIdentidadR = req.body.cIdentidad;
       console.log('<><><><CI', cIdentidadR);
 
-       const phoneR = req.body.phoneRelative;
+      const phoneR = req.body.phoneRelative;
       const addressR = req.body.addressRelative;
       const parentescoR = req.body.parentesco;
       //       emailR: req.body.emailRelative,
@@ -88,56 +89,83 @@ routeforUser.post('/api/relative/new', ensure.ensureLoggedIn('/login'), (req, re
       
 
       
-      Relative.findOne(
-            // 1st arg -> criteria of the findOne (which documents)
-            { cIdentidad: cIdentidadR , relativeOfUser: req.user._id},
+      // Relative.findOne(
+      //       // 1st arg -> criteria of the findOne (which documents)
+      //       { cIdentidad: cIdentidadR , relativeOfUser: req.user._id},
             
-            // 3rd arg -> callback
-            (err, foundRelative) => {
-              if (err) { 
-                res.status(500).json({ message: 'Something went wrong.' });
-                return;
-              }
-            // if foundRelative don't let the user register it because is already there
-            if (foundRelative) {
-              res.status(400).json({message: 'member already in list' });
-              console.log('REQ.USER in RELATIVE NEW', req.user)
-              return;
-            }
+      //       // 3rd arg -> callback
+      //       (err, foundRelative) => {
+      //         if (err) { 
+      //           res.status(500).json({ message: 'Something went wrong.' });
+      //           return;
+      //         }
+      //       // if foundRelative don't let the user register it because is already there
+      //       if (foundRelative) {
+      //         res.status(400).json({message: 'member already in list' });
+      //         console.log('REQ.USER in RELATIVE NEW', req.user)
+      //         return;
+      //       }
 
-            //We are good to go, time to save the RElative.
+      Relative.findOne({ cIdentidad: cIdentidadR }, 
+                       (err, foundRelative) => { 
+                            if (err) { 
+                              res.status(500).json({ message: 'Something went wrong.' });
+                            return;
+                            }
+                             // if foundRelative check if already with user
+                            if (foundRelative) {
+                              console.log('Found Relative',foundRelative);
+                              foundRelative.relativeOfUser.forEach((oneUser)=> { 
+                                console.log(oneUser,'ONE USER in relative new');
+                                  if ( oneUser.equals(req.user._id) ) {
+                                      console.log('User already has this relative');
+                                      console.log('--');
+                                      console.log('--');
+                                      console.log('---+++',foundRelative.relativeOfUser)
+                                      console.log('--');
+                                      console.log('--');
+                                      console.log('REQ.USER .id', req.user._id);
+                                      console.log('One User .id', oneUser);
+                                      res.status(200).json({foundRelative });
+                                  return;
+                                    } 
+                                  // else {
+                                  //     foundRelative.relativeOfUser.push(req.user._id);
+                                  //     res.status(200).json(foundRelative)
+                                  //       }
+                              })
+                            }
+                            //We are good to go, time to save the RElative.
+                            //Create the new Relative
+                            const theRelative = new Relative({
+                              name: nameR,
+                              firstApell:     firstApellR,
+                              secondApell:    secondApellR,
+                              relativeOfUser: req.user._id,
+                              cIdentidad:     cIdentidadR,
+                            // phone:phoneR,
+                              address:        addressR,
+                              parentesco:     parentescoR,
+                              //email: emailR,
+                              //country:countryR,
+                            });
+                          //Save it
+                          theRelative.save((err) => {
+                                if (err) {
+                                  res.status(500).json({ message: 'Something went wrong.' });
+                                  return;
+                                }
+                            // Store a message in the box to display after the redirect
+                            // req.flash(
+                            //   // 1st arg -> key of message
+                            //   'success',
+                            //   // 2nd arg -> the actual message
+                            //   'You have registered your family member successfully!'
+                            // );
 
-            //Create the new Relative
-            const theRelative = new Relative({
-              name: nameR,
-              firstApell:     firstApellR,
-              secondApell:    secondApellR,
-              relativeOfUser: req.user._id,
-              cIdentidad:     cIdentidadR,
-             // phone:phoneR,
-              address:        addressR,
-              parentesco:     parentescoR,
-              //email: emailR,
-              //country:countryR,
-            });
-            //Save it
-            theRelative.save((err) => {
-                  if (err) {
-                    res.status(500).json({ message: 'Something went wrong.' });
-                    return;
-                  }
-
-              // Store a message in the box to display after the redirect
-              // req.flash(
-              //   // 1st arg -> key of message
-              //   'success',
-              //   // 2nd arg -> the actual message
-              //   'You have registered your family member successfully!'
-              // );
-
-              // Redirect to profile page if save is successful
-              res.status(200).json(theRelative)
-        });
+                            // Redirect to profile page if save is successful
+                            res.status(200).json(theRelative)
+                      });
       });
   });
 //=======================================
@@ -165,39 +193,7 @@ routeforUser.post('/api/relative/:id/select',
 
 
 
-// routeforUser.post('/relative/new', (req, res, next) => {
-  //   const myUserId =req.user._id
-  //   console.log('esta es my user Id form req.body',myUserId)
 
-  //   User.findById(myUserId, (err, theUser) => {
-  //     if (err) {
-  //       next(err);
-  //       return;
-  //     }
-  //     //     REQUIRES THE Family MODEL
-  //       //                     |
-  //     const newRelative = new Relative({
-  //       name: req.body.relativeName,
-  //       firstApell: req.body.firstApell,
-  //       secondApell: req.body.secondApell,
-  //       cIdentidad:req.body.carnetId,
-  //       phone:req.body.phoneRelative,
-  //       address: req.body.addressRelative,
-  //       parentesco: req.body.parentesco,
-  //       email: req.body.emailRelative,
-  //       country:req.body.country,
-  //      });
-  //     theUser.relative.push(newRelative._id);
-  //     console.log('RELATIVE',theUser.relative.length);
-  //     theUser.save((err) => {
-  //       if (err) {
-  //         next(err);
-  //         return;
-  //       }
-  //       res.redirect('/profile');
-  //     });
-  //   });
-// });
 
 
 
