@@ -107,50 +107,51 @@ routeforUser.post('/api/relative/new',
       //       }
 
       Relative.findOne({ cIdentidad: cIdentidadR }, 
-                       (err, foundRelative) => { 
-                            if (err) { 
-                              res.status(500).json({ message: 'Something went wrong.' });
-                            return;
-                            }
-                             // if foundRelative check if already with user
-                            if (foundRelative) {
-                              console.log('Found Relative',foundRelative);
-                              foundRelative.relativeOfUser.forEach((oneUser)=> { 
-                                console.log(oneUser,'ONE USER in relative new');
-                                  if ( oneUser.equals(req.user._id) ) {
-                                      console.log('User already has this relative');
-                                      console.log('--');
-                                      console.log('--');
-                                      console.log('---+++',foundRelative.relativeOfUser)
-                                      console.log('--');
-                                      console.log('--');
-                                      console.log('REQ.USER .id', req.user._id);
-                                      console.log('One User .id', oneUser);
-                                      res.status(200).json({foundRelative });
-                                  return;
-                                    } 
-                                  // else {
-                                  //     foundRelative.relativeOfUser.push(req.user._id);
-                                  //     res.status(200).json(foundRelative)
-                                  //       }
-                              })
-                            }
-                            //We are good to go, time to save the RElative.
-                            //Create the new Relative
-                            const theRelative = new Relative({
-                              name: nameR,
-                              firstApell:     firstApellR,
-                              secondApell:    secondApellR,
-                              relativeOfUser: req.user._id,
-                              cIdentidad:     cIdentidadR,
-                            // phone:phoneR,
-                              address:        addressR,
-                              parentesco:     parentescoR,
-                              //email: emailR,
-                              //country:countryR,
-                            });
-                          //Save it
-                          theRelative.save((err) => {
+          (err, foundRelative) => { 
+            if (err) { 
+              res.status(500)
+                 .json( { message: 'Something went wrong.' } );
+              return;
+            }
+        // if foundRelative check if already with user
+            if (foundRelative) {
+              console.log('Found Relative',foundRelative);
+              foundRelative.relativeOfUser.forEach((oneUser)=> { 
+                console.log(oneUser,'ONE USER in relative new');
+                if ( oneUser.equals(req.user._id) ) {
+                    console.log('User already has this relative');
+                    console.log('--');
+                    console.log('--');
+                    console.log('---+++',foundRelative.relativeOfUser)
+                    console.log('--');
+                    console.log('--');
+                    console.log('REQ.USER .id', req.user._id);
+                    console.log('One User .id', oneUser);
+                    res.status(200).json({message:"You already added this relative" });
+                return;
+                } else {
+                       foundRelative.relativeOfUser.push(req.user._id);
+                       res.status(200).json(foundRelative)
+                  return;
+                }
+              })
+            }
+            //We are good to go, time to save the RElative.
+            //Create the new Relative
+            const theRelative = new Relative({
+              name: nameR,
+              firstApell:     firstApellR,
+              secondApell:    secondApellR,
+              relativeOfUser: req.user._id,
+              cIdentidad:     cIdentidadR,
+              // phone:phoneR,
+              address:        addressR,
+              parentesco:     parentescoR,
+              //email: emailR,
+              //country:countryR,
+            });
+           //Save it
+           theRelative.save((err) => {
                                 if (err) {
                                   res.status(500).json({ message: 'Something went wrong.' });
                                   return;
