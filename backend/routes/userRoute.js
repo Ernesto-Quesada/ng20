@@ -116,25 +116,40 @@ routeforUser.post('/api/relative/new',
         // if foundRelative check if already with user
             if (foundRelative) {
               console.log('Found Relative',foundRelative);
-              foundRelative.relativeOfUser.forEach((oneUser)=> { 
-                console.log(oneUser,'ONE USER in relative new');
-                if ( oneUser.equals(req.user._id) ) {
-                    console.log('User already has this relative');
-                    console.log('--');
-                    console.log('--');
-                    console.log('---+++',foundRelative.relativeOfUser)
-                    console.log('--');
-                    console.log('--');
-                    console.log('REQ.USER .id', req.user._id);
-                    console.log('One User .id', oneUser);
-                    res.status(200).json({message:"You already added this relative" });
-                return;
-                } else {
-                       foundRelative.relativeOfUser.push(req.user._id);
-                       res.status(200).json(foundRelative)
-                  return;
-                }
-              })
+              console.log('REQ>USER>ID',req.user._id)
+              foundRelative.relativeOfUser.indexOf(req.user._id)===-1 ?
+               (foundRelative.relativeOfUser.push(req.user._id),
+               foundRelative.save((err) => {
+                          if (err) {
+                            res.status(500).json({ message: 'Something went wrong.' });
+                            return;
+                          }
+                res.status(200).json({message:"Guardado"})
+                
+              }),
+               console.log("empuje"))
+               ://res.status(200).json({message:"You already added this relative" })
+               console.log('ya existe')
+              // foundRelative.relativeOfUser.forEach((oneUser)=> { 
+              //   console.log(oneUser,'ONE USER in relative new');
+              //   if ( oneUser.equals(req.user._id) ) {
+              //       console.log('User already has this relative');
+              //       console.log('--');
+              //       console.log('--');
+              //       console.log('---+++',foundRelative.relativeOfUser)
+              //       console.log('--');
+              //       console.log('--');
+              //       console.log('REQ.USER .id', req.user._id);
+              //       console.log('One User .id', oneUser);
+              //       res.status(200).json({message:"You already added this relative" });
+              //   return;
+              //   }
+              //   foundRelative.relativeOfUser.push(req.user._id);
+              //          res.status(200).json(foundRelative)
+              //     return;
+                
+              // })
+              return
             }
             //We are good to go, time to save the RElative.
             //Create the new Relative
