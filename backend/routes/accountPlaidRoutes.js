@@ -57,7 +57,7 @@ routeforPlaid.get('/api/accountPlaid', (req, res, next) => {
 //
 routeforPlaid.post('/api/accountPlaid/get_access_token', function(request, response, next) {
       PUBLIC_TOKEN = request.body.publicToken;
-      console.log('PUblic', PUBLIC_TOKEN);
+      //console.log('PUblic', PUBLIC_TOKEN);
       client.exchangePublicToken(PUBLIC_TOKEN, function(error, tokenResponse) {
           if (error != null) {
             var msg = 'Could not exchange public_token!';
@@ -68,8 +68,8 @@ routeforPlaid.post('/api/accountPlaid/get_access_token', function(request, respo
             }
           ACCESS_TOKEN = tokenResponse.access_token;
           ITEM_ID = tokenResponse.item_id;
-          console.log('Access Token: ' + ACCESS_TOKEN);
-          console.log('Item ID: ' + ITEM_ID);
+          //console.log('Access Token: ' + ACCESS_TOKEN);
+          //console.log('Item ID: ' + ITEM_ID);
           // response.json({
           //   'error': false
           User.findByIdAndUpdate( request.user._id, 
@@ -77,9 +77,9 @@ routeforPlaid.post('/api/accountPlaid/get_access_token', function(request, respo
             { ACCESS_TOKEN: ACCESS_TOKEN ,
               ITEM_ID: ITEM_ID },
                (err, savedTokens) => {
-                console.log('=============',savedTokens);
+                //console.log('=============',savedTokens);
 
-                 console.log('=============',savedTokens);
+                 //console.log('=============',savedTokens);
                  
                   if (err) {
                             response.status(500).json({ message: 'Tokens update went to 💩.' });
@@ -110,7 +110,7 @@ routeforPlaid.post('/api/accountPlaid/accounts/get', function(request, response,
          //returns only checking acc
           return value.subtype=="checking";
       })
-      console.log('FILTERED ACCOUNTS', filteredAccounts)
+      //console.log('FILTERED ACCOUNTS', filteredAccounts)
     User.findByIdAndUpdate( request.user._id, 
       {accountSpec: filteredAccounts},
     (err,accountSpecsSaved) =>{

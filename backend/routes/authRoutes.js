@@ -50,7 +50,7 @@ authRoutes.post('/api/signup',
           res.status(400).json({ message: 'The username already exists.' });
           return;
         }
-        console.log('founduser',foundUser)
+        //console.log('founduser',foundUser)
         // We are good to go, time to save the user.
         // Encrypt the password
         const salt = bcrypt.genSaltSync(10);
@@ -119,7 +119,7 @@ authRoutes.post('/api/logout', (req, res, next) => {
 
 authRoutes.get('/api/loggedin', (req, res, next) => {
   if (req.isAuthenticated()) {
-    console.log('i get in here ---------')
+    //console.log('i get in here ---------')
     res.status(200).json(req.user);
     return;
   }

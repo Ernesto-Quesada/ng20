@@ -45,11 +45,6 @@ routeforUser.get('/api/relatives',
         }
         {
           res.status(200).json(theRelativeList);
-          // res.render('user/userProfile.ejs',{
-          //   user:req.user,
-          //   relativeList: theRelativeList
-
-          // });
         }
       })
     }
@@ -73,7 +68,7 @@ routeforUser.post('/api/relative/new',
       const firstApellR = req.body.firstApell;
       const secondApellR = req.body.secondApell;
       const cIdentidadR = req.body.cIdentidad;
-      console.log('<><><><CI', cIdentidadR);
+      //console.log('<><><><CI', cIdentidadR);
 
       const phoneR = req.body.phoneRelative;
       const addressR = req.body.addressRelative;
@@ -115,8 +110,8 @@ routeforUser.post('/api/relative/new',
             }
         // if foundRelative check if already with user
             if (foundRelative) {
-              console.log('Found Relative',foundRelative);
-              console.log('REQ>USER>ID',req.user._id)
+              //console.log('Found Relative',foundRelative);
+              //console.log('REQ>USER>ID',req.user._id)
               foundRelative.relativeOfUser.indexOf(req.user._id)===-1 ?
                (foundRelative.relativeOfUser.push(req.user._id),
                foundRelative.save((err) => {
@@ -221,9 +216,9 @@ if (err){
     next(err);
     return;
 }
-    console.log('therelative',theRelative);
-    console.log('reuser',req.user);
-    console.log('myfamily',req.user.family)
+    //console.log('therelative',theRelative);
+    //console.log('reuser',req.user);
+    //console.log('myfamily',req.user.family)
 res.render('user/amount.ejs',{
   //passing family to the view
     theFamily: theRelative
