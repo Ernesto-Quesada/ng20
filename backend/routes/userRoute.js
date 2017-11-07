@@ -40,8 +40,8 @@ routeforUser.get('/api/relatives',
     (req, res, next) => {
       Relative.find({relativeOfUser: req.user._id } ,(err,theRelativeList) =>{
         if (err) {
-                next(err);
-                return;
+          next(err);
+          return;
         }
         {
           res.status(200).json(theRelativeList);
@@ -105,45 +105,29 @@ routeforUser.post('/api/relative/new',
           (err, foundRelative) => { 
             if (err) { 
               res.status(500)
-                 .json( { message: 'Something went wrong.' } );
+              .json( { message: 'Something went wrong.' } );
               return;
             }
         // if foundRelative check if already with user
             if (foundRelative) {
               //console.log('Found Relative',foundRelative);
               //console.log('REQ>USER>ID',req.user._id)
-              foundRelative.relativeOfUser.indexOf(req.user._id)===-1 ?
+               foundRelative.relativeOfUser.indexOf(req.user._id)===-1 ?
+               //many actions in a ternary operator go inside () and separated by ,
                (foundRelative.relativeOfUser.push(req.user._id),
                foundRelative.save((err) => {
                           if (err) {
                             res.status(500).json({ message: 'Something went wrong.' });
                             return;
                           }
-                res.status(200).json({message:"Guardado"})
-                
-              }),
-               console.log("empuje"))
-               ://res.status(200).json({message:"You already added this relative" })
-               console.log('ya existe')
+                          res.status(200).json({foundRelative})
+                          })
+                        )
+                          //console.log("empuje"))
+               : res.status(200).json({foundRelative})
               // foundRelative.relativeOfUser.forEach((oneUser)=> { 
               //   console.log(oneUser,'ONE USER in relative new');
               //   if ( oneUser.equals(req.user._id) ) {
-              //       console.log('User already has this relative');
-              //       console.log('--');
-              //       console.log('--');
-              //       console.log('---+++',foundRelative.relativeOfUser)
-              //       console.log('--');
-              //       console.log('--');
-              //       console.log('REQ.USER .id', req.user._id);
-              //       console.log('One User .id', oneUser);
-              //       res.status(200).json({message:"You already added this relative" });
-              //   return;
-              //   }
-              //   foundRelative.relativeOfUser.push(req.user._id);
-              //          res.status(200).json(foundRelative)
-              //     return;
-                
-              // })
               return
             }
             //We are good to go, time to save the RElative.
@@ -162,23 +146,16 @@ routeforUser.post('/api/relative/new',
             });
            //Save it
            theRelative.save((err) => {
-                                if (err) {
-                                  res.status(500).json({ message: 'Something went wrong.' });
-                                  return;
-                                }
-                            // Store a message in the box to display after the redirect
-                            // req.flash(
-                            //   // 1st arg -> key of message
-                            //   'success',
-                            //   // 2nd arg -> the actual message
-                            //   'You have registered your family member successfully!'
-                            // );
-
-                            // Redirect to profile page if save is successful
-                            res.status(200).json(theRelative)
+                if (err) {
+                      res.status(500).json({ message: 'Something went wrong.' });
+                      return;
+                      }
+                       res.status(200).json(theRelative)
                       });
       });
   });
+
+  
 //=======================================
 //========= SELECT RELATIVE to SEND NOW ====
 //=======================================
