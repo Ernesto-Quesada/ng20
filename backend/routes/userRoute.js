@@ -22,11 +22,6 @@ routeforUser.get('/api/profile',  ensure.ensureLoggedIn('/login'),(req, res, nex
         {
            console.log('/////',completeUSerProfile);
           res.json({theUserProfile: completeUSerProfile});
-          // res.render('user/userProfile.ejs',{
-          //   user:req.user,
-          //   relativeList: theRelativeList
-
-          // });
         }
       }
     )///find
