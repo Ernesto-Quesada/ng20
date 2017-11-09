@@ -17,9 +17,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
    this.mySessionService.isLoggedIn()
       .then((theUsercomingFromApi ) => {
+        console.log('error in login ---------');
       this.user = theUsercomingFromApi
     })
     .catch((err) => {
+      console.log('error in login ---------')
         });
   }
   login() {
