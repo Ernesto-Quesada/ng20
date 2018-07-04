@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
-import { SenderService } from './sender.service';
+import { SenderService } from './services/sender.service';
 
 
 // import { AppRoutingModule } from './app-routing.module';
@@ -19,11 +19,11 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
 import { AgencyComponent } from './agency/agency.component';
 import { AgencyDetailsComponent } from './agency-details/agency-details.component';
-import {AgencyService} from './agency.service';
+import {AgencyService} from './services/agency.service';
 import { RelativeComponent } from './relative/relative.component';
 
 import { AccountPlaidComponent } from './account-plaid/account-plaid.component';
-import {AccountPlaidService} from './accountPlaid.service';
+import {AccountPlaidService} from './services/accountPlaid.service';
 import { FooterComponent } from './footer/footer.component';
 import { RelativeListComponent } from './relative-list/relative-list.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -32,13 +32,13 @@ import { MinistartComponent } from './ministart/ministart.component';
 import { MiniplaidComponent } from './miniplaid/miniplaid.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
 import { SearchAgencyComponent } from './search-agency/search-agency.component';
-import { AgencySearchService} from './agency-search.service';
+import { AgencySearchService} from './services/agency-search.service';
 import { PaymentComponent } from './payment/payment.component';
 import { SecureLayoutComponent } from './secure-layout/secure-layout.component';
 import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { RelativeNewComponent } from './relative-new/relative-new.component';
-import { RelativeService } from './relative.service';
+import { RelativeService } from './services/relative.service';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 /// new from adele
@@ -47,7 +47,7 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 const routes: Routes = [
   
-  { path: '', component: SecureLayoutComponent,children:[
+  { path: '', component: SecureLayoutComponent, children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '',  component: HomeComponent },
       { path: 'agency',  component: AgencyComponent },

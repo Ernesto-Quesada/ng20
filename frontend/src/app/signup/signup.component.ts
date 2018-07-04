@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // importing the service that will call the Express API
-import { SenderService } from '../sender.service';
+import { SenderService } from '../services/sender.service';
 import { Router } from '@angular/router';
 // import { Signup } from '../models/signupmodel'
 

@@ -1,42 +1,42 @@
 
-        <div class="col-ms-12">
-            <div id="navbar" class="navbar navbar-default">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" [routerLink]="['/portal']"></a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li *ngIf='userLogged' class="active">
-                            <a [routerLink]="['/portal']"><i class="fa fa-home"></i></a>
-                        </li>
-                        <li *ngIf='!userLogged'>
-                            <a [routerLink]="['/login']">Log In</a>
-                        </li>
-                        <li *ngIf='userLogged'>
-                            <a (click)='logMeOut()' class="cursor">Log Out</a>
-                        </li>
-                        <li *ngIf='userLogged'>
-                            <a [routerLink]="['/portal']">Portal</a>
-                        </li>
-                        <!-- <li *ngIf='userLogged'>
-                            <a [routerLink]="['/profile']">profile</a>
-                        </li> -->
-                        <li *ngIf='!userLogged'>
-                            <a [routerLink]="['/signup']">Signup</a>
-                        </li>
-                        <li>
-                        <a [routerLink]="['/agency']" >Agencies</a>
-                        </li>
-                         
-                        
-                    </ul>
-                </div>
-            </div>
+<nav class="navbar navbar-default">
+    <div  class="container -fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" [routerLink]="['/portal']"></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <!-- <span class="sr-only">Toggle navigation</span> -->
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div>
-  
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <!-- <li *ngIf='userLogged' class="active"> -->
+                <li *ngIf='userLogged'>
+                    <a [routerLink]="['/portal']"><i class="fa fa-home"></i></a>
+                </li>
+                <li *ngIf='!userLogged'>
+                    <a [routerLink]="['/login']">Log In</a>
+                </li>
+                <li *ngIf='userLogged'>
+                    <a (click)='logMeOut()' class="cursor">Log Out</a>
+                </li>
+                <li *ngIf='userLogged'>
+                    <a [routerLink]="['/portal']">Portal</a>
+                </li>
+                <!-- <li *ngIf='userLogged'>
+                    <a [routerLink]="['/profile']">profile</a>
+                </li> -->
+                <li *ngIf='!userLogged'>
+                    <a [routerLink]="['/signup']">Signup</a>
+                </li>
+                <li>
+                <a [routerLink]="['/agency']" >Agencies</a>
+                </li>
+                    
+                
+            </ul>
+        </div>
+    </div>
+</nav> 

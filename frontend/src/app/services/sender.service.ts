@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Rx';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class SenderService {
@@ -17,7 +17,7 @@ export class SenderService {
 
   loggedIn$ = this.loggedInSource.asObservable();
   // app component will subscribe to "loggedIn$"
-  
+
   constructor(
     private http: Http
     ) { }
@@ -41,18 +41,6 @@ export class SenderService {
   }
 // ------isLoggedIn  end-----
 
-// ------Relative start-----
-
-getRelatives() {
-  return this.http
-  .get(
-    this.BASE_URL + '/api/relatives',
-   {withCredentials: true}
-   )
-    .toPromise()
-    .then(res => res.json());
-  }
-  // ------Relative end-----
 
 login (credentials) {
     return this.http

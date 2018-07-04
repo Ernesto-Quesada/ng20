@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AgencyService} from '../agency.service'
-import { SenderService } from '../sender.service';
+import {AgencyService} from '../services/agency.service'
+import { SenderService } from '../services/sender.service';
 @Component({
   selector: 'app-agency',
   templateUrl: './agency.component.html',

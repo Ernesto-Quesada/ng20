@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 import { Location } from '@angular/common';
-import {AgencyService} from '../agency.service'
+import {AgencyService} from '../services/agency.service'
 import { Router } from '@angular/router';
 
 import { AgencyComponent} from '../agency/agency.component';

@@ -1,0 +1,9 @@
+.navbar-default .navbar-brand {
+    margin-right: 50px;
+    margin-left: 10px;
+    width: 200px;
+    height: 78px;
+    background: url(/assets/images/logo.png) no-repeat 0 50%;
+  }
+  .navbar{ margin:0;
+}

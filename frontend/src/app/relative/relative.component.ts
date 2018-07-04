@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
-import { SenderService } from '../sender.service';
+import { SenderService } from '../services/sender.service';
 import { Router } from '@angular/router';
-import { RelativeService} from '../relative.service'
+import { RelativeService} from '../services/relative.service'
 @Component({
   selector: 'app-relative',
   templateUrl: './relative.component.html',

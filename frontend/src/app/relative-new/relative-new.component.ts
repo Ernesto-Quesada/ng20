@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RelativeService} from '../relative.service';
-import { SenderService} from '../sender.service';
+import { RelativeService} from '../services/relative.service';
+import { SenderService} from '../services/sender.service';
 import { Router } from '@angular/router';
 import { NgForm} from '@angular/forms'
 
@@ -39,7 +39,7 @@ error: any;
         });
   }
   getRelatives(): void {
-    this.mySessionService
+    this.relativeService
         .getRelatives()
         .then((relatives ) => {
           this.relative = relatives;

@@ -94,6 +94,30 @@ router.get('/api/agency/', (req, res, next) => {
 });
 
 
+// .        |
+// >>>>>>For ADMIN ONLY and not for presentation of project3
+router.post('/agency/:id', (req, res, next) => {    //----------
+  const agencyId = req.params.id;
+  
+  const agencyChanges = {
+    nameAgency: req.body.agencyName,
+    email:req.body.email,
+    contactPhone: req.body.contactPhone
+    
+    
+    // author: req.body.author,
+    
+    // imageUrl: req.body.imageUrl,
+  };
+  Agency.findByIdAndUpdate( agencyId,agencyChanges, (err,theAgency) =>{
+    if(err){
+      next(err);
+      return;
+    }
+    res.redirect('/Agency');
+  });
+});
+
 // >>>>>>For ADMIN ONLY and not for presentation of project3
 router.get('/agency/:id/edit',(req,res,next) => {  //-----------
     const AgencyId = req.params.id;                 //           |
@@ -107,30 +131,6 @@ router.get('/agency/:id/edit',(req,res,next) => {  //-----------
     });
     }); 
 });    
-                                              // .        |
-// >>>>>>For ADMIN ONLY and not for presentation of project3
-router.post('/agency/:id', (req, res, next) => {    //----------
-    const agencyId = req.params.id;
-        
-      const agencyChanges = {
-        nameAgency: req.body.agencyName,
-        email:req.body.email,
-        contactPhone: req.body.contactPhone
-
-        
-        // author: req.body.author,
-        
-        // imageUrl: req.body.imageUrl,
-      };
-      Agency.findByIdAndUpdate( agencyId,agencyChanges, (err,theAgency) =>{
-        if(err){
-          next(err);
-          return;
-        }
-        res.redirect('/Agency');
-    });
-});
-
 
 //======== Post the form and save the data   =======
 //======== in the data base   =====================

@@ -7,6 +7,7 @@
     <meta name="author" content="">
     <title>KinPay | Send money now</title>
     <base href="/">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="assets/css/font-awesome.css" rel="stylesheet">
     <link href="assets/css/prettyPhoto.css" rel="stylesheet">
@@ -28,9 +29,9 @@
 
   <app-root></app-root>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+  <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script> -->
 <script>
   $(document).on('click','.navbar-collapse.in',function(e) {
     if( $(e.target).is('a') ) {
@@ -41,6 +42,10 @@
   <!--<script src="assets/js/jquery.isotope.min.js"></script>
   <script src="assets/js/jquery.prettyPhoto.js"></script>
   <script src="assets/js/main.js"></script>-->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
 
 </body>
 </html>

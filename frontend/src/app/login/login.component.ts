@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SenderService } from '../sender.service';
+import { SenderService } from '../services/sender.service';
 import { Router } from '@angular/router';
 
 @Component({

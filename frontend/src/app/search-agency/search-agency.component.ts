@@ -9,7 +9,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-import { AgencySearchService } from '../agency-search.service';
+import { AgencySearchService } from '../services/agency-search.service';
 
 @Component({
   selector: 'app-search-agency',

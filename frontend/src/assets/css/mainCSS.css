@@ -1,7 +1,12 @@
-@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,300,700);
+/* change file name to main.css to regain activation */
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400);
 body {
   background: #fff;
-  color: #999;
+  color: #252424 !important;
+  font-family: 'Roboto', sans-serif;
+ 
 }
 h1,
 h2,
@@ -9,7 +14,6 @@ h3,
 h4,
 h5,
 h6 {
-  color: #777;
   font-weight: 300;
 }
 a {
@@ -475,13 +479,7 @@ a:focus {
 .navbar-default .first a {
   border-radius: 0 0 0 5px;
 }
-.navbar-default .navbar-brand {
-  margin-right: 50px;
-  margin-left: 20px;
-  width: 200px;
-  height: 78px;
-  background: url(../images/logo.png) no-repeat 0 50%;
-}
+
 @media (min-width: 768px){ 
 .navbar-nav {
     float: right;
@@ -496,7 +494,6 @@ a:focus {
   padding: 30px 25px;
   font-size: 16px;
   line-height: 18px;
-  color: #999;
 }
 .navbar-default .navbar-nav > li > a > i {
   display: inline-block;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SenderService } from '../sender.service';
+import { SenderService } from '../services/sender.service';
+import { RelativeService} from '../services/relative.service'
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,15 +10,17 @@ import { Router } from '@angular/router';
 })
 export class PaymentComponent implements OnInit {
   user: any;
-  sending:any;
+  sending: any;
   error: any;
-  relativeSend:any;
-  balance:any;
-  accountName:any;
-  relatives:any;
+  relativeSend: any;
+  balance: any;
+  accountName: any;
+  relatives: any;
 cucAmount: number;
 usdAmount: number;
-  constructor(private mySenderService: SenderService, private routetheuser: Router) { }
+  constructor( private mySenderService: SenderService,
+               private relativeService: RelativeService,
+               private routetheuser: Router) { }
 
 ngOnInit() {
     this.mySenderService.isLoggedIn()
@@ -40,25 +43,23 @@ ngOnInit() {
       // this.routetheuser.navigate(['/profile']);
   })
   .catch((err) => { this.routetheuser.navigate(['/']);
-                  console.log('-------error--->>',err)});
-  
+                  console.log('-------error--->>', err)});
   }
   onKeycuc() {
     this.usdAmount =  Math.round(this.cucAmount * 1.12);
-  
   }
   onKeyusd() {
     this.cucAmount = Math.round(this.usdAmount / 1.12)
   }
   getRelatives(userInfo): void {
-    this.mySenderService
+    this.relativeService
         .getRelatives()
         .then((relatives) => {this.relatives = relatives;
         console.log('the fam in getR', this.relatives)
-        this.relatives.forEach((oneRelative)=>{
-          if (oneRelative._id === this.user.relativeSendingNow){
+        this.relatives.forEach((oneRelative) => {
+          if (oneRelative._id === this.user.relativeSendingNow) {
             this.sending = oneRelative.name;
-            console.log('sending',this.sending)
+            console.log('sending', this.sending)
           }
         })
 

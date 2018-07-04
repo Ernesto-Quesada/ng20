@@ -4,7 +4,7 @@ import { Http, Response , Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
@@ -40,5 +40,17 @@ private headers = new Headers({'Content-Type': 'application/json'});
         .then(res => res.json())
         .catch(this.handleError);
   }
+  // ------Relative start-----
+
+getRelatives() {
+  return this.http
+  .get(
+    this.BASE_URL + '/api/relatives',
+   {withCredentials: true}
+   )
+    .toPromise()
+    .then(res => res.json());
+  }
+  // ------Relative end-----
 
 }

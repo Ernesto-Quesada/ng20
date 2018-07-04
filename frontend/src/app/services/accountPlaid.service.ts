@@ -1,10 +1,10 @@
 
 import { Injectable } from '@angular/core';
-import { Http, Response ,Headers} from '@angular/http';
+import { Http, Response , Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AccountPlaidService {
@@ -19,8 +19,8 @@ export class AccountPlaidService {
   handleError(e) {
     return Observable.throw(e.json().message);
   }
-  
-  //get public data for plaid webview
+
+  // get public data for plaid webview
   accountPlaidHome() {
     return this.http.get(this.BASE_URL + '/api/accountPlaid')
                .toPromise()
@@ -28,7 +28,7 @@ export class AccountPlaidService {
                .catch(this.handleError);
   }
 
-  //get account data
+  // get account data
   get_access_token(publicToken: string) {
     // const body = 'request='+ publicToken;
     // console.log('{{{{{{{{{{', body);
@@ -50,7 +50,7 @@ export class AccountPlaidService {
                       console.log('?????????' , response)
                       response.json() })
                     .catch(() => {
-                        console.log(this.handleError) 
+                        console.log(this.handleError)
                       });
   }
 
@@ -59,7 +59,7 @@ export class AccountPlaidService {
                     {withCredentials: true})
                     .toPromise()
                     .then(response => response.json())
-                    .catch(()=> console.log(this.handleError));
+                    .catch(() => console.log(this.handleError));
   }
 
 

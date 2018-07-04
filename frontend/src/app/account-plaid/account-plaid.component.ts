@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AccountPlaidService} from '../accountPlaid.service'
+import {AccountPlaidService} from '../services/accountPlaid.service'
 
 @Component({
   selector: 'app-account-plaid',
@@ -35,7 +35,7 @@ export class AccountPlaidComponent implements OnInit {
   }
 
   openLink() {
-    const accountPlaidComponent=this;
+    const accountPlaidComponent = this;
     var handler = (<any>window).Plaid.create({
       apiVersion: 'v2',
       clientName: 'Plaid Walkthrough Demo',

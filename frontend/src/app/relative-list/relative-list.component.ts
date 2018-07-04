@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RelativeService } from '../relative.service'
-import { SenderService } from '../sender.service';
+import { RelativeService } from '../services/relative.service'
+import { SenderService } from '../services/sender.service';
 import { Router } from '@angular/router';
 
 
@@ -16,29 +16,29 @@ selectedRelative: any;
 user: any;
 errorMessage: any;
 
-  constructor(private relativeServive: SenderService,
+  constructor(private relativeServive: RelativeService,
               private mySessionService: SenderService,
               private routetheuser: Router) { }
 
   ngOnInit(): void {
     this.mySessionService.isLoggedIn()
       .then((theUsercomingFromApi ) => {
-       this.user = theUsercomingFromApi;
-    this.getRelatives();
-      console.log('the family  in this.getR', this.relatives)
-    })
-    .catch((err) => {console.log('user not logged')
-        });
+        this.user = theUsercomingFromApi;
+        this.getRelatives();
+        console.log('the family  in this.getR', this.relatives)
+      })
+      .catch((err) => {console.log('user not logged')
+      });
   }
   getRelatives(): void {
-    this.mySessionService
+    this.relativeServive
         .getRelatives()
         .then((relatives) => {this.relatives = relatives;
         console.log('the fam in getR', this.relatives)
         })
 
   }
-        onSelect(relative): void {
+  onSelect(relative): void {
     this.selectedRelative = relative;
     console.log('selected Relative', this.selectedRelative)
   }
