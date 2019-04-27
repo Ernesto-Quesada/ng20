@@ -15,8 +15,16 @@ relatives: any;
 selectedRelative: any;
 user: any;
 errorMessage: any;
+relativeTobeDeleted: string;
+relativeName: string;
+relativeSelected: string;
+error: string;
+sendingToRelative: string;
+addCheckedIcon: boolean = false;
+relativeId:string;
 
-  constructor(private relativeServive: RelativeService,
+
+  constructor(private relativeService: RelativeService,
               private mySessionService: SenderService,
               private routetheuser: Router) { }
 
@@ -24,23 +32,64 @@ errorMessage: any;
     this.mySessionService.isLoggedIn()
       .then((theUsercomingFromApi ) => {
         this.user = theUsercomingFromApi;
+        console.log('theuser',this.user);
+        this.sendingToRelative = this.user.relativeSendingNow;
+        // console.log(this.sendingToRelative);
+        // console.log( typeof this.sendingToRelative)
+
         this.getRelatives();
         console.log('the family  in this.getR', this.relatives)
       })
       .catch((err) => {console.log('user not logged')
       });
   }
-  getRelatives(): void {
-    this.relativeServive
-        .getRelatives()
-        .then((relatives) => {this.relatives = relatives;
-        console.log('the fam in getR', this.relatives)
-        })
+  // relativeDetails(relativeId) {
+  // }
+  
 
+  getRelatives(): void {
+    this.relativeService.getRelatives()
+      .subscribe(response => {
+        console.log('RELATIVES>>>>>', response.json());
+        this.relatives = response.json();
+      })
   }
-  onSelect(relative): void {
-    this.selectedRelative = relative;
-    console.log('selected Relative', this.selectedRelative)
-  }
+
+  
+  setRelativeToSend(relativeId, relativeName) {
+
+      // if ( this.sendingToRelative !== relativeId ) {
+      //   this.addCheckedIcon = !this.addCheckedIcon
+      // }
+    this.relativeId = relativeId
+     this.addCheckedIcon = true;
+    this.relativeName = relativeName
+
+    this.relativeService.selectRelative(relativeId)
+    .then((theUserFromApi) => {
+    console.log('THEUSERFROM api response RELATIVE', theUserFromApi)
+    // this.routetheuser.navigate(['/payment']);
+    this.error = null;
+    })
+    .catch((err) => {
+    this.relatives = null;
+    this.error = err;
+    });
+    }
+
+// setRelativeToDelete(relativeId, relativeName) {
+//   console.log('this.relativeTobeDeleted ',this.relativeTobeDeleted )
+//   // this.relativeTobeDeleted = relativeId;
+//   this.relativeSelected = relativeId;
+//   this.relativeName = relativeName
+//   console.log('this.relativeTobeDeleted ', this.relativeTobeDeleted )
+// }
+  // deleteRelative() {
+  //   this.relativeService.deleteRelative(this.relativeTobeDeleted)
+  //   .then(value => {
+  //     console.log(value)
+  //     this.relatives = value;
+
+  // })}
 
 }

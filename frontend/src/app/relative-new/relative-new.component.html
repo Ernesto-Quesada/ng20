@@ -1,72 +1,54 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 well-custom bg-white overflow-h padding-2" >
-            <div class="row">
-                <div class="content-mini col-md-4 well-custom relative-new-component shadow-effect-1 shadow-effect-null fg-primary-text overflow-h">
-                    <div class="block block-mini">
-                        <i class="fa fa-user fg-acent-color icon-mini"></i>
-                        <div class="title-mini">
-                            <h2>Add a family member</h2>
-                        </div>
+<section class="bg-light">
+    <div class="container-fluid no-padding">
+        <div class="container-with-user component-first-row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 componentTitleHeader">
+                        <h4>Adding a relative</h4>
                     </div>
-                </div>
-                <div class="content-mini col-md-8  well-custom shadow-effect-1 shadow-effect-null fg-white overflow-h">
-                    <div class="block block-mini">
-                        <form class="new-relative" (ngSubmit)='addRelative(relativeInfoForm)' #relativeInfoForm='ngForm' onSubmit="return false">
+                    <div class="col-md-6 componentTitleHeader">
+                        <form class="form-group">
                             <div class="control-group form-group">
-                                <div class="controls">
-                                    <input type="text" placeholder="Your Relative's Name" class="form-control" id="relativeName" name='relativeName' [(ngModel)]="newRelativeInfo.relativeName"
-                                        autofocus>
-                                    <p class="help-block"></p>
-                                </div>
+                                <input type="text" placeholder="Your Relative's Name" name='relativeName' [(ngModel)]="newRelativeInfo.relativeName" id="relativeName" class="form-control" autofocus required>
                             </div>
                             <div class="control-group form-group">
-                                <div class="controls">
-                                    <input class="form-control" placeholder="First Surname" type="text" name='firstApell' [(ngModel)]="newRelativeInfo.firstApell" id="firstApell">
-                                </div>
+                                <input type="text" placeholder="First Surname" name='firstApell' [(ngModel)]="newRelativeInfo.firstApell" id="firstApell"
+                                    class="form-control" required>
                             </div>
                             <div class="control-group form-group">
-                                <div class="controls">
-                                    <input class="form-control" placeholder="Second Surname" type="text" name='secondApell' [(ngModel)]="newRelativeInfo.secondApell" id="secondApell">
-                                </div>
+                                <input type="text" placeholder="Second Surname" name='secondApell' [(ngModel)]="newRelativeInfo.secondApell" id="secondApell"
+                                    class="form-control" required>
                             </div>
                             <div class="control-group form-group">
-                                <div class="controls">
-                                    <input class="form-control" placeholder="Parentesco" type="text" name='parentesco' [(ngModel)]="newRelativeInfo.parentesco" id="parentesco">
-                                </div>
+                                <input type="text" placeholder="Parentesco" name='parentesco' [(ngModel)]="newRelativeInfo.parentesco" id="parentesco" class="form-control" required>
                             </div>
+
                             <div class="control-group form-group">
-                                <div class="controls">
-                                    <input class="form-control" placeholder="Relative's Address" type="text" name='addressRelative' [(ngModel)]="newRelativeInfo.addressRelative"
-                                        id="addressRelative">
-                                </div>
+                                <input type="text" placeholder="Relative's Address" name='addressRelative' [(ngModel)]="newRelativeInfo.addressRelative"
+                                    id="addressRelative" class="form-control" required>
                             </div>
+
+
                             <div class="control-group form-group">
-                                <div class="controls">
-                                    <input class="form-control" placeholder="Carnet Id" type="text" name='cIdentidad' [(ngModel)]="newRelativeInfo.cIdentidad" id="cIdentidad">
-                                </div>
+                                <input type="text" placeholder="Carnet Id" name='cIdentidad' [(ngModel)]="newRelativeInfo.cIdentidad" id="cIdentidad" class="form-control">
                             </div>
+
                             <div class="control-group form-group">
-                                <div class="controls">
-                                    <input class="form-control" placeholder="Relative's Phone" type="text" name='phoneRelative' [(ngModel)]="newRelativeInfo.phoneRelative" id="phoneRelative">
-                                </div>
+                                <input type="text" placeholder="Relative's Phone" name='phoneRelative' [(ngModel)]="newRelativeInfo.phoneRelative" id="phoneRelative"
+                                    class="form-control">
                             </div>
-                            <!-- <div class="control-group form-group">
-                                <div class="controls">
-                                    <input class="form-control" placeholder="Relative's Email" type="text" name="emailRelative" [(ngModel)]="newRelativeInfo.emailRelative" id="emailRelative">
-                                </div>
-                            </div> -->
+
+
                             <div id="success"></div>
                             <!-- For success/fail messages -->
-                            <div class="btn-actions2">   
-                            <button [routerLink]="['/profile']" class="btn btn-default btn-md btn-1">Cancel</button>
-                            <input class="btn btn-md btn-primary btn-2" type="submit" value="Done">
+                            <div class="btn-actions2">
+                                <button class="btn btn-default btn-md btn-1" (click)="goBack()">Cancel</button>
+                                <button (click)="addNewRelative()" class="btn btn-primary btn-md btn-2">Done</button>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>

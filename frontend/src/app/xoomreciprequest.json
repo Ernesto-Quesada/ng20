@@ -1,0 +1,68 @@
+{
+    "recipient-requests.title.name": "Recipient Requests",
+    "recipient-requests.notification.name.part1": "You have",
+    "recipient-requests.notification.name.part2": "transaction requests",
+    "recipient-requests.transaction-request.tip.name": "Received on",
+    "recipient-requests.transaction-request.transaction-request-container.from.name": "From",
+    "recipient-requests.transaction-request.transaction-request-container.from.email": "Email",
+    "recipient-requests.transaction-request.transaction-request-container.from.phone": "Phone",
+    "recipient-requests.transaction-request.transaction-request-container.message.name": "Message",
+    "recipient-requests.transaction-request.transaction-request-container.no-thanks.name": "No, thanks",
+    "recipient-requests.transaction-request.transaction-request-container.details.name": "Details",
+    "recipient-requests.transaction-request.transaction-request-container.details.pickup": "Cash pickup",
+    "recipient-requests.cpu.transaction-request.transaction-request-container.details.location": "Location",
+    "recipient-requests.transaction-request.transaction-request-container.from.accountNumber": "Account number",
+    "decline.title.name": "Please share why you’re declining",
+    "decline.submit.name": "Submit",
+    "decline.cancel.name": "Cancel",
+    "unsubscribe.title.name": "Unsubscribe",
+    "unsubscribe.body.name": "Are you sure you don’t want to receive more notifications from Xoom?",
+    "unsubscribe.button.cancel.name": "Cancel",
+    "unsubscribe.button.unsubcribe.continue": "Continue",
+    "unsubscribe.thankyou.title.name": "Thank you",
+    "unsubscribe.thankyou.body.name": "You have succesfully unsuscribed from Xoom.",
+    "unsubscribe.thankyou.button.goToXoom": "Go to Xoom.com",
+    "recipient-requests.cpu.transaction-request.transaction-request-container.title.name": "Send money",
+    "recipient-requests.cpu.transaction-request.transaction-request-container.balance.name": "Amount",
+    "recipient-requests.cpu.transaction-request.transaction-request-container.small.text": "Fee and exchange rate information available after tapping \"Send Money.\"",
+    "recipient-requests.cpu.transaction-request.transaction-request-container.cta.name": "Send Money",
+    "recipient-requests.cpu.transaction-request.transaction-request-container.details.method": "Receiving Method",
+    "recipient-requests.reload.transaction-request.transaction-request-container.title.name": "Reload phone",
+    "recipient-requests.reload.transaction-request.transaction-request-container.balance.name": "Reload amount",
+    "recipient-requests.reload.transaction-request.transaction-request-container.small.text": "Current reload amount, fee, and exchange rate information available after tapping \"Reload Phone.\"",
+    "recipient-requests.reload.transaction-request.transaction-request-container.cta.name": "Reload Phone",
+    "recipient-requests.bp.transaction-request.transaction-request-container.title.name": "Bill payment",
+    "recipient-requests.bp.transaction-request.transaction-request-container.balance.name": "Balance",
+    "recipient-requests.bp.transaction-request.transaction-request-container.small.text": "Current balance, fee, and exchange rate information available after tapping \"Pay Bill.\"",
+    "recipient-requests.bp.transaction-request.transaction-request-container.cta.name": "Pay Bill",
+    "recipient-requests.no-requests.title.name": "Easily fulfill requests",
+    "recipient-requests.no-requests.p1.name": "Family and friends can now request what they need, when they need it.",
+    "recipient-requests.no-requests.p2.name": "You have no requests at the moment. When you do, you can grant them right here.",
+    "merge-contact.title.name": "Suggested recipients",
+    "merge-contact.p.question.part1": "Is",
+    "merge-contact.p.question.part2": "the same person as one of your contacts below?",
+    "merge-contact.li.noneoption.part1": "No,",
+    "merge-contact.li.noneoption.part2": "is new",
+    "merge-contact.continue.name": "Continue"
+}
+
+another call
+
+
+{
+    "scope": "remittance/create-my-transfers remittance/get-my-transfers remittance/send-transfers users/get-my-user users/update-my-user email/create-messages email/get-messages email/get-types fx/read-sellrates order-item/create-my-order-items pricing/get-my-quotes pricing/create-my-redemptions order-item/get-my-order-items order-item/update-my-order-items checkout-orchestration/create-my-orders checkout-orchestration/get-my-orders checkout-orchestration/update-my-orders pricing/get-quotes trust/get-my-trust trust/update-my-trust paypal-personal-payments/get-funding-plan paypal-wallet/get-my-funding-instrument-id paypal-wallet/sync-my-xoom-wallet users/create-user sharing/get-my-transfer-requests sharing/update-my-transfer-requests sharing/update-preferences content-proxy/get-content stamp-catalog/get-services stamp-accounts/get-accounts stamp-accounts/create-accounts stamp-catalog/get-countries stamp-payments/create-authorizations pricing/create-my-quotes destinations/create-my-destinations destinations/get-my-destinations destinations/validate-destinations destinations/create-my-recipients sharing/create-my-transfer-requests sharing/create-transfer-requests trust/get-my-income-sources trust/create-my-income-sources pricing/get-fees remittance/create-my-cancellation-requests trust/get-my-trust-proofs trust/create-my-trust-proofs",
+    "message": "",
+    "access_token": "092619bb-301a-4b27-89c6-6a4986e33356",
+    "token_type": "bearer",
+    "refresh_token": "d771bf3d-3219-4eb0-861d-51b02387e2e6",
+    "expires_in": 3599,
+    "one_time_password_required": false,
+    "otp_channel": null,
+    "user_id": 8956287,
+    "username": "ernesqr@yahoo.com",
+    "correlation_key": "e65c670764bc470366ba7ef829fceb01483db62334d4c68ef095521cfd47f93c",
+    "proxy_account_created": false,
+    "paypal_access": "NONE"
+}
+another call
+{"perPage":6,"page":1,"totalPages":1,"totalItems":0,"items":[]}

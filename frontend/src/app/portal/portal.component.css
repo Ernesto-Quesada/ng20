@@ -1,0 +1,16 @@
+.adjusterLayout {
+    max-width: 100%;
+}
+.componentWrapper{
+    margin-top: 50px
+}
+
+@media (min-width: 767px) {
+    .componentWrapper {
+        margin-left: 25%;
+    }
+    .rowMargin {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

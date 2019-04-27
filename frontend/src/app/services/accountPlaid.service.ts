@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Http, Response , Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Observable } from 'rxjs/Rx';
-import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
+import { environment } from 'environments/environment';
 
 @Injectable()
 export class AccountPlaidService {

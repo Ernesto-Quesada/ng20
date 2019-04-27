@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Http, Response , Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Observable } from 'rxjs/Rx';
-import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
+import { environment } from 'environments/environment';
 
 @Injectable()
 export class AgencyService {
@@ -29,14 +29,12 @@ export class AgencyService {
                .then(response => response.json())
                .catch(this.handleError);
   }
-              
+
   getAgencyDetailsinService(id) {
     console.log('from agency service', id);
     return this.http.get(this.BASE_URL + `/api/agency/${id}`)
-      .toPromise()
-      .then(res => res.json() )
-      .catch(this.handleError);
   }
+
 
   selectAgen(id) {
     return this.http.post(this.BASE_URL + `/api/agency/${id}/select`, {},

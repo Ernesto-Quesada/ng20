@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router }            from '@angular/router';
-import { Observable }        from 'rxjs/Observable';
-import { Subject }           from 'rxjs/Subject';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 // Observable class extensions
 import 'rxjs/add/observable/of';
 
@@ -18,25 +18,28 @@ import { AgencySearchService } from '../services/agency-search.service';
   providers: [AgencySearchService]
 })
 export class SearchAgencyComponent implements OnInit {
+  @Output() searchedItem = new EventEmitter<any>();
 
   private searchTerms = new Subject();
-  agencies: Observable<any[]>;
+  agency$: Observable<any[]>;
   selectedAgency: any;
-  
-
   constructor(private agencySearchService: AgencySearchService, private router: Router) {}
 
   // Push a search term into the observable stream.
   search(term) {
-    console.log('ageniiiiiii', term);
+
     this.searchTerms.next(term);
-    console.log(this.agencies)
+    if (term !== null) {
+      this.searchedItem.emit(this.agency$);
+    }
+    if (term == null || term === "" ){ this.searchedItem.emit('')}
   }
-  
+
 ngOnInit(): void {
-    this.agencies = this.searchTerms
-     .debounceTime(300)        
-     .distinctUntilChanged()   
+  // console.log('inside ngOnit s-a-c',this.searchTerms)
+    this.agency$ = this.searchTerms
+     .debounceTime(300)
+     .distinctUntilChanged()
       .switchMap(term => {
         const searchAjax  = this.agencySearchService.search(term);
         // searchAjax.subscribe(res => console.log('holaaaaaaaaaaaaa', res))
@@ -45,11 +48,10 @@ ngOnInit(): void {
       })
       .catch(error => {
         // TODO: add real error handling
-        console.log('ERROR MES',error);
+        console.log('ERROR MES', error);
         return Observable.of<any[]>([]);
       });
-    console.log('agen222222yyyyy',this.agencies);
-    console.log('agen222222',this.searchTerms);
+      console.log(this.searchTerms)
   }
 gotoDetail(agency) {
     // const link = ['/detail', agency._id];

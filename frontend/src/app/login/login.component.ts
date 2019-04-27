@@ -14,25 +14,26 @@ export class LoginComponent implements OnInit {
   user: any;
   error: any;
   constructor(private mySessionService: SenderService, private routetheuser: Router) { }
+
   ngOnInit() {
    this.mySessionService.isLoggedIn()
       .then((theUsercomingFromApi ) => {
-        console.log('error in login ---------');
-      this.user = theUsercomingFromApi
-    })
-    .catch((err) => {
-      console.log('error in login ---------')
+        this.user = theUsercomingFromApi
+        console.log(' login ---------', this.user);
+        this.routetheuser.navigate(['/profile']);
+      })
+      .catch((err) => {
+      console.log('error in login ---------', err)
         });
   }
   login() {
      this.mySessionService.login(this.loginInfo)
       .then((theUsercomingFromApi) => {
         this.mySessionService.loggedIn(theUsercomingFromApi);
-      // this.user = theUsercomingFromApi;
-      this.error = null;
-      this.routetheuser.navigate(['/portal']);
-    console.log('USER INFO form api', theUsercomingFromApi);
-    console.log('USER', this.user);
+        console.log('yes');
+        this.user = theUsercomingFromApi;
+        this.error = null;
+        this.routetheuser.navigate(['/profile']);
     })
     // console.log('LOGIN INFO FROM THE HTML FORM', this.loginInfo);
     .catch((err) => {

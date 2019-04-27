@@ -3,6 +3,7 @@ import 'rxjs/add/operator/switchMap';
 import { Location } from '@angular/common';
 import {AgencyService} from '../services/agency.service'
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { AgencyComponent} from '../agency/agency.component';
 @Component({
@@ -14,14 +15,28 @@ export class AgencyDetailsComponent implements OnInit {
 @Input() agencyToDetails: any;
 @Input() user: any;
 err: any;
+agencyID: string;
+theAgency: any ={};
 
-  constructor(private agencyService: AgencyService , private routetheuser: Router) { }
+  constructor(private agencyService: AgencyService,
+     private route: ActivatedRoute,
+     private routetheuser: Router) { }
 
     ngOnInit() {
-    // this.route.params.subscribe(params => {
-    //   this.getAgencyDetails(params['id']);
-    //   console.log('--PAR', params['id'])
-    // });
+    this.route.paramMap.subscribe(params => {
+      console.log(params.get('id'));
+      this.agencyID = params.get('id');
+    this.agencyService.getAgencyDetailsinService(this.agencyID).subscribe(response => {
+      this.theAgency = response.json();
+      console.log('agency detail', this.theAgency)
+      this.printInfo(response);
+      this.printInfo(this.theAgency.nameAgency);
+    })
+    });
+  }
+
+  printInfo(info){
+    console.log( 'The info',info)
   }
     selectAgency(id) {
     this.agencyService.selectAgen(id)

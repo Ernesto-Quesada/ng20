@@ -1,4 +1,99 @@
-<div class="container">  
+<section class="bg-light">
+  <div class="container-fluid no-padding">
+    <!-- HEADING AND SEARCH BOX -->
+    <div class="row component-first-row bg-white " [ngClass]=" user != null ?'container-with-user':''">
+      <div class="col text-center">
+        <h5 class="section-heading text-uppercase">Agencias</h5>
+        <h6 class="section-subheading text-muted">Agencias que le pueden ayudar</h6>
+        <app-search-agency (searchedItem)="showSearchedAgency($event)"></app-search-agency>
+      </div>
+    </div>
+
+    <!-- SEARCHED CARDS -->
+    <div class="row c-card-section" *ngIf='event' [ngClass]=" user != null ?'container-with-user':''">
+      <div class="container">
+        <div class="row">
+          <ng-container *ngFor="let agency of event| async">
+            <div *ngIf='agency.nameAgency != null' class="col-lg-3 col-md-4 col-sm-4 py-2">
+              <div class="card shadow h-100 mb-4" [routerLink]="['/agency', agency._id]">
+                <img class="card-img-top" src="../../assets/images/la-habana-header.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{agency.nameAgency}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Miami</h6>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{agency.email}}</li>
+                    <li class="list-group-item">{{agency.contactPhone!=null? agency.contactPhone:"7863665326" }}</li>
+                  </ul>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEFAULT CARDS -->
+    <div class="row c-card-section" *ngIf='!event' [ngClass]=" user != null ?'container-with-user':''">
+      <div class="container">
+        <div class="row">
+          <ng-container *ngFor="let agency of agencies">
+            <div *ngIf='agency.nameAgency != null' class="col-lg-3 col-md-4 col-sm-4 py-2 padding-cards">
+              <div class="card shadow h-100 mb-4" [routerLink]="['/agency', agency._id]">
+                <img class="card-img-top" src="../../assets/images/la-habana-header.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title text-center">{{agency.nameAgency}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Miami</h6>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{agency.email}}</li>
+                    <li class="list-group-item">{{agency.contactPhone!=null? agency.contactPhone:"7863665326" }}</li>
+                  </ul>
+                  <p class="charge-rate">Charge rate: 6%</p>
+                  <p class="charge-rate">Envios: Todas las provincias</p>
+                  <div class="card-footer ">
+                    <small class="btn btn-outline-info">More details</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- <div class="col-md-8 content-agency-right">
+      <app-agency-details [agencyToDetails]="selectedAgency" [user]="user"></app-agency-details>
+    </div> -->
+<!-- No BORRAR este code comentado -->
+<!-- <form class="form-inline my-2 my-lg-0 mr-lg-2">
+          <div class="input-group">
+            <input #searchBox (keyup)="search(searchBox.value)"class="form-control" type="text" placeholder="Search agency...">
+            <span class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+            </span>
+          </div>
+        </form> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">  
     <div class="row" >
         <div class="relative-list-content content-mini col-md-4 well-custom shadow-effect-1 shadow-effect-null fg-primary-text overflow-h">
           <div class="row">
@@ -21,6 +116,4 @@
           <app-agency-details [agencyToDetails]="selectedAgency" [user]="user"></app-agency-details>
         </div>
   </div>
-</div>
-
-   
+</div> -->

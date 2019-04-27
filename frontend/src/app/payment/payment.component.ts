@@ -27,7 +27,7 @@ ngOnInit() {
     .then((userInfo) => {
       this.user = userInfo
 
-      this.getRelatives(userInfo);
+      // this.getRelatives(userInfo);
       this.getAccountBalance(userInfo);
         // this.mySenderService.getPrle()
         //       .then((theUsercomingFromApi) => {
@@ -42,8 +42,9 @@ ngOnInit() {
 
       // this.routetheuser.navigate(['/profile']);
   })
-  .catch((err) => { this.routetheuser.navigate(['/']);
-                  console.log('-------error--->>', err)});
+  // .catch((err) => { this.routetheuser.navigate(['/']);
+  //                 // console.log('-------error--->>', err)
+  //               });
   }
   onKeycuc() {
     this.usdAmount =  Math.round(this.cucAmount * 1.12);
@@ -51,20 +52,20 @@ ngOnInit() {
   onKeyusd() {
     this.cucAmount = Math.round(this.usdAmount / 1.12)
   }
-  getRelatives(userInfo): void {
-    this.relativeService
-        .getRelatives()
-        .then((relatives) => {this.relatives = relatives;
-        console.log('the fam in getR', this.relatives)
-        this.relatives.forEach((oneRelative) => {
-          if (oneRelative._id === this.user.relativeSendingNow) {
-            this.sending = oneRelative.name;
-            console.log('sending', this.sending)
-          }
-        })
+//   getRelatives(userInfo): void {
+//     this.relativeService
+//         .getRelatives()
+//         .then((relatives) => {this.relatives = relatives;
+//         console.log('the fam in getR', this.relatives)
+//         this.relatives.forEach((oneRelative) => {
+//           if (oneRelative._id === this.user.relativeSendingNow) {
+//             this.sending = oneRelative.name;
+//             console.log('sending', this.sending)
+//           }
+//         })
 
-  })
-}
+//   })
+// }
 getAccountBalance(userInfo) {
   if (userInfo.accountSpec.length === 0) {
     alert('Please choose an account.');

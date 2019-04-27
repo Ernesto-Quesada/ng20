@@ -108,6 +108,10 @@ authRoutes.post('/api/login', (req, res, next) => {
   })(req, res, next);
 });
 
+//=========================
+//======= LOG out ====
+//==========================
+
 authRoutes.post('/api/logout', (req, res, next) => {
   // req.logout() method provided by Passport
   req.logout();
@@ -116,7 +120,9 @@ authRoutes.post('/api/logout', (req, res, next) => {
   res.status(200).json({ message: 'Logged out' })
 });
 
-
+//=========================
+//======= CHeck logged in ====
+//==========================
 authRoutes.get('/api/loggedin', (req, res, next) => {
   if (req.isAuthenticated()) {
     //console.log('i get in here ---------')

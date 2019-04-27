@@ -1,56 +1,53 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 well-custom bg-white overflow-h padding-2">
-      <div class="row">
-        <div class="content-mini relative-new-component col-md-4 well-custom fg-primary-text overflow-h">
-          <div class="block block-mini">
 
-            <i class="fa fa-user fg-acent-color icon-mini"></i>
-            <div class="title-mini">
-              <h2>Profile Edition </h2>
+<section class="bg-light">
+    <div class="container-fluid no-padding">
+        <div class="container-with-user component-first-row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 componentTitleHeader">
+                        <h4>My Profile Edition</h4>
+                    </div>
+                    <div class="col-md-6 componentTitleHeader">
+                        <form class="form-group">
+                            <div class="control-group form-group">
+                                <input type="text" placeholder = {{userName}} name="firstNameEdit" [(ngModel)]="editedProfileInfo.firstNameEdit" id="firstNameInput"   class="form-control" autofocus>
+                              </div>
+                            <div class="control-group form-group">
+                                <input type="text" placeholder = {{userLastName}} name="lastNameEdit" [(ngModel)]="editedProfileInfo.lastNameEdit" id="lastNameInput" class="form-control" required>
+                            </div>
+                            <div class="control-group form-group">
+                                <input type="password" placeholder="Current Password" name="currentPassword " [(ngModel)]="editedProfileInfo.currentPassword" class="form-control">
+
+                            </div>
+                            <div class="control-group form-group">
+                                <input type="password" placeholder="New Password" name="editedPassword " [(ngModel)]="editedProfileInfo.editedPassword" class="form-control">
+                              </div>
+                              <div class="control-group form-group">
+                                  <input type="text" placeholder= {{phone}} name='phoneEdit' [(ngModel)]="editedProfileInfo.phoneEdit" id="userPhone"
+                                      class="form-control">
+                              </div>
+                              <div class="control-group form-group">
+                                  <input type="text" placeholder="country" name="countryEdit" [(ngModel)]="editedProfileInfo.countryEdit" id="countryInput" class="form-control">
+                               </div>
+
+                            <!-- <div class="control-group form-group">
+                                <input type="text" placeholder="Carnet Id" name='cIdentidadEdit' [(ngModel)]="editedProfileInfo.cIdentidad" id="cIdentidad" class="form-control">
+                            </div> -->
+
+                            
+
+
+                            <div id="success"></div>
+                            <!-- For success/fail messages -->
+                            <div class="btn-actions2">
+                                <button class="btn btn-default btn-md btn-1" [routerLink]="['/profile']">Cancel</button>
+                                <button (click)="editProfile()" class="btn btn-primary btn-md btn-2">Done</button>
+                            </div>
+                  
+                        </form>
+                    </div>
+                </div>//
             </div>
-          </div>
         </div>
-        <div class="content-mini col-md-8  well-custom fg-white overflow-h">
-          <div class="block block-mini">
-            <form class="form">
-              <div class="control-group form-group">
-                <div class="controls">
-                  <input type="text" placeholder="First name" name="firstNameInput" [(ngModel)]="editInfo.firstNameInput" id="firstNameInput"
-                    class="form-control" placeholder="name" autofocus>
-                  <p class="help-block"></p>
-                </div>
-              </div>
-              <div class="form-group">
-                <input type="text" placeholder="Last name" name="lastNameInput" [(ngModel)]="editInfo.lastNameInput" id="lastNameInput" class="form-control"
-                  placeholder="last name">
-              </div>
-              <div class="form-group">
-                <input type="phone" placeholder="Your phone" name="phoneInput" [(ngModel)]="editInfo.phoneInput" id="phoneInput" class="form-control"
-                  placeholder="phone">
-              </div>
-              <div class="form-group">
-                <input type="password" placeholder="Current Password" name="currentPassword " [(ngModel)]="editInfo.currentPassword" class="form-control"
-                  placeholder="current password">
-              </div>
-              <div class="form-group">
-                <input type="password" placeholder="New Password" name="editedPassword " [(ngModel)]="editInfo.editedPassword" class="form-control"
-                  placeholder="new password">
-              </div>
-              <div class="form-group">
-                <input type="text" placeholder="country" name="countryInput" [(ngModel)]="editInfo.countryInput" id="countryInput" class="form-control"
-                  placeholder="country">
-              </div>
-              <div id="success"></div>
-              <!-- For success/fail messages -->
-<div class="btn-actions2">
-              <button (click)="editProfile()" class="btn btn-default btn-md btn-1" [routerLink]="['/profile']">Cancel</button>
-              <button (click)="editProfile()" class="btn btn-primary btn-md btn-2">Done</button>
-</div>
-            </form>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-</div>
+</section>

@@ -1,0 +1,33 @@
+.componentWrapper {
+    margin-top: 80px;
+}
+.adjusterLayout {
+    max-width: 100%;
+}
+.main-section {
+    background-color: #03a9f4;
+}
+.goBack {
+    margin-top: 40px;
+    margin-left:auto;
+    margin-right: auto;
+    color: #067c19;
+    border: none;
+
+}
+
+
+@media (min-width: 767px) {
+    .componentWrapper {
+        margin-left: 25%;
+    }
+    .rowMargin {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .componentTitleHeader {
+        margin-top: 30px;
+        margin-left: 30px; 
+    }
+    
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AgencyService} from '../services/agency.service'
-import { SenderService } from '../services/sender.service';
+// import { SenderService } from '../services/sender.service';
 @Component({
   selector: 'app-agency',
   templateUrl: './agency.component.html',
@@ -17,21 +17,21 @@ user: any;
 
   ngOnInit(): void {
     this.getAgencies();
-    this.mySessionService.isLoggedIn()
-      .then((theUsercomingFromApi ) => {
-      this.user = theUsercomingFromApi;
-      console.log('the user in agencies', this.user)
-    })
-    .catch((err) => {console.log('user not logged')
-        });
+    // this.mySessionService.isLoggedIn()
+    //   .then((theUsercomingFromApi ) => {
+    //   this.user = theUsercomingFromApi;
+    //   console.log('the user in agencies', this.user)
+    // })
+    // .catch((err) => {console.log('user not logged')
+    //     });
   }
   getAgencies(): void {
     this.agencyService
         .getAgencies()
-        .then((agency )=> {
+        .then((agency ) => {
           this.agencies = agency;
-        console.log('AGENCIES',this.agencies)});
-        
+        console.log('AGENCIES', this.agencies)});
+
   }
   // add(name: string): void {
   //   name = name.trim();

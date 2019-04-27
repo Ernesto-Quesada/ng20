@@ -12,13 +12,14 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   // loginInfo = {};
-  //signupInfo: Signup;
-  signupInfo = {firstNameInput: '',
-                lastNameInput: '',
-                emailInput: '',
-                 phoneInput: '',
-                 signupPassword: '',
-                countryInput: ''
+  // signupInfo: Signup;
+  signupInfo = {
+                // firstNameInput: '',
+                // lastNameInput: '',
+                // emailInput: '',
+                //  phoneInput: '',
+                //  signupPassword: '',
+                // countryInput: ''
                 }
 
   user: any;

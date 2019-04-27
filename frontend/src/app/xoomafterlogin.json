@@ -1,0 +1,161 @@
+{
+    "feesResponse": [
+        {
+            "purchaser": "XOOM",
+            "fundingInstrumentType": "ACH",
+            "fundingCountryCode": null,
+            "fundingCurrencyCode": "USD",
+            "destinationType": "PICKUP",
+            "destinationCountryCode": "MX",
+            "destinationCurrencyCode": "MXN",
+            "minSendAmount": 0.00,
+            "maxSendAmount": 25.01,
+            "baseFeeAmount": 4.99,
+            "feePercentage": 0.0
+        },
+        {
+            "purchaser": "XOOM",
+            "fundingInstrumentType": "CARD",
+            "fundingCountryCode": null,
+            "fundingCurrencyCode": "USD",
+            "destinationType": "PICKUP",
+            "destinationCountryCode": "MX",
+            "destinationCurrencyCode": "MXN",
+            "minSendAmount": 0.00,
+            "maxSendAmount": 100.01,
+            "baseFeeAmount": 4.99,
+            "feePercentage": 0.0
+        },
+        {
+            "purchaser": "XOOM",
+            "fundingInstrumentType": "ACH",
+            "fundingCountryCode": null,
+            "fundingCurrencyCode": "USD",
+            "destinationType": "DEPOSIT",
+            "destinationCountryCode": "MX",
+            "destinationCurrencyCode": "MXN",
+            "minSendAmount": 0.00,
+            "maxSendAmount": 25.01,
+            "baseFeeAmount": 4.99,
+            "feePercentage": 0.0
+        },
+        {
+            "purchaser": "XOOM",
+            "fundingInstrumentType": "CARD",
+            "fundingCountryCode": null,
+            "fundingCurrencyCode": "USD",
+            "destinationType": "DEPOSIT",
+            "destinationCountryCode": "MX",
+            "destinationCurrencyCode": "MXN",
+            "minSendAmount": 0.00,
+            "maxSendAmount": 100.01,
+            "baseFeeAmount": 4.99,
+            "feePercentage": 0.0
+        },
+        {
+            "purchaser": "XOOM",
+            "fundingInstrumentType": "ACH",
+            "fundingCountryCode": null,
+            "fundingCurrencyCode": "USD",
+            "destinationType": "BILL_PAY",
+            "destinationCountryCode": "MX",
+            "destinationCurrencyCode": "MXN",
+            "minSendAmount": 0.00,
+            "maxSendAmount": 30000.00,
+            "baseFeeAmount": 2.99,
+            "feePercentage": 0.0
+        },
+        {
+            "purchaser": "XOOM",
+            "fundingInstrumentType": "CARD",
+            "fundingCountryCode": null,
+            "fundingCurrencyCode": "USD",
+            "destinationType": "BILL_PAY",
+            "destinationCountryCode": "MX",
+            "destinationCurrencyCode": "MXN",
+            "minSendAmount": 0.00,
+            "maxSendAmount": 30000.00,
+            "baseFeeAmount": 2.99,
+            "feePercentage": 0.0
+        },
+        {
+            "purchaser": "XOOM",
+            "fundingInstrumentType": "ACH",
+            "fundingCountryCode": null,
+            "fundingCurrencyCode": "USD",
+            "destinationType": "TOP_UP",
+            "destinationCountryCode": "MX",
+            "destinationCurrencyCode": "MXN",
+            "minSendAmount": 0.00,
+            "maxSendAmount": 30000.00,
+            "baseFeeAmount": 1.49,
+            "feePercentage": 0.0
+        },
+        {
+            "purchaser": "XOOM",
+            "fundingInstrumentType": "CARD",
+            "fundingCountryCode": null,
+            "fundingCurrencyCode": "USD",
+            "destinationType": "TOP_UP",
+            "destinationCountryCode": "MX",
+            "destinationCurrencyCode": "MXN",
+            "minSendAmount": 0.00,
+            "maxSendAmount": 30000.00,
+            "baseFeeAmount": 1.49,
+            "feePercentage": 0.0
+        }
+    ],
+    "resultStatus": {
+        "valid": true
+    },
+    "result": {
+        "sendAmount": "10.00",
+        "formattedSendAmount": "10.00",
+        "receiveAmountLocal": "183.00",
+        "formattedReceiveAmount": "183.00",
+        "countryCode": "MX",
+        "currencyCode": "MXN",
+        "fxRate": "18.2744",
+        "headerMessage": "Send $10.00 to Mexico",
+        "disbursementTypes": {
+            "PICKUP": {
+                "fee": 4.99,
+                "max": 2999.00
+            },
+            "DEPOSIT": {
+                "fee": 4.99,
+                "max": 10000.00
+            }
+        },
+        "valueDisbursementFees": {
+            "PICKUP-MXN": "4.99",
+            "DEPOSIT-MXN-TOTAL": "14.99",
+            "DEPOSIT-MXN-ORIG": "4.99",
+            "DEPOSIT-MXN": "4.99",
+            "BILL_PAY-MXN-ORIG": "2.99",
+            "TOP_UP-MXN-ORIG": "1.49",
+            "PICKUP-MXN-ORIG": "4.99",
+            "TOP_UP-MXN": "1.49",
+            "BILL_PAY-MXN-TOTAL": "12.99",
+            "PICKUP-MXN-TOTAL": "14.99",
+            "BILL_PAY-MXN": "2.99",
+            "TOP_UP-MXN-TOTAL": "11.49"
+        },
+        "standardDisbursementFees": {
+            "PICKUP-MXN": "4.99",
+            "DEPOSIT-MXN-TOTAL": "14.99",
+            "DEPOSIT-MXN-ORIG": "4.99",
+            "DEPOSIT-MXN": "4.99",
+            "BILL_PAY-MXN-ORIG": "2.99",
+            "TOP_UP-MXN-ORIG": "1.49",
+            "PICKUP-MXN-ORIG": "4.99",
+            "TOP_UP-MXN": "1.49",
+            "BILL_PAY-MXN-TOTAL": "12.99",
+            "PICKUP-MXN-TOTAL": "14.99",
+            "BILL_PAY-MXN": "2.99",
+            "TOP_UP-MXN-TOTAL": "11.49"
+        },
+        "amountTarget": "SEND_AMOUNT",
+        "amountRounded": false
+    }
+}

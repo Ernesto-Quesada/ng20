@@ -1,16 +1,112 @@
-<div *ngIf='relativeToDetails'>
-  <div style="text-align:center"> 
-    <div>
-      <h1 class="icon-right-content"><i class="fa fa-users icon-mini-o fg-primary-text"></i></h1>
-      <div class="content-right-data">
-      <h2 class="fg-primary-text title-right-content"> {{relativeToDetails.name}} {{relativeToDetails.firstApell}} {{relativeToDetails.secondApell}} </h2>
-      
+<section class="bg-light">
+  <div class="container-fluid no-padding">
+    <!-- <div *ngIf="loadGif" [ngClass] ="'loadGif'">
+      </div> -->
+
+
+    <div class="row component-first-row container-with-user">
+      <div class="col">
+        <i [routerLink]="['/relatives']" class="material-icons arrow_back_ios">arrow_back_ios</i>
+      </div>
     </div>
-    <div class="form-right-content agency-right-form">
-      <!-- <p>Select {{agencyToDetails.nameAgency}} as your prefered agency</p> -->
-      <form>
-        <button (click)="selectRelative(relativeToDetails._id)" class="btn btn-primary btn-lg btn-right-content-agency">Select</button>
-      </form>
+
+    <!-- HEADING AND ADD NEW BUTTON -->
+    <!-- <div class="row component-first-row bg-white container-with-user">
+        <div class="col text-center">
+          <h5 class="componentTitleHeader align-middle ">Relative Details</h5>
+        </div>
+        <div class="col border-left ">
+            <button type="button" class="btn btn-sm btn-warning" [routerLink]="['/relative/edit', relative.theRelative._id]" >Edit relative</button>
+        </div>
+      </div> -->
+
+
+    <!-- <div *ngIf="loadGif" [ngClass] ="'loadGif'">
+              </div> -->
+
+    <div class="row c-card-section container-with-user">
+      <div class="container">
+        <div class="row ">
+          <div class="col card-column-container">
+            <div class="card shadow">
+
+              <div class="card-body card-header-container">
+
+
+                <div class="row card-header-container-wrapper">
+                  <div class="c-card-title-relative">
+                    
+                      <i class="  material-icons i-person order1">person</i>
+                      <h5 class=" card-title   card-header-text order2">{{relative.theRelative.name}}</h5>
+                      <h5 class=" card-title   card-header-text order3">{{relative.theRelative.firstApell}}</h5>
+                      <h5 class=" card-title   card-header-text order4">{{relative.theRelative.secondApell}}</h5>
+                   
+                      <i *ngIf="user.relativeSendingNow === relative.theRelative._id" class="material-icons check_circle text-success">check_circle</i>
+                      <small *ngIf="user.relativeSendingNow === relative.theRelative._id">Quick Send</small>
+                  </div>
+                </div>
+
+
+
+                <div class="row card-header-container-wrapper c-subheader">
+                  <i class="material-icons">location_on</i>
+                  <h6 class="card-subtitle card-header-text">Miami</h6>
+                </div>
+              </div>
+
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <i class="material-icons">people</i>
+                  {{relative.theRelative.parentesco}}</li>
+                <li class="list-group-item">
+                  <i class="material-icons">phone</i>
+                  {{relative.theRelative.phone}}</li>
+                <li class="list-group-item">
+                  <i class="material-icons">home</i>
+                  address: {{relative.theRelative.address}}</li>
+              </ul>
+
+
+              <div class="card-body">
+                <a [routerLink]="['/agency']" class="card-link col-sm-12  text-right text-justify">You have {{relative.userProfile.nameAgency}} as your prefered agency</a>
+              </div>
+              <div class="card-footer c-card-footer">
+                <small class="lastSent">Last sent $100 Feb 10, 2018 </small>
+                <i class="material-icons arrow_forward_ios">arrow_forward_ios</i>
+              </div>
+
+              <div class="card-footer">
+                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteModal" (click)="setRelativeToDelete(relative.theRelative._id, relative.theRelative.name )">Remove relative</button>
+                <button type="button" class="btn btn-sm btn-warning" [routerLink]="['/relative/edit', relative.theRelative._id]" >Edit relative</button>
+              </div>
+              
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="deleteModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header alert alert-danger">
+        <h4 class="modal-title">WARNING!!!</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>You are about to permanently delete your relative</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" [routerLink]="['/profile']">Cancel</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteRelative()">Delete</button>
+      </div>
+    </div>
+
   </div>
 </div>

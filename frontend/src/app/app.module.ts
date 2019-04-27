@@ -31,6 +31,7 @@ import { PortalComponent } from './portal/portal.component';
 import { MinistartComponent } from './ministart/ministart.component';
 import { MiniplaidComponent } from './miniplaid/miniplaid.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
+import { EditRelativeComponent } from './editRelative/editRelative.component'
 import { SearchAgencyComponent } from './search-agency/search-agency.component';
 import { AgencySearchService} from './services/agency-search.service';
 import { PaymentComponent } from './payment/payment.component';
@@ -40,14 +41,16 @@ import { SearchPipe } from './pipes/search.pipe';
 import { RelativeNewComponent } from './relative-new/relative-new.component';
 import { RelativeService } from './services/relative.service';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { AlertComponent } from './alert/alert.component';
 
 /// new from adele
 // import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 const routes: Routes = [
-  
+
   { path: '', component: SecureLayoutComponent, children: [
+
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '',  component: HomeComponent },
       { path: 'agency',  component: AgencyComponent },
@@ -55,13 +58,15 @@ const routes: Routes = [
       { path: 'portal',  component:  PortalComponent },
       { path: 'profile', component: ProfileComponent},
       { path: 'profile/edit', component: EditprofileComponent},
-      { path: 'relativelist', component: RelativeListComponent},
+      { path: 'relative/edit/:id', component: EditRelativeComponent},
       { path: 'fundingaccount', component: AccountPlaidComponent},
       { path: 'relatives', component:  RelativeListComponent},
       { path: 'relative/new', component: RelativeNewComponent},
+      { path: 'relative/:id', component:  RelativeComponent},
       { path: 'payment', component: PaymentComponent},
       { path: 'confirmation', component: ConfirmationComponent},
-  ] },
+  
+    ] },
   { path: 'login',  component: LoginComponent },
   { path: 'signup',  component: SignupComponent },
   // { path: 'phone/:id', component: PhoneDetailsComponent }
@@ -88,13 +93,15 @@ const routes: Routes = [
     MinistartComponent,
     MiniplaidComponent,
     EditprofileComponent,
+    EditRelativeComponent,
     SearchAgencyComponent,
     PaymentComponent,
     SecureLayoutComponent,
     PageNotFoundComponentComponent,
     SearchPipe,
     RelativeNewComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    AlertComponent,
     // MaterialModule,
   ],
   imports: [
@@ -105,7 +112,7 @@ const routes: Routes = [
     // RouterModule.forRoot(routes, { useHash: true }),
     // AppRoutingModule
   ],
-  providers: [SenderService, AgencyService, 
+  providers: [SenderService, AgencyService,
               AccountPlaidService, AgencySearchService,
             RelativeService],
   bootstrap: [AppComponent]

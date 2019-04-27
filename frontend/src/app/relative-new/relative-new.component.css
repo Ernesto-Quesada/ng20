@@ -1,0 +1,20 @@
+.btn-actions2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+@media (min-width: 768px) {
+
+    /* .rowMargin {
+        margin-left: 0;
+        margin-right: 0;
+    } */
+    .componentTitleHeader {
+        margin-top: 30px;
+        margin-left: 50px;
+        
+    }
+}

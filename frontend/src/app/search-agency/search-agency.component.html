@@ -1,14 +1,19 @@
+
 <div id="search-component">
-  <h4>Search</h4>
+  <!-- <h6>Search</h6> -->
   <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
-  <div>
+  <i class="material-icons">search</i>
+  <!-- <div> -->
     
-    <div *ngFor="let agency of agencies | async"
-         (click)="gotoDetail(agency)" class="search-result" >
-      {{agency.nameAgency}}
-    </div>
-  </div>
+    <!-- <div *ngFor="let agency of agency$ | async">
+      <div (click)="gotoDetail(agency)" class="search-result"> 
+        {{agency.nameAgency}}
+      </div>
+    </div> -->
+
+    
+  <!-- </div> -->
 </div>
-<div *ngIf='selectedAgency'>
+<!-- <div *ngIf='selectedAgency'>
       <div class="panel-body"><app-agency-details [agencyToDetails]="selectedAgency" [user]="user"></app-agency-details></div>
-</div>
+</div> -->

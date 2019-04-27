@@ -1,4 +1,17 @@
-<section class="section-login" >
+<div *ngIf="!user" class="login-page">
+  <div class="login-form">
+    <form>
+      <input type='text' placeholder="Email address" name='loginEmailInput' [(ngModel)]='loginInfo.loginEmailInput' id="emailInput" autofocus>
+      <input type='password' placeholder="Password" name='loginPassword' [(ngModel)]='loginInfo.loginPassword' id="password" >
+      
+      <button (click)="login()">Log in</button>
+      <p class="register-message">Not registered? </p>
+      <a [routerLink]="['/signup']">Create an account</a>
+      <p [routerLink]="['/home']"class="register-message">home,delete later </p>
+    </form>
+  </div>
+</div>
+<!-- <section class="section-login" >
  
   <div class="col-sm-8 col-md-9 hidden-xs">  
    <img  class="back-single-layout" src="assets/images/cash-flow-button.jpg"/>
@@ -17,15 +30,15 @@
           <div class="form-group">
             <input type='password' placeholder="Password" name='loginPassword' [(ngModel)]='loginInfo.loginPassword' id="password" class="form-control"
               placeholder="password">
-          </div>
+          </div> -->
           <!-- Change this to a button or input when using this as a form -->
-          <button (click)="login()" class="btn btn-sm btn-primary col-md-4">Login</button>
+          <!-- <button (click)="login()" class="btn btn-sm btn-primary col-md-4">Login</button>
           <small class="pull-right"> Not account?<a [routerLink]="['/signup']"> Create one! </a></small>
         </fieldset>
-      </form>
+      </form> -->
 
       
-      </div>
+      <!-- </div>
       <div id="footer_table" class="footer_block">
         <div class="corporate_footer">
           <div>
@@ -41,4 +54,7 @@
     
   </div>
 
-</section>
+</section> -->
+
+
+

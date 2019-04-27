@@ -1,18 +1,98 @@
-<div *ngIf='agencyToDetails'>
-  <div class="text-center"> 
-    <div>
-      <h1 class="icon-right-content"><i class="fa fa-building-o icon-mini-o fg-primary-text"></i></h1>
-      <div class="content-right-data agency">
-      <h2 class="fg-primary-text title-right-content"> {{agencyToDetails.nameAgency}} </h2>
-      <h3 class="fg-primary-text title-right-content"> correo@gmail.com </h3>
-      <span class="fg-primary-text slogan-right-content">telf:9897-9879-898-797</span>
+<section class="bg-light">
+    <div class="container-fluid no-padding">
+      <!-- <div *ngIf="loadGif" [ngClass] ="'loadGif'">
+      </div> -->
+    
+        <!-- HEADING AND ADD NEW BUTTON -->
+        <div class="row component-first-row bg-white container-with-user">
+            <div class="col text-center" >
+              <h5 class="componentTitleHeader align-middle ">My Agency</h5>
+            </div>
+          <!-- <div class="col border-left ">  
+            <button type="button" class="btn btn-success btn-sm float-lg-right edit-profile-button "  [routerLink]="['/profile/edit']">Edit profile
+            </button>
+        </div> -->
+        </div>
+    
+        <!-- ALERTS -->
+        <div class="row c-card-alert container-with-user" >
+          <div class="container">
+            <!-- No Agency -->
+            <div class="row">
+              <div class="card-alert" *ngIf = "!theAgency" >
+                <div class="col">
+                  <div class="card incomplete-info" [routerLink]="['/agency']">
+                    <div class="card-body card-body-mod ">
+                      <i class="material-icons red notification_important">notification_important</i>
+                      <p>Please, select your agency</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+    
+        <!-- USER CARDS -->
+        <div class="row c-card-section container-with-user">
+          <div class="container">
+            <div class="row">
+              <div class="col card-column-container">
+                <div class="card shadow">
+                  <!-- Card header and subheader -->
+                  <div class="card-body card-header-container">
+                    <div class="row card-header-container-wrapper">
+                      <div class="c-card-title-relative">
+                        <i class="material-icons">business</i>
+                        <h5 class="card-title   cardHeader">{{theAgency.nameAgency | uppercase}}</h5>
+                      </div>
+                    </div>
+                    <div class="row card-header-container-wrapper c-subheader">
+                      <i class="material-icons">location_on</i>
+                      <h6 class="card-subtitle  text-muted ">located in Hialeah</h6>
+                    </div>
+                  </div>
+    
+                  <!-- Card list of items(email, phone etc) -->
+                  <ul class="list-group list-group-flush">
+                    <li *ngIf="theAgency.email !=null" class="list-group-item">
+                      <i class="material-icons">email</i>
+                      {{theAgency.email}}</li>
+                    <li *ngIf="theAgency.phone !=null" class="list-group-item">
+                      <i class="material-icons">phone</i>
+                      phonehere123</li>
+                    <li class="list-group-item">
+                      <i class="material-icons">home</i>
+                      123 business</li>
+                  </ul>
+    
+                  <!-- Card other info -->
+                  <div class="card-body card-header-container">
+                    <div class="row card-header-container-wrapper">
+                      <div class="c-card-title-relative">
+                        <i class="material-icons">business</i>                        
+                        <h5 class="card-title cardHeader"> <small>Agency:</small> Vinotinto</h5>
+                      </div>
+                  </div>
+                  <div class="row card-header-container-wrapper c-subheader">
+                      <i class="material-icons">location_on</i>
+                      <h6 class="card-subtitle  text-muted ">located in Hialeah</h6>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <p class="card-link col-sm-12  text-right text-justify">This agency charges 6% on all remittance</p>
+                  </div>
+
+                  <div class="card-footer bg-info" [routerLink]="['/agency']">
+                      <small class="lastSent">View more agencies...</small>
+                      <i class="material-icons arrow_forward_ios">arrow_forward_ios</i>
+                  </div>
+        
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div *ngIf='user' class="form-right-content agency-right-form">
-      <!-- <p>Select {{agencyToDetails.nameAgency}} as your prefered agency</p> -->
-      <form>
-        <button (click)="selectAgency(agencyToDetails._id)" class="btn btn-primary btn-lg btn-right-content-agency">Select</button>
-      </form>
-    </div>
-  </div>
-</div>
+</section>

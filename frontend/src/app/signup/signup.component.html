@@ -1,60 +1,19 @@
-<section class="section-login" >
+<div *ngIf="!user" class="login-page">
+  <div class="login-form">
+    <form class="register-form">
+      <input type="text" placeholder="First name"  name="firstNameInput" [(ngModel)]="signupInfo.firstNameInput" id="firstNameInput" placeholder="first name" autofocus>
+      <input type="text"  placeholder="Last name" name="lastNameInput" [(ngModel)]="signupInfo.lastNameInput" id="lastNameInput" placeholder="last name">
+      <input type="password" placeholder="Password" name="signupPassword " [(ngModel)]="signupInfo.signupPassword" placeholder="password">
+      <input type="email" placeholder="Email address" name="emailInput" [(ngModel)]="signupInfo.emailInput" id="emailInput" placeholder="email">
+      
+      <button (click)="signup()">Sign Up</button>
+      <p class="register-message">Do you already have an account? <a [routerLink]="['/login']"> Log in </a></p>
+      <p [routerLink]="['/home']"class="register-message">home,delete later </p>
 
-   <div class="col-sm-8 col-md-9 hidden-xs">  
-   <img  class="back-single-layout" src="assets/images/cash-flow-button.jpg"/>
-   <h2 class="title-single-layout">Take advantage of your time!</h2>
+    </form>
   </div>
+</div>
 
- 
-    <div class="col-xs-12  col-sm-4 col-md-3" style="background:#fff;height:100vh">
-      <h3 class="margin-bottom-30 fg-black">Sing Up</h3>
-      <div class="margin-bottom-30" style="height:80vh">
-      <form class="signup" >
-       <fieldset>
-
-       <div class="form-group">
-          <input type="text" placeholder="First name"  name="firstNameInput" [(ngModel)]="signupInfo.firstNameInput" id="firstNameInput" class="form-control" placeholder="first name" autofocus>
-        </div>
-
-        <div class="form-group">
-          <input type="text"  placeholder="Last name" name="lastNameInput" [(ngModel)]="signupInfo.lastNameInput" id="lastNameInput" class="form-control" placeholder="last name">
-        </div>
-
-        <div class="form-group">
-          <input type="email" placeholder="Email address" name="emailInput" [(ngModel)]="signupInfo.emailInput" id="emailInput" class="form-control" placeholder="email">
-        </div>
-
-        <div class="form-group">
-          <input type="phone" placeholder="Phone number" name="phoneInput" [(ngModel)]="signupInfo.phoneInput" id="phoneInput" class="form-control" placeholder="phones">
-        </div>
-        <div class="form-group">
-          <input type="password" placeholder="Password" name="signupPassword " [(ngModel)]="signupInfo.signupPassword" class="form-control" placeholder="password">
-        </div>
-        <div class="form-group">
-          <input type="text" placeholder="Country" name="countryInput" [(ngModel)]="signupInfo.countryInput" id="countryInput" class="form-control" placeholder="country">
-        </div>
-                                
-<!-- Change this to a button or input when using this as a form -->
-       <button (click)="signup()" class="btn btn-sm btn-primary col-md-4">Sign Up</button>
-       <small class="pull-right"> Do you already have an account?<a [routerLink]="['/login']"> login! </a></small>
-       </fieldset>
-      </form>
-      </div>
-      <div id="footer_table" class="footer_block">
-        <div class="corporate_footer">
-          <div>
-            <small class="footer_link text-caption" id="footer_copyright_link">
-                © 2017 KinPay                           
-            </small>
-            <div class="pull-right">
-              <img src="assets/images/logo.png" alt="logo" width="100" style="margin-top:-10px">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
- 
-</section>
 
 
 

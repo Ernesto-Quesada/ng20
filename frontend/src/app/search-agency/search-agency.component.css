@@ -1,0 +1,11 @@
+input {
+    /* border: solid 1px black; */
+    border-radius: 5px;
+    -webkit-box-shadow: 11px 24px 24px -10px rgba(50,50,51,0.49);
+-moz-box-shadow: 11px 24px 24px -10px rgba(50,50,51,0.49);
+box-shadow: 11px 24px 24px -10px rgba(50,50,51,0.49);
+margin-left: 0.95rem
+}
+#search-component {
+    margin-bottom: 1.2rem
+}

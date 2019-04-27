@@ -16,6 +16,7 @@ const userSchema = new Schema(
     phone:    {type:String},
     address:  {type:String},
     country:    {type:String},
+    firstTimeVisit: {type:Boolean},
     ACCESS_TOKEN: {type:String},
     ITEM_ID: {type:String},
     accountSpec: {type:Object},

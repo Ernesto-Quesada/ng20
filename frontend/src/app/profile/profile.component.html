@@ -1,33 +1,133 @@
-<div class="container">
-  <div class="row">
-    <div class="content-mini  profile-component col-md-4 well-custom shadow-effect-1 shadow-effect-null fg-primary-text overflow-h">
-      <div class="block block-mini" [routerLink]="['/profile']">
-        <i class="fa fa-user fg-acent-color icon-mini profile-component"></i>
-        <div class="title-mini profile-data">
-          <h2> {{user.firstname}} {{user.lastName}}  </h2>
-          <span class="block"> {{user.email}}</span>
-          <span class="block"> {{user.phone}}</span>
-          <span class="block"> {{user.address}}</span>
+<section class="bg-light">
+<div class="container-fluid no-padding">
+  <!-- <div *ngIf="loadGif" [ngClass] ="'loadGif'">
+  </div> -->
+
+    <!-- HEADING AND Edit BUTTON -->
+    <div class="row component-first-row bg-white container-with-user">
+        <div class="col text-center">
+          <h5 class="componentTitleHeader align-middle ">My Profile</h5>
+        </div>
+      <div class="col border-left ">  
+        <button type="button" class="btn btn-success btn-sm float-lg-right edit-profile-button "  [routerLink]="['/profile/edit']">Edit profile
+        </button>
+    </div>
+    </div>
+
+    <!-- ALERTS -->
+    <div class="row c-card-alert container-with-user">  
+        <div class="container">
+          <!-- PROFILE ALERT -->
+          <div class="row">
+            <div class="card-alert" *ngIf="user.firstName == null || user.lastName == null || user.phone == null || user.country == nul ">
+              <div class="col">
+                <div class="card incomplete-info" [routerLink]="['/profile/edit']">
+                  <div class="card-body card-body-mod ">
+                    <i class="material-icons red notification_important">notification_important</i>
+                    <p class="">Please,complete your profile to start sending </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- NO FAMILY ALERT -->
+          <div class="row">
+              <div class ="card-alert" *ngIf='!hasRelatives'>
+                  <div class="col">
+                      <div class="card incomplete-info" [routerLink]="['/relative/new']">
+                        <div class="card-body card-body-mod ">
+                      <i class="material-icons red notification_important">notification_important</i>
+                      <p>To start sending, add a relative</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- No Agency -->
+          <div class="row">
+              <div class="card-alert" *ngIf='!user.agencyInUseId'>
+                  <div class="col">
+                      <div class="card incomplete-info" [routerLink]="['/agency']">
+                        <div class="card-body card-body-mod ">
+                      <i class="material-icons red notification_important">notification_important</i>
+                      <p>Please, select your agency</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- USER CARDS -->
+    <div class="row c-card-section container-with-user" *ngIf="user.firstName !=null && user.lastName !=null">
+      <div class="container">
+        <div class="row">
+          <div class="col card-column-container">
+            <div class="card shadow">
+              <!-- Card header and subheader -->
+              <div class="card-body card-header-container">
+                <div class="row card-header-container-wrapper">
+                  <div class="c-card-title-relative">
+                    <i class="material-icons">person</i>
+                    <h5 class="card-title   cardHeader">{{user.firstName}} {{user.lastName}}</h5>
+                  </div>
+                </div>
+                <div class="row card-header-container-wrapper c-subheader">
+                  <i class="material-icons">location_on</i>
+                  <h6 class="card-subtitle  text-muted ">Miami</h6>
+                </div>
+              </div>
+
+              <!-- Card list of items(email, phone etc) -->
+              <ul class="list-group list-group-flush">
+                <li *ngIf="user.email !=null" class="list-group-item">
+                  <i class="material-icons">email</i>
+                  {{user.email}}</li>
+                <li *ngIf="user.phone !=null" class="list-group-item">
+                  <i class="material-icons">phone</i>
+                  {{user.phone}}</li>
+                <li *ngIf="user.adress !=null" class="list-group-item">
+                  <i class="material-icons">home</i>
+                  {{user.address}}</li>
+              </ul>
+
+              <!-- Card other info -->
+              <div class="card-body card-header-container link-hover" [routerLink]="['/agency', agencyId]">
+                <div class="row card-header-container-wrapper">
+                  <div class="c-card-title-relative">
+                    <i class="material-icons">business</i>
+                    <h5 class="card-title cardHeader"> <small>Agency:</small> {{agency | uppercase}}</h5>
+                  </div>
+              </div>
+              <div class="row card-header-container-wrapper c-subheader">
+                  <i class="material-icons">location_on</i>
+                  <h6 class="card-subtitle  text-muted ">located in Hialeah</h6>
+                </div>
+              </div>
+              <div class="card-body link-hover" [routerLink]="['/relatives']">
+                <a *ngIf='hasRelatives' class="card-link col-sm-12  text-right text-justify">See your Family</a>
+              </div>
+              <div class="card-footer c-card-footer">
+                  <small class="lastSent">Your last remittance was to Fulana on May 13 2018</small>
+                  <i class="material-icons arrow_forward_ios">arrow_forward_ios</i>
+              </div>
+              <div class="card-footer bg-info">
+                  <small class="lastSent">See all your transactions</small>
+                  <i class="material-icons arrow_forward_ios">arrow_forward_ios</i>
+              </div>
+    
+            </div>
+          </div>
         </div>
       </div>
-      <div *ngIf='user.agencyInUseId'>
-        <span class="pull-left description-mini profile-component">You are currently using <b class="cursor" [routerLink]="['agency/:id', user.agencyInUseId._id]">{{user.agencyInUseId.nameAgency}}</b> agency 
-             <span class="hidden-md">for send money to your families</span>
-        <small class="cursor" [routerLink]="['/agency']"><i>view more</i></small>
-        </span>
-      </div>
-      <div *ngIf='!user.agencyInUseId'>
-        <span class="pull-left description-mini">You currently have not selected any agency
-          <small class="cursor" [routerLink]="['/agency']"><i>view more</i></small>
-        </span>
-      </div>
-      <div class="row">
-        <div class="col-md-12 btn-actions">
-          <div class="btn btn-default btn-md btn-1" [routerLink]="['/relative/new']">Add a family member</div>
-          <div class="btn btn-primary btn-md btn-2" [routerLink]="['/profile/edit']">Edit your profile</div>
-        </div>
-      </div>
-     
     </div>
   </div>
-</div>
+</section>
+
+
+
+
+

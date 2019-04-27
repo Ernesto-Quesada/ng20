@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RelativeService} from '../services/relative.service';
 import { SenderService} from '../services/sender.service';
 import { Router } from '@angular/router';
-import { NgForm} from '@angular/forms'
 
 @Component({
   selector: 'app-relative-new',
@@ -10,57 +9,39 @@ import { NgForm} from '@angular/forms'
   styleUrls: ['./relative-new.component.css']
 })
 export class RelativeNewComponent implements OnInit {
-newRelativeInfo = { relativeName: '',
-                    firstApell: '',
-                    secondApell: '',
-                    parentesco: '',
-                    addressRelative: '',
-                    cIdentidad: '',
-                    phoneRelative: '',
-                    // emailRelative: '',
+  newRelativeInfo: any = {};
+  relative: any;
+  user: any;
+  relativeName: string;
+  firstApell: string;
+  secondApell: string;
+  parentesco: string;
+  addressRelative: string;
+  cIdentidad: string;
+  phoneRelative: string;
+  error: any;
 
-                }
-relative: any;
-user: any;
-error: any;
-    constructor(
-              private relativeService: RelativeService,
-              private mySessionService: SenderService,
-              private routetheuser: Router) { }
+    constructor (private relativeService: RelativeService,
+                 private mySessionService: SenderService,
+                 private routetheuser: Router) { }
 
   ngOnInit(): void {
-    this.getRelatives();
     this.mySessionService.isLoggedIn()
-      .then((theUsercomingFromApi ) => {
-      this.user = theUsercomingFromApi;
+    .then((userInfo) => {
+      this.user = userInfo;
       console.log('the user in RELATIVE', this.user)
     })
     .catch((err) => {console.log('user not logged')
         });
   }
-  getRelatives(): void {
-    this.relativeService
-        .getRelatives()
-        .then((relatives ) => {
-          this.relative = relatives;
-        console.log('Relative', this.relative)});
+  goBack() {
+    history.back()
   }
-  addRelative(relativeInfoForm) {
-
-    this.newRelativeInfo =
-    {
-    relativeName: relativeInfoForm.value. relativeName,
-    firstApell: relativeInfoForm.value.firstApell,
-    secondApell: relativeInfoForm.value.secondApell,
-    cIdentidad: relativeInfoForm.value.cIdentidad,
-    phoneRelative:  relativeInfoForm.value. phoneRelative,
-    // email: relativeInfoForm.value.emailRelative,
-    addressRelative:  relativeInfoForm.value.addressRelative,
-    parentesco: relativeInfoForm.value. parentesco,
-    }
-    console.log('IIINFO', this.newRelativeInfo)
+  
+  addNewRelative() {
+    console.log('this.newRelativeInfo', this.newRelativeInfo)
    this.relativeService.addRelativeInService(this.newRelativeInfo)
-   .then((theNewRelativeFromApi) => {
+   .then(() => {
      this.routetheuser.navigate(['/relatives']);
    })
     .catch((err) => {

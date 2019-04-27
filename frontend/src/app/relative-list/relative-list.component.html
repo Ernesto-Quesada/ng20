@@ -1,44 +1,149 @@
-<div class="container">  
-    <div class="row" >
-        <div class="relative-list-content content-mini col-md-4 well-custom shadow-effect-1 shadow-effect-null fg-primary-text overflow-h">
+<section class="bg-light">
+  <div class="container-fluid no-padding">
+      <!-- <div *ngIf="loadGif" [ngClass] ="'loadGif'">
+      </div> -->
+
+    <!-- HEADING AND ADD NEW BUTTON -->
+      <div class="row component-first-row bg-white container-with-user">
+        <div class="col text-center">
+          <h5 class="componentTitleHeader align-middle ">My Family</h5>
+        </div>
+        <div class="col border-left ">
+          <button type="button" [routerLink]="['/relative/new']" class="btn btn-success btn-sm float-lg-right edit-profile-button ">Add new
+          </button>
+        </div>
+      </div>
+
+
+      <div class="container-fluid"> 
+        <app-alert></app-alert> 
+      </div>
+
+
+
+      <!-- RELATIVE CARDS -->
+      <div class="row c-card-section container-with-user" *ngIf="relatives != null">
+        <div class="container">
           <div class="row">
-            <div class="block block-mini">
-              <i class="fa fa-users fg-acent-color icon-mini"></i>
-              <div>
-                <h2 class="sm-relative-title">Relatives</h2>
-              </div>
-            </div>
-          </div>
-          <div *ngIf='!relatives'>
-            <h3>You still dont have any relative added</h3>
-            <button [routerLink]="['/relative/new']" class="btn btn-default btn-lg add-relative-sm">Add a relative</button>
-
-          </div>
-           <div *ngIf='relatives'> 
-             <div>
-
-             <button [routerLink]="['/relative/new']" class="btn btn-default btn-lg add-relative-sm"> Add new relative</button>
-             </div>
-             <!-- <button [routerLink]="['/relative/new']" class="btn btn-default btn-lg add-relative-sm"> Add a relative</button> -->
-              <div class="row list-agencies-content">
-                    <div class="col-md-12" *ngFor="let relative of relatives">
-                      <h3 (click)="onSelect(relative)" class="cursor btn-right-content-agency" >
-                        {{relative.name}}
-                      </h3>
+            <ng-container *ngFor="let relative of relatives">
+              <div class="col-md-6 card-column-container">
+                <div class="card shadow">
+                  <!-- <img class="card-img-top" src="https://img.webnots.com/2017/04/Bootstrap-Card-Image.png" alt="Card image cap"> -->
+                  <div class="card-body card-header-container" [routerLink]="['/relative', relative._id]">
+                    <div class="row card-header-container-wrapper">
+                      <div class="c-card-title-relative"> 
+                      <i class="material-icons i-person">person</i>
+                      <h5 class="card-title   cardHeader">{{relative.name | uppercase}}</h5>
+                      <i *ngIf="sendingToRelative === relative._id" class="material-icons check_circle text-success">check_circle</i>
+                      <small *ngIf="sendingToRelative === relative._id">Quick Send</small>
                     </div>
+                    <i class="material-icons">arrow_forward_ios</i>
+                    </div>
+                    <div class="row card-header-container-wrapper c-subheader">
+                      <i class="material-icons">location_on</i>
+                      <h6 class="card-subtitle  text-muted ">Habana</h6>
+                    </div>
+
+                  </div>
+                  <!-- [ngClass]="sendingToRelative === relative._id ?'body-novisible':'' " -->
+                  <div class="card-body" [ngClass]="sendingToRelative === relative._id ?'body-novisible':'' ">
+                      <p  class="col-sm-12 text-justify">Choose for Quick Send</p>
+                      <i *ngIf ="relativeId==relative._id"    class="material-icons" >check_circle</i>
+                      <i *ngIf ="relativeId!==relative._id" class="material-icons" (click)= "setRelativeToSend(relative._id, relative.name)">radio_button_unchecked</i>
+                    
+                    </div>
+                  <div class="card-footer c-card-footer">
+                    <small class=" lastSent">Last sent $100 Feb 10, 2018 </small>
+                    <i class="material-icons arrow_forward_ios">arrow_forward_ios</i>
+                  </div>
+                </div>
               </div>
-            </div>
+            </ng-container>
+          </div>
         </div>
-        <div class="col-md-8 content-agency-right">
-          <app-relative [relativeToDetails]="selectedRelative"></app-relative>
-        </div>
+      </div>
   </div>
-</div>
-
-   
+</section>
 
 
 
+
+
+
+
+
+
+        
+
+        <!-- <div class="col-md-10 col-xs-10" [routerLink]="['/relative', relative._id]">
+          <h4>
+            <span>{{relative.name | uppercase}}</span>
+            <span>{{relative.firstApell | uppercase}} ></span>
+          </h4>
+        </div> -->
+        <!-- <div class="col-md-1 col-xs-1" >
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" (click)="setRelativeToDelete(relative._id)">x</button>
+          </div> -->
+        <!-- <div class="col-md-1 col-xs-1">
+          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#selectRelativeModal" (click)="setRelativeToSend(relative._id,relative.name)">Send</button>
+        </div>
+      </div> -->
+      <!-- <div class="col-md-8 ">
+            <app-relative [relativeToDetails]="selectedRelative"></app-relative>
+          </div> -->
+
+      <!-- </div> -->
+    <!-- </div>
+  </div>
+</div> -->
+
+
+ <!-- (click)="goBack()" -->
+
+<!-- Modal Select -->
+<!-- <div id="selectRelativeModal" class="modal fade" role="dialog">
+  <div class="modal-dialog"> -->
+
+<!-- Modal content-->
+<!-- <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Selecting Your Relative</h4>
+      </div>
+      <div class="modal-body">
+        <p>You are selecting {{relativeName}} to send over money</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" [routerLink]="['/profile']">Cancel</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="selectRelative(relativeSelected)">Select</button> -->
+<!-- <button type="button" class="btn btn-default" data-dismiss="modal" (click)="deleteRelative()">Delete</button> -->
+<!-- </div>
+    </div>
+  </div>
+  </div> -->
+
+
+<!-- Modal -->
+<!-- <div id="deleteModal" class="modal fade" role="dialog">
+  <div class="modal-dialog"> -->
+
+<!-- Modal content-->
+<!-- <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">WARNING!!!</h4>
+      </div>
+      <div class="modal-body">
+        <p>You are about to permanently delete your relative</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" [routerLink]="['/profile']">Cancel</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="deleteRelative()">Delete</button>
+      </div>
+    </div>
+
+  </div>
+</div> -->
 <!-- <div class="row">
   <div class="col-lg-10 col-md-6 col-xs-6">
     <h1 class="page-header">Relatives</h1>
