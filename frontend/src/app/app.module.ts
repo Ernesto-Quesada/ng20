@@ -65,7 +65,7 @@ const routes: Routes = [
       { path: 'relative/:id', component:  RelativeComponent},
       { path: 'payment', component: PaymentComponent},
       { path: 'confirmation', component: ConfirmationComponent},
-  
+
     ] },
   { path: 'login',  component: LoginComponent },
   { path: 'signup',  component: SignupComponent },
