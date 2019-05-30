@@ -1,0 +1,40 @@
+<div class="container">
+<h2>Edit photo</h2>
+  <div class="row">
+            <div class="col-md-8">
+               
+                <form method="post"  action="/agency/<%= Agency._id %> ">
+
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label for="nameAgency">Nameeee<%= Agency.nameAgency%></label>
+                            <input type="text" class="form-control" id="agencyName" type="text" name="nameAgency" value="<%= Agency.nameAgency%>">
+                            <p class="help-block"><%= Agency.nameAgency%></p>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label for="email"> email </label>
+                            <input class="form-control" type="text" name="email" id="email">
+                        </div>
+                    </div>
+                    
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label for="contactPhone"> phone </label>
+                            <textarea rows="10" cols="100" class="form-control" id="contactPhone" name="contactPhone" placeholder="<%= Agency.contactPhone%>"></textarea>
+                        </div>
+                    </div>
+                    <div id="success"></div>
+                    <!-- For success/fail messages -->
+                    <button type="submit" class="btn btn-primary">Submit edition</button>
+                </form>
+            </div>
+            <br>
+           
+
+        </div>
+            
+</div>
