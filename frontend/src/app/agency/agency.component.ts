@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AgencyService} from '../services/agency.service'
-import { SenderService } from '../services/sender.service';
+import { UserService } from '../services/sender.service';
 import { AgencySearchService} from '../services/agency-search.service';
 import {debounceTime} from 'rxjs/operator/debounceTime';
 import {distinctUntilChanged} from 'rxjs/operator/distinctUntilChanged';
@@ -22,7 +22,7 @@ export class AgencyComponent implements OnInit {
   searchTerms = new Subject<string>();
 
   constructor( private agencyService: AgencyService,
-              private mySessionService: SenderService,
+              private mySessionService: UserService,
               private _agencySearchService: AgencySearchService) { }
 ngOnInit(): void {
       this.getAgencies();

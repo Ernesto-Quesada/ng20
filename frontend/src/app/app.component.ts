@@ -1,5 +1,5 @@
 import { Component , OnInit} from '@angular/core';
-import { SenderService } from './services/sender.service';
+import { UserService } from './services/sender.service';
 import { NavigationComponent } from './navigation/navigation.component';
 
 // import { EmiterComponent } from './emiter/emiter.component'
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'Sender';
@@ -18,7 +18,7 @@ export class AppComponent {
   // isLoggedIn: boolean = false;
 
   // constructor(
-  //   private mySessionService: SenderService,
+  //   private mySessionService: UserService,
   //   private routetheuser: Router
   // ) { }
   //     ngOnInit() {

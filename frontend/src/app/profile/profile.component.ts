@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SenderService } from '../services/sender.service';
+import { UserService } from '../services/sender.service';
 import { Router } from '@angular/router';
 import { RelativeService } from '../services/relative.service'
 
@@ -27,24 +27,24 @@ export class ProfileComponent implements OnInit {
   alert: string;
 
 
-  constructor(private mySessionService: SenderService,
+  constructor(private mySessionService: UserService,
               private routetheuser: Router,
               private relativeServive: RelativeService) { }
 
   ngOnInit() {
     this.loadGif = true;
       this.mySessionService.isLoggedIn()
-      .then((userInfo) => {
-        this.user = userInfo;
-        console.log('userinfo', this.user)
-        if (userInfo != null) {
-          this.getRelatives();
-           this.getProfile();
-          //  this.redirectToSend(userInfo)
-           this.loadGif = false;
-        }
-    })
-    .catch((err) => { this.routetheuser.navigate(['/'])});
+  //     .then((userInfo) => {
+  //       this.user = userInfo;
+  //       console.log('userinfo', this.user)
+  //       if (userInfo != null) {
+  //         this.getRelatives();
+  //          this.getProfile();
+  //         //  this.redirectToSend(userInfo)
+  //          this.loadGif = false;
+  //       }
+  //   })
+  //   .catch((err) => { this.routetheuser.navigate(['/'])});
   }
 
   getRelatives(): void {
@@ -84,14 +84,14 @@ export class ProfileComponent implements OnInit {
 
   getProfile() {
       this.mySessionService.getProfile()
-      .then(value => {
-        console.log('VVVVVS', value);
-        if(value !=null){this.alert ="profile"}
-        console.log(this.alert);
-        this.agency = value.theUserProfile.agencyInUseId.nameAgency;
-        this.agencyId = value.theUserProfile.agencyInUseId._id
+      // .then(value => {
+      //   console.log('VVVVVS', value);
+      //   if(value !=null){this.alert ="profile"}
+      //   console.log(this.alert);
+      //   this.agency = value.theUserProfile.agencyInUseId.nameAgency;
+      //   this.agencyId = value.theUserProfile.agencyInUseId._id
 
-      })
+      // })
 
    }
   // deleteRelative(relativedIdDelete) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SenderService } from '../services/sender.service';
+import { UserService } from '../services/sender.service';
 import { Router } from '@angular/router';
 
 
@@ -13,7 +13,7 @@ export class NavigationComponent implements OnInit {
     userLogged = false;
 
   constructor(
-    private mySessionService: SenderService,
+    private mySessionService: UserService,
     private routetheuser: Router
   ) { }
       ngOnInit() {
@@ -24,35 +24,35 @@ export class NavigationComponent implements OnInit {
       // });
       this.mySessionService.isLoggedIn()
         // if logged in, redirect to /profile
-        .then((userInfo) => {
-          // remove next line otherwise browser addres not working
-            // this.routetheuser.navigate(['/profile']);
-            if (userInfo != null) {
-              this.userLogged = true;
+    //     .then((userInfo) => {
+    //       // remove next line otherwise browser addres not working
+    //         // this.routetheuser.navigate(['/profile']);
+    //         if (userInfo != null) {
+    //           this.userLogged = true;
 
-            }
-    console.log('userlogged inside Oninit after isLogged is called. should be true', this.userLogged)
+    //         }
+    // console.log('userlogged inside Oninit after isLogged is called. should be true', this.userLogged)
 
-        })
-        // else redirect to /
-        .catch((err) => {
-            this.routetheuser.navigate(['/']);
-        });
+    //     })
+    //     // else redirect to /
+    //     .catch((err) => {
+    //         this.routetheuser.navigate(['/']);
+    //     });
   }
 
   logMeOut() {
       this.mySessionService.logout()
-        .then(() => {
-          this.routetheuser.navigate(['/']);
-          this.userLogged = false;
-          console.log('userlogged inside logMeOut. should be false', this.userLogged)
-        })
-        .catch((err) => {
-          this.routetheuser.navigate(['/']);
-          this.userLogged = true;
-          console.log('userlogged inside logMeOut and catch', this.userLogged)
-          console.log(err)
-        });
+        // .then(() => {
+        //   this.routetheuser.navigate(['/']);
+        //   this.userLogged = false;
+        //   console.log('userlogged inside logMeOut. should be false', this.userLogged)
+        // })
+        // .catch((err) => {
+        //   this.routetheuser.navigate(['/']);
+        //   this.userLogged = true;
+        //   console.log('userlogged inside logMeOut and catch', this.userLogged)
+        //   console.log(err)
+        // });
   }
  
   handleLogin(userFromApi) {

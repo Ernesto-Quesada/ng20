@@ -1,0 +1,34 @@
+{
+  "agencies": [
+    {
+      "id": "123",
+      "details": {
+        "name": "tulipan"
+      }
+    },
+    {
+      "id": "231",
+      "details": {
+        "name": "majagua"
+      }
+    },
+    {
+      "id": "321",
+      "details": {
+        "name": "ocuje"
+      }
+    }
+  ],
+  "login": [
+    {
+      "name": "ernesto"
+    },
+    {
+      "firstNameInput": "a",
+      "lastNameInput": "s",
+      "signupPassword": "d",
+      "emailInput": "f",
+      "id": 1033
+    }
+  ]
+}

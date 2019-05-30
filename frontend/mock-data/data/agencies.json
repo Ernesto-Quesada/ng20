@@ -1,0 +1,15 @@
+{
+    "agencies": [
+        { "id":"123",
+            "details": {"name":"tulipan"}
+        },
+        { "id":"231",
+            "details": {"name":"majagua"}
+        },
+        { "id":"321",
+            "details": {"name":"ocuje"}
+        }
+        
+    ]
+    
+}

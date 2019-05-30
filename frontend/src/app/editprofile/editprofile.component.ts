@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SenderService } from '../services/sender.service';
+import { UserService } from '../services/sender.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -30,28 +30,28 @@ error: any;
   // __v: 0
   // _id: "5b34476df7492a138793219c"
 
-  constructor(private mySessionService: SenderService, private routetheuser: Router) { }
+  constructor(private mySessionService: UserService, private routetheuser: Router) { }
     ngOnInit() {
     this.mySessionService.isLoggedIn()
-    .then((userInfo) => {
-        this.user = userInfo;
-        console.log('editinfo', this.user)
-        this.userName = this.user.firstName.toUpperCase();
-        console.log('ANME',this.userName)
-        this.userLastName = this.user.lastName.toUpperCase();
-        this.phone = this.user.phone;
-        console.log('this.user phone', this.phone);
+    // .then((userInfo) => {
+    //     this.user = userInfo;
+    //     console.log('editinfo', this.user)
+    //     this.userName = this.user.firstName.toUpperCase();
+    //     console.log('ANME',this.userName)
+    //     this.userLastName = this.user.lastName.toUpperCase();
+    //     this.phone = this.user.phone;
+    //     console.log('this.user phone', this.phone);
 
-        })
+    //     })
   .catch((err) => { this.routetheuser.navigate(['/profile'])})
   }
 
   editProfile() {
     console.log('EDUTION',this.editedProfileInfo )
    this.mySessionService.editProfile(this.editedProfileInfo)
-   .then(() => {
-    this.routetheuser.navigate(['/profile']);
-   })
+  //  .then(() => {
+  //   this.routetheuser.navigate(['/profile']);
+  //  })
   //   {
   //     // console.log('PPPPPPPPPPPPPP', this.editedProfileInfo)
   //    this.routetheuser.navigate(['/profile']);

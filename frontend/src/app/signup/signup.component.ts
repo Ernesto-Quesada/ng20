@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // importing the service that will call the Express API
-import { SenderService } from '../services/sender.service';
+import { UserService } from '../services/sender.service';
 import { Router } from '@angular/router';
 // import { Signup } from '../models/signupmodel'
 
@@ -13,7 +13,7 @@ export class SignupComponent implements OnInit {
 
   // loginInfo = {};
   // signupInfo: Signup;
-  signupInfo = {
+  signupInfo: any = {
                 // firstNameInput: '',
                 // lastNameInput: '',
                 // emailInput: '',
@@ -26,24 +26,33 @@ export class SignupComponent implements OnInit {
   error: string;
 
 
-  constructor(private mySessionService: SenderService, private routetheuser: Router) { }
+  constructor(private userService: UserService,
+              private routeTheUSer: Router) { }
 
   ngOnInit() {
-    this.mySessionService.isLoggedIn()
-    .then((userInfo) => {this.routetheuser.navigate(['/portal']);
-  })
-  .catch((err) => { this.routetheuser.navigate(['/signup'])})
+    // this.userService.isLoggedIn()
+  //   .then((userInfo) => {this.routeTheUSer.navigate(['/portal']);
+  // })
+  // .catch((err) => { this.routeTheUSer.navigate(['/signup'])})
   }
 
   signup() {
-   this.mySessionService.signup(this.signupInfo)
-   .then((theUsercomingFromApi) => {
-     this.routetheuser.navigate(['/portal']);
-   })
-    .catch((err) => {
-    this.user = null;
-    this.error = err;
-    });
+    console.log('info', this.signupInfo);
+    this.signupInfo.id = Math.floor(1000 + Math.random() * 9000);
+   
+    this.userService.signup(this.signupInfo)
+    .subscribe(response => {
+      console.log(response)
+    })
+
+
+  //  .then((theUsercomingFromApi) => {
+  //    this.routeTheUSer.navigate(['/portal']);
+  //  })
+  //   .catch((err) => {
+  //   this.user = null;
+  //   this.error = err;
+  //   });
   }
 
 }

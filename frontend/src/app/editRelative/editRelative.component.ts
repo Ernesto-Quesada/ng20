@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SenderService } from '../services/sender.service';
+import { UserService } from '../services/sender.service';
 import { Router } from '@angular/router';
 import { RelativeService} from '../services/relative.service';
 import { ActivatedRoute } from '@angular/router';
@@ -21,7 +21,7 @@ relativeId: string;
 response: any;
 relative: any = {};
 
-  constructor(private mySessionService: SenderService,
+  constructor(private mySessionService: UserService,
               private routetheuser: Router,
              private _relativeService: RelativeService,
              private route: ActivatedRoute) { }

@@ -1,0 +1,6 @@
+{
+"/agencies" : "/agencies",
+"/agencies/:id" : "/agencies/:id",
+"/signup": "/login",
+"/login": "/login"
+}

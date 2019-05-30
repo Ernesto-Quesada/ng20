@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SenderService } from '../services/sender.service';
+import { UserService } from '../services/sender.service';
 import { RelativeService} from '../services/relative.service'
 import { Router } from '@angular/router';
 
@@ -18,18 +18,18 @@ export class PaymentComponent implements OnInit {
   relatives: any;
 cucAmount: number;
 usdAmount: number;
-  constructor( private mySenderService: SenderService,
+  constructor( private myUserService: UserService,
                private relativeService: RelativeService,
                private routetheuser: Router) { }
 
 ngOnInit() {
-    this.mySenderService.isLoggedIn()
+    this.myUserService.isLoggedIn()
     .then((userInfo) => {
       this.user = userInfo
 
       // this.getRelatives(userInfo);
       this.getAccountBalance(userInfo);
-        // this.mySenderService.getPrle()
+        // this.myUserService.getPrle()
         //       .then((theUsercomingFromApi) => {
         //       this.user = theUsercomingFromApi.theUserProfile;
         //       this.error = null;

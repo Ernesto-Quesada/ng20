@@ -2,10 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 // import { MaterialModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
-import { SenderService } from './services/sender.service';
+import { UserService } from './services/sender.service';
 
 
 // import { AppRoutingModule } from './app-routing.module';
@@ -37,7 +37,6 @@ import { AgencySearchService} from './services/agency-search.service';
 import { PaymentComponent } from './payment/payment.component';
 import { SecureLayoutComponent } from './secure-layout/secure-layout.component';
 import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
-import { SearchPipe } from './pipes/search.pipe';
 import { RelativeNewComponent } from './relative-new/relative-new.component';
 import { RelativeService } from './services/relative.service';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
@@ -98,7 +97,6 @@ const routes: Routes = [
     PaymentComponent,
     SecureLayoutComponent,
     PageNotFoundComponentComponent,
-    SearchPipe,
     RelativeNewComponent,
     ConfirmationComponent,
     AlertComponent,
@@ -107,12 +105,12 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(routes),
     // RouterModule.forRoot(routes, { useHash: true }),
     // AppRoutingModule
   ],
-  providers: [SenderService, AgencyService,
+  providers: [AgencyService,
               AccountPlaidService, AgencySearchService,
             RelativeService],
   bootstrap: [AppComponent]

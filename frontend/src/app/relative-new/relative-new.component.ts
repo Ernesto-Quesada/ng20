@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RelativeService} from '../services/relative.service';
-import { SenderService} from '../services/sender.service';
+import { UserService} from '../services/sender.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,7 +22,7 @@ export class RelativeNewComponent implements OnInit {
   error: any;
 
     constructor (private relativeService: RelativeService,
-                 private mySessionService: SenderService,
+                 private mySessionService: UserService,
                  private routetheuser: Router) { }
 
   ngOnInit(): void {
